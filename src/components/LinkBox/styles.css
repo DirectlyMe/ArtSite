@@ -1,0 +1,7 @@
+.LinkBox {
+    text-decoration: none;
+}
+
+.LinkBox:visited {
+    color: black;
+}

@@ -1,0 +1,51 @@
+.Slogan {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.Linebreak {
+    width: 90%;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.WideBox {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(224, 249, 255, .65);
+}
+
+.TwoBoxesInline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.InlineBoxGreen {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 45%;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(214, 255, 226, .65);
+}
+
+.InlineBoxYellow {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 45%;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(253, 252, 188, .65);
+}

@@ -1,0 +1,42 @@
+.AppBar {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.heading {
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.heading:visited {
+    color: black;
+}
+
+.icons {
+    padding-top: 5px;
+}
+
+.cartIcon {
+    cursor: pointer;
+    margin-right: 15px;
+    font-size: 24px;
+}
+
+.cartIcon:hover {
+    color: #eeeeee;
+}
+
+.menuIcon {
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.menuIcon:hover {
+    color: #eeeeee;
+}
