@@ -1,11 +1,31 @@
-.SlideShow {
-    height: 300px;
-    width: 100%;
-    background-color: #FFF7F7;
-    z-index: 1;
+@media screen and (min-width: 800px) {
+    .SlideShow {
+        height: 450px;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #FFF7F7;
+        z-index: 1;
+    }
+    
+    img {
+        width: 100%;
+        height: 450px;
+    } 
 }
 
-img {
-    width: 100%;
-    height: 300px;
+@media screen and (max-width: 500px) {
+    .SlideShow {
+        height: 300px;
+        width: 100%;
+        background-color: #FFF7F7;
+        z-index: 1;
+    }
+    
+    img {
+        width: 100%;
+        height: 300px;
+    } 
 }
+
+

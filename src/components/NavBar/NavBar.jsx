@@ -5,7 +5,7 @@ import Drawer from '../Drawer/Drawer'
 
 const NavBar = ({ cartFunc, menuFunc, isDrawerOpen }) => {
 	return (
-		<div>
+		<div className="NavBar">
 			<AppBar cartFunc={cartFunc} menuFunc={menuFunc} />
 			<Drawer isDrawerOpen={isDrawerOpen} />
 		</div>

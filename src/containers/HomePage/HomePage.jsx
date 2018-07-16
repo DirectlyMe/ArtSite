@@ -11,15 +11,17 @@ class HomePage extends Component {
             <div>
                 <NavBarContainer />
                 <SlideShowContainer />
-                <div className="Slogan">will art for food</div>
-                <hr className="Linebreak" />
-                <LinkBox boxClass="WideBox" text={'Gallery'} route={'/Gallery'} />
-                <div className="TwoBoxesInline">
-                    <LinkBox boxClass="InlineBoxGreen" text={'Contact'} route={'/'} />
-                    <LinkBox boxClass="InlineBoxYellow" text={'Merch'} route={'/'} />
+                <div className="Boxes">
+                    <div className="Slogan">will art for food</div>
+                    <hr className="Linebreak" />
+                    <LinkBox boxClass="WideBox" text={'Gallery'} route={'/Gallery'} />
+                    <div className="TwoBoxesInline">
+                        <LinkBox boxClass="InlineBoxGreen" text={'Contact'} route={'/'} />
+                        <LinkBox boxClass="InlineBoxYellow" text={'Merch'} route={'/'} />
+                    </div>
+                    <LinkBox boxClass="WideBoxPink" text={'Featured'} route={'/'} />
+                    <hr className="Linebreak" />
                 </div>
-                <LinkBox boxClass="WideBox" text={'Featured'} route={'/'} />
-                <hr className="Linebreak" />
                 <Footer />
             </div>
         );
