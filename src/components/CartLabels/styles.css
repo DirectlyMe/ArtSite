@@ -1,0 +1,23 @@
+.Labels {
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    font-weight: 400px;
+    font-size: 16px;
+}
+
+.QPLabels {
+    display: flex;
+    flex-direction: row;
+    margin-right: 7%;
+}
+
+.NameLabel {
+    margin-left: 7%;
+}
+
+.QuantityLabel {
+    padding-right: 1.5em;
+}
+

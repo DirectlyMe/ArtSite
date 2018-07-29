@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import NavBarContainer from '../NavBarContainer/NavBarContainer'
-import SlideShowContainer from '../SlideShowContainer/SlideShowContainer'
-import LinkBox from '../../components/LinkBox/LinkBox'
+import NavBarContainer from '../NavBarContainer/NavBarContainer';
+import SlideShowContainer from '../SlideShowContainer/SlideShowContainer';
+import LinkBox from '../../components/LinkBox/LinkBox';
+import LineBreak from '../../components/LineBreak/LineBreak';
 import Footer from "../../components/Footer/Footer";
 import './styles.css';
 
@@ -13,14 +14,14 @@ class HomePage extends Component {
                 <SlideShowContainer />
                 <div className="Boxes">
                     <div className="Slogan">will art for food</div>
-                    <hr className="Linebreak" />
+                    <LineBreak />
                     <LinkBox boxClass="WideBox" text={'Gallery'} route={'/Gallery'} />
                     <div className="TwoBoxesInline">
                         <LinkBox boxClass="InlineBoxGreen" text={'Contact'} route={'/'} />
                         <LinkBox boxClass="InlineBoxYellow" text={'Merch'} route={'/'} />
                     </div>
                     <LinkBox boxClass="WideBoxPink" text={'Featured'} route={'/'} />
-                    <hr className="Linebreak" />
+                    <LineBreak />
                 </div>
                 <Footer />
             </div>

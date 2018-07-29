@@ -3,10 +3,10 @@ import AppBar from '../AppBar/AppBar'
 import './styles.css'
 import Drawer from '../Drawer/Drawer'
 
-const NavBar = ({ cartFunc, menuFunc, isDrawerOpen }) => {
+const NavBar = ({ cartFunc, toggleDrawer, isDrawerOpen }) => {
 	return (
 		<div className="NavBar">
-			<AppBar cartFunc={cartFunc} menuFunc={menuFunc} />
+			<AppBar toggleDrawer={toggleDrawer} />
 			<Drawer isDrawerOpen={isDrawerOpen} />
 		</div>
 	)

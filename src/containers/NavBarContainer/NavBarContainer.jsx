@@ -18,8 +18,7 @@ export default class NavBarContainer extends Component {
 		return (
 			<div>
 				<NavBar
-					menuFunc={this.toggleDrawer}
-					cartFunc={this.cartPress}
+					toggleDrawer={this.toggleDrawer}
 					isDrawerOpen={this.state.isDrawerOpen}
 				/>
 			</div>

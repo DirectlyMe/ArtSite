@@ -5,7 +5,7 @@ import './styles.css';
 
 const Drawer = ({ isDrawerOpen }) => {
     return (  
-        <div className={classNames("Drawer", { ["DrawerOpen"]: isDrawerOpen })}>
+        <div className={classNames("Drawer", { ["DrawerOpen"]: isDrawerOpen })}> 
             <Link to="/" className="item">Home</Link>
             <Link to="/Gallery" className="item">Gallery</Link>
             <Link to="/" className="item">Merch</Link>

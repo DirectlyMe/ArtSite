@@ -1,22 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import IconButton from '../IconButton/IconButton'
 import './styles.css'
 
-const AppBar = ({ cartFunc, menuFunc }) => {
+const AppBar = ({ cartFunc, toggleDrawer }) => {
 	return (
 		<div className="AppBar">
-			<Link className="heading" to="/">Kelsey Loves Art</Link>
+			<Link className="heading" to="/">
+				Kelsey Loves Art
+			</Link>
 			<div className="icons">
-				<IconButton
-					iconName={'shopping-cart'}
-					iconClass="cartIcon"
-					iconClick={cartFunc}
-				/>
+				<Link to="/Cart" className="cartLink">
+					<IconButton iconName={'shopping-cart'} iconClass="cartIcon" />
+				</Link>
 				<IconButton
 					iconName={'bars'}
 					iconClass="menuIcon"
-                    iconClick={menuFunc}
+					iconClick={toggleDrawer}
 				/>
 			</div>
 		</div>

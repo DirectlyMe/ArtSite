@@ -7,8 +7,8 @@ const GalleryItem = ({ productId, galleryImage, description, title }) => {
 		<div className="GalleryItem">
 			<Link to={`/Gallery:${productId}`} className="ProductLink">
 				<img src={galleryImage} alt="Gallery Item" alt="Kelsey's Art"/>
-				<div className="Title">{title}</div>
-				<div className="Description">{description}</div>
+				<div className="GalleryTitle">{title}</div>
+				<div className="GalleryDescription">{description}</div>
 			</Link>
 		</div>
 	)

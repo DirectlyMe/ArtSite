@@ -31,6 +31,16 @@
     color: #eeeeee;
 }
 
+.cartLink {
+    text-decoration: none;
+    color: black;
+}
+
+.cartLink:visited {
+    text-decoration: none;
+    color: black;
+}
+
 .menuIcon {
     cursor: pointer;
     margin-right: 5px;

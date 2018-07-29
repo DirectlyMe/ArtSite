@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
-import GalleryItem from '../../components/GalleryItem/GalleryItem';
+import React, { Component } from 'react'
+import GalleryItem from '../../components/GalleryItem/GalleryItem'
 import { getGalleryItems } from '../../api/MockGallery'
 
-
 class GalleryItemsContainer extends Component {
-    state = {
-        galleryItems: []
-    }
+	state = {
+		galleryItems: []
+	}
 
 	componentWillMount = () => {
-        this.setState({ galleryItems: getGalleryItems() })
+		this.setState({ galleryItems: getGalleryItems() })
 	}
 
 	render() {
-        let itemNodes = this.state.galleryItems.map(item => 
-            <GalleryItem
-                key={item.id}
-                productId={item.id}
-                galleryImage={item.imagePath}
-                description={item.description}
-                title={item.title}
-            />
-        )
-		
-		return <div>{itemNodes}</div>
+		let itemNodes = this.state.galleryItems.map(item => (
+			<GalleryItem
+				key={item.id}
+				productId={item.id}
+				galleryImage={item.imagePath}
+				description={item.description}
+				title={item.title}
+			/>
+		))
+
+		return <div className="GalleryItems">{itemNodes}</div>
 	}
 }
 

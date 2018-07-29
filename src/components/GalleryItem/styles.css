@@ -1,12 +1,74 @@
-.GalleryItem {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 390px;
+@media screen and (min-width: 800px) {
+    .GalleryItem {
+        display: flex;
+        flex-direction: row;
+        width: calc(30% - 13.5px * 3);
+        height: 400px;
+        margin-top: 10px;
+        margin-left: 10px;
+        z-index: 1;
+        box-sizing: border-box;
+        border-style: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 3px 0px;
+    }
+
+    .GalleryItem:last-of-type {
+        margin-right: 10px;
+    }
+
+    .GalleryItem img {
+        width: 100%;
+        height: 300px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .GalleryTitle {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+    
+    .GalleryDescription {
+        text-align: center;
+        font-size: 14px;
+        padding: 10px
+    }
 }
 
-.GalleryItem:last-of-type {
-    margin-bottom: 15px;
+@media screen and (max-width: 550px) {
+    .GalleryItem {
+        width: 100%;
+        height: 390px;
+        z-index: 1;
+    }
+
+    .GalleryItem img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .GalleryTitle {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+    
+    .GalleryDescription {
+        text-align: center;
+        font-size: 14px;
+        padding: 10px
+    }
+
+    .GalleryItem:last-of-type {
+        margin-bottom: 15px;
+    }
 }
 
 .ProductLink {
@@ -18,21 +80,3 @@
     color: black;
 }
 
-.GalleryItem img {
-    width: 100%;
-    height: 300px;
-}
-
-.Title {
-    text-align: center;
-    font-size: 20px;
-    font-weight: 500;
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-
-.Description {
-    text-align: center;
-    font-size: 14px;
-    padding: 10px
-}
