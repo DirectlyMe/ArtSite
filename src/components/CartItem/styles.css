@@ -3,12 +3,24 @@
     flex-direction: row;
     justify-content: space-between;
     font-family: 'Lato', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.CartItem:hover .RemoveButton {
+    visibility: visible;
+}
+
+.CartItem:hover .Name {
+    padding-left: 2em;
 }
 
 .QPItems {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 6em;
     margin-right: 7%;
 }
 
@@ -16,6 +28,16 @@
     margin-left: 7%;
 }
 
-.Quantity {
-    padding-right: 4em;
+.RemoveButton {
+    position: absolute;
+    left: 2em;
+    visibility: hidden;
+}
+
+@media screen and (min-width: 800px) {
+    .RemoveButton {
+        position: absolute;
+        left: 800px;
+        visibility: hidden;
+    }
 }

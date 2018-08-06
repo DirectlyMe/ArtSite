@@ -2,6 +2,10 @@
     text-decoration: none;
 }
 
+.LinkBox:hover {
+    color: #ffffff;
+}
+
 .LinkBox:visited {
     color: black;
 }

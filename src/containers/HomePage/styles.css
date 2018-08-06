@@ -1,9 +1,3 @@
-@media screen and (min-width: 800) {
-    .Boxes {
-        width: 800px;
-    }
-}
-
 .Slogan {
     font-family: 'Dancing Script', cursive;
     font-size: 24px;
@@ -31,6 +25,10 @@
     padding: 30px;
     text-align: center;
     background-color: rgba(224, 249, 255, .65);
+}
+
+.Boxes {
+    padding-bottom: 25px;
 }
 
 .WideBoxPink {
@@ -69,4 +67,28 @@
     padding: 30px;
     text-align: center;
     background-color: rgba(253, 252, 188, .65);
+}
+
+@media screen and (min-width: 800px) {
+    .Boxes {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 25px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .Boxes {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .Boxes {
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

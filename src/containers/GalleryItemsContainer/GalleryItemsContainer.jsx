@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
+import { getGalleryItems } from '../../api/GalleryCalls'
 import GalleryItem from '../../components/GalleryItem/GalleryItem'
-import { getGalleryItems } from '../../api/MockGallery'
+import './styles.css'
 
 class GalleryItemsContainer extends Component {
 	state = {
 		galleryItems: []
 	}
 
-	componentWillMount = () => {
-		this.setState({ galleryItems: getGalleryItems() })
+	componentWillMount = async () => {
+		this.setState({ galleryItems: await getGalleryItems() })
 	}
 
 	render() {
 		let itemNodes = this.state.galleryItems.map(item => (
 			<GalleryItem
-				key={item.id}
-				productId={item.id}
+				key={item._id}
+				productId={item._id}
 				galleryImage={item.imagePath}
 				description={item.description}
 				title={item.title}

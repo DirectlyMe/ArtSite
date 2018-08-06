@@ -5,3 +5,8 @@
     font-weight: 400;
     padding-bottom: 10px;
 }
+@media screen and (min-width: 800px) {
+    .PageHeading {
+        font-size: 30px;
+    }
+}
