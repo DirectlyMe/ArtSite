@@ -9,7 +9,7 @@ function GalleryPage() {
     return (  
             <div>
                 <NavBarContainer />
-                <PageHeading text={'Gallery'} />
+                <PageHeading text="Gallery" />
                 <GalleryItemsContainer />
                 <Footer />
             </div>

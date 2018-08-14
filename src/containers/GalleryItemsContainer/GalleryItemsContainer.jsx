@@ -5,25 +5,29 @@ import './styles.css'
 
 class GalleryItemsContainer extends Component {
 	state = {
-		galleryItems: []
+		galleryItems: null
 	}
 
-	componentWillMount = async () => {
+	componentDidMount = async () => {
 		this.setState({ galleryItems: await getGalleryItems() })
 	}
 
 	render() {
-		let itemNodes = this.state.galleryItems.map(item => (
-			<GalleryItem
-				key={item._id}
-				productId={item._id}
-				galleryImage={item.imagePath}
-				description={item.description}
-				title={item.title}
-			/>
-		))
-
-		return <div className="GalleryItems">{itemNodes}</div>
+		if (this.state.galleryItems === null) {
+			return <div>loading...</div>
+		} 
+		else {
+			let itemNodes = this.state.galleryItems.map(item => (
+				<GalleryItem
+					key={item._id}
+					productId={item._id}
+					galleryImage={item.images[0]}
+					description={item.description}
+					title={item.title}
+				/>
+			))
+			return <div className="GalleryItems">{itemNodes}</div>
+		}
 	}
 }
 

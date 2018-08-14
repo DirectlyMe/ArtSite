@@ -10,7 +10,7 @@ const AppBar = ({ cartFunc, toggleDrawer }) => {
 				Kelsey Loves Art
 			</Link>
 			<div className="icons">
-				<Link to="/Cart" className="cartLink">
+				<Link to="/cart" className="cartLink">
 					<IconButton iconName={'shopping-cart'} iconClass="cartIcon" />
 				</Link>
 				<IconButton

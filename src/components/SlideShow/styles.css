@@ -23,6 +23,17 @@ button:hover {
 	-webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
 	filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
 }
+
+.itemLink {
+	color: black;
+	text-decoration: none;
+}
+
+.itemLink:visited {
+	color: black;
+	text-decoration: none;
+}
+
 .wrapper {
 	max-width: 1335px;
 	box-sizing: border-box;

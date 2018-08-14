@@ -15,7 +15,7 @@ class HomePage extends Component {
                 <div className="Boxes">
                     <div className="Slogan">will art for food</div>
                     <LineBreak />
-                    <LinkBox boxClass="WideBox" text={'Gallery'} route={'/Gallery'} />
+                    <LinkBox boxClass="WideBox" text={'Gallery'} route={'/gallery'} />
                     <div className="TwoBoxesInline">
                         <LinkBox boxClass="InlineBoxGreen" text={'Contact'} route={'/'} />
                         <LinkBox boxClass="InlineBoxYellow" text={'Merch'} route={'/'} />

@@ -1,42 +1,78 @@
 import React, { Component } from 'react'
 import CartItem from '../../components/CartItem/CartItem'
+import LineBreak from '../../components/LineBreak/LineBreak'
+import CartLabels from '../../components/CartLabels/CartLabels'
+import { getCart, removeFromCart } from '../../api/CartCalls'
+import './styles.css'
+import { faSuperpowers } from '../../../node_modules/@fortawesome/fontawesome-free-brands';
 
 class CartItemsContainer extends Component {
+	state = {
+		cart: null,
+		total: 0,
+	}
+
+	componentDidMount = async () => {
+		this.setState({ cart: await getCart() })
+		this.calcPrice()
+	}
+
+	remove = async id => {
+		await removeFromCart(id)
+		this.setState(prevState => {
+			return { cart: prevState.cart.filter(item => item._id !== id)}
+		})
+		this.calcPrice()
+	}
+
+	calcPrice = () => {
+		let total = 0
+		this.state.cart.map(item => total += (item.price * item.quantity))
+		this.setState({ total })
+	}
+
 	render() {
-		return (
-			<div>
+		if (this.state.cart === null) {
+			return <div style={{textAlign: "center", marginTop: "200px"}}>Loading...</div>
+		} else if (this.state.cart.length === 0) {
+			return (
+				<div>
+					<CartLabels />
+					<LineBreak />
+					<div style={{ textAlign: 'center' }}>Oh no it's empty!</div>
+					<LineBreak />
+					<div className="TotalLabels">
+						<div className="TotalLabel">Total</div>
+						<div className="TotalPrice">${this.state.total}</div>
+					</div>
+					<div className="CheckoutButton">Checkout</div>
+				</div>
+			)
+		} else {
+			const cartItems = this.state.cart.map(item => (
 				<CartItem
-					productID={1234}
-					productName="Test Item"
-					productQuantity={2}
-					productPrice={50}
+					key={item._id}
+					productID={item._id}
+					productName={item.title}
+					productQuantity={item.quantity}
+					productPrice={item.price}
+					remove={this.remove}
 				/>
-				<CartItem
-					productID={1234}
-					productName="Gazing Lights"
-					productQuantity={1}
-					productPrice={200}
-				/>
-				<CartItem
-					productID={1234}
-					productName="Origins"
-					productQuantity={3}
-					productPrice={20.00}
-				/>
-				<CartItem
-					productID={1234}
-					productName="Soft Anatomy"
-					productQuantity={1}
-					productPrice={100}
-				/>
-				<CartItem
-					productID={1234}
-					productName="Yellow Tomb"
-					productQuantity={1}
-					productPrice={80}
-				/>
-			</div>
-		)
+			))
+			return (
+				<div>
+					<CartLabels />
+					<LineBreak />
+					<div>{cartItems}</div>
+					<LineBreak />
+					<div className="TotalLabels">
+						<div className="TotalLabel">Total</div>
+						<div className="TotalPrice">${this.state.total}</div>
+					</div>
+					<div className="CheckoutButton">Checkout</div>
+				</div>
+			)
+		}
 	}
 }
 

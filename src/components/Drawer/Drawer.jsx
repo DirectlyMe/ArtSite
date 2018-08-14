@@ -7,9 +7,9 @@ const Drawer = ({ isDrawerOpen }) => {
     return (  
         <div className={classNames("Drawer", { ["DrawerOpen"]: isDrawerOpen })}> 
             <Link to="/" className="item">Home</Link>
-            <Link to="/Gallery" className="item">Gallery</Link>
+            <Link to="/gallery" className="item">Gallery</Link>
             <Link to="/" className="item">Merch</Link>
-            <Link to="/Cart" className="item">Cart</Link>
+            <Link to="/cart" className="item">Cart</Link>
         </div>
     );
 }

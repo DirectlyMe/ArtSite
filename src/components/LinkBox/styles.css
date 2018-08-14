@@ -1,5 +1,6 @@
 .LinkBox {
     text-decoration: none;
+    border-radius: 12px;
 }
 
 .LinkBox:hover {

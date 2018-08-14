@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
 	faBars,
@@ -24,12 +24,10 @@ class App extends Component {
 	render() {
 		return (
 			<Provider value={CartContext}>
-				<Switch>
 					<Route exact path="/" component={HomePage} />
-					<Route path="/Gallery" component={GalleryPage} />
-					<Route path="/Gallery/:id" component={GalleryItemPage} />
-					<Route path="/Cart" component={CartPage} />
-				</Switch>
+					<Route path="/gallery" component={GalleryPage} />
+					<Route path="/galleryitem/:id" component={GalleryItemPage} />
+					<Route path="/cart" component={CartPage} />
 			</Provider>
 		)
 	}

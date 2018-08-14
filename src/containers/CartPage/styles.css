@@ -1,24 +1,3 @@
-.TotalLabels {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-right: 7%;
-}
-
-.TotalLabel {
-    padding-right: 2.5em;
-}
-
-
-.CheckoutButton {
-    width: 100px;
-    text-align: center;
-    background-color: rgba(255, 247, 247);
-    padding: 20px 30px;
-    margin-top: 25px;
-    margin-left: calc(50% - 80px);
-}
-
 @media screen and (min-width: 800px) {
     .CartContent {
         width: 800px;

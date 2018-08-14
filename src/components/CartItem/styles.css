@@ -36,8 +36,7 @@
 
 @media screen and (min-width: 800px) {
     .RemoveButton {
-        position: absolute;
-        left: 800px;
+        position: relative;
         visibility: hidden;
     }
 }

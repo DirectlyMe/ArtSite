@@ -1,32 +1,21 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import NavBarContainer from '../NavBarContainer/NavBarContainer'
+import Footer from '../../components/Footer/Footer'
 
-class GalleryItemContainer extends Component {
-  state = {  
-    id: 12345,
-    title: 'Very Nice',
-    description: 'Testing',
-    price: 42
-  }
+import GalleryItemContainer from '../GalleryItemContainer/GalleryItemContainer'
 
-  constructor(props, context) {
-    super()
-    
-  }
-
-  componentWillMount = async () => {
-    
-  }
-
-  addItem = () => {
-
-  }
+class GalleryItemPage extends Component {
+  state = {}
 
   render() { 
     return (  
-      <div></div>
+      <div>
+        <NavBarContainer />
+        <GalleryItemContainer id={ this.props.match.params.id }/>
+        <Footer />
+      </div>
     );
   }
 }
 
-export default GalleryItemContainer;
+export default GalleryItemPage;

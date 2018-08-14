@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Slider from '../../components/SlideShow/SlideShow'
-import 'react-animated-slider/build/horizontal.css';
 import { getGalleryItems } from '../../api/GalleryCalls';
-import './styles.css';
+import './styles.css'
 
 class SlideShowContainer extends Component {
-    state = { 
-        slideShowItems: [],
-        currentImage: null
-    }
+	state = {
+		slideShowItems: null
+	}
 
-    componentWillMount = async () => {
-        this.setState({ slideShowItems: await getGalleryItems() })
-    }
+	componentDidMount = async () => {
+		this.setState({ slideShowItems: await getGalleryItems() })
+	}
 
-    render() { 
-        return ( 
-            <Slider content={this.state.slideShowItems} />
-        );
-    }
+	render() {
+        if (this.state.slideShowItems === null) {
+            return <div style={{textAlign: "center", marginTop: "200px"}}>Loading...</div>
+        } else {
+            return <Slider products={this.state.slideShowItems} />
+        }
+	}
 }
 
-export default SlideShowContainer;
+export default SlideShowContainer
