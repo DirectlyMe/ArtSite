@@ -1,7 +1,6 @@
 .ProductSpec {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 
 .ProductPrice {
@@ -25,6 +24,7 @@
   padding: 20px 30px;
   margin-left: calc(50% - 80px);
   margin-top: 20px;
+  margin-bottom: 30px;
   cursor: pointer;
 }
 
