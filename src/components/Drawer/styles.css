@@ -23,6 +23,7 @@
     text-transform: uppercase;
     cursor: pointer;
     border-bottom: solid 1px #f6f6f6;
+    color: black;
 }
 
 .item:visited {

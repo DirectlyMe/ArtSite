@@ -4,7 +4,6 @@ import LineBreak from '../../components/LineBreak/LineBreak'
 import CartLabels from '../../components/CartLabels/CartLabels'
 import { getCart, removeFromCart } from '../../api/CartCalls'
 import './styles.css'
-import { faSuperpowers } from '../../../node_modules/@fortawesome/fontawesome-free-brands';
 
 class CartItemsContainer extends Component {
 	state = {

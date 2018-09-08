@@ -14,6 +14,7 @@ class ItemImgGallery extends Component {
 	render() {
 		let imageNodes = this.state.itemImages.map(image => (
 			<img
+				key={image}
 				src={image}
 				alt="Other"
 				className="ImageRowItem"
