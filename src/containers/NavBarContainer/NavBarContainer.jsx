@@ -1,27 +1,38 @@
-import React, { Component } from 'react'
-import NavBar from '../../components/NavBar/NavBar'
+import React, { Component } from "react";
+import MediaQuery from "react-responsive";
+import NavMobile from "../../components/NavBar/NavBarMobile";
+import NavDesktop from "../../components/NavBar/NavBarDesktop";
+import GalleryContext from "../../GalleryContext";
 
 export default class NavBarContainer extends Component {
-	state = {
-		isDrawerOpen: false
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDrawerOpen: false
+    };
+  }
 
-	toggleDrawer = () => {
-        console.log('Menu was clicked')
-		this.setState({ isDrawerOpen: !this.state.isDrawerOpen })
-	}
+  toggleDrawer = () => {
+    console.log("Menu was clicked");
+    this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
+  };
 
-	cartPress = () => console.log('God Damnit!!!!!!')
+  cartPress = () => console.log("God Damnit!!!!!!");
 
-	//TODO: create cart function
-	render() {
-		return (
-			<div>
-				<NavBar
-					toggleDrawer={this.toggleDrawer}
-					isDrawerOpen={this.state.isDrawerOpen}
-				/>
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div>
+        <MediaQuery query="(max-width: 899px)">
+          <NavMobile
+            toggleDrawer={this.toggleDrawer}
+            isDrawerOpen={this.state.isDrawerOpen}
+          />
+        </MediaQuery>
+        <MediaQuery query="(min-width: 900px)">
+          <NavDesktop />
+        </MediaQuery>
+      </div>
+    );
+  }
 }
+NavBarContainer.contextType = GalleryContext;

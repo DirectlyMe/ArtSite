@@ -1,0 +1,16 @@
+.navbar {
+  display: absolute;
+  z-index: 999;
+  width: 18%;
+  left: 0;
+  top: 0;
+  background-color: white;
+  box-shadow: 2px 3px 4px rgba(0,0,0,.5)
+}
+
+.navbar-wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  z-index: 999;
+}
