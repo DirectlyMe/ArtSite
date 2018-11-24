@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MediaQuery from "react-responsive";
-import NavBarContainer from "../../containers/NavBarContainer/NavBarContainer";
 import GalleryItemContainer from "../../containers/GalleryItemContainer/GalleryItemContainer";
 import Footer from "../../components/Footer/Footer";
 
@@ -11,7 +10,6 @@ class GalleryItemPage extends Component {
   render() {
     return (
       <div>
-        <NavBarContainer />
         <MediaQuery query="(max-width: 899px)">
           <GalleryItemContainer id={this.props.match.params.id} />
           <Footer />

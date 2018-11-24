@@ -1,20 +1,20 @@
-import axios from "axios";
 import { serverConfig as config } from "../config/serverConfig";
 
+
 export function getGalleryItems() {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(`http://${config.IP}:${config.PORT}/gallery/getGallery`)
-      .then(response => resolve(response.data))
-      .catch(err => reject(err));
-  });
+  return fetch(`http://${config.IP}:${config.PORT}/gallery/getGallery`, {
+      method: "GET",
+      mode: "cors"
+    })
+      .then(response => response.json())
+      .catch(err => err);
+  
 }
 
 export function getSingleItem(itemId) {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(`http://${config.IP}:${config.PORT}/gallery/getGalleryItem/${itemId}`)
-      .then(response => resolve(response.data))
-      .catch(err => reject(err));
-  });
+return fetch(
+        `http://${config.IP}:${config.PORT}/gallery/getGalleryItem/${itemId}`
+      )
+      .then(response => response.json())
+      .catch(err => err);
 }

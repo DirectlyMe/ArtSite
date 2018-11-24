@@ -1,4 +1,4 @@
 export const serverConfig = {
-  IP: "10.5.50.138",
-  PORT: 3000
+  IP: "192.168.0.22",
+  PORT: 8080
 };

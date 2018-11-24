@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MediaQuery from "react-responsive";
-import NavBarContainer from "../../containers/NavBarContainer/NavBarContainer";
 import SlideShowContainer from "../../containers/SlideShowContainer/SlideShowContainer";
 import LinkBox from "../../components/LinkBox/LinkBox";
 import LineBreak from "../../components/LineBreak";
@@ -11,8 +10,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <NavBarContainer />
-        <MediaQuery query="(max-width: 900px)>">
+        <MediaQuery query="(max-width: 899px)">
           <SlideShowContainer />
           <div className="Boxes">
             <div className="Slogan">will art for food</div>
@@ -27,9 +25,9 @@ class HomePage extends Component {
           </div>
           <Footer />
         </MediaQuery>
-        <MediaQuery query="(max-width: 901px)">
-          <div>
-            
+        <MediaQuery query="(min-width: 900px)">
+          <div style={{ width: "82%", justifyContent: "center" }}>
+            Hello There
           </div>
         </MediaQuery>
       </div>

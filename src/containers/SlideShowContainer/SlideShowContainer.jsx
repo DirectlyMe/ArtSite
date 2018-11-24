@@ -1,28 +1,46 @@
-import React, { Component } from "react";
-import Slider from "../../components/SlideShow/SlideShow";
-import { getGalleryItems } from "../../api/GalleryCalls";
-import "./styles.css";
+import React, { Component, lazy, Suspense } from "react";
+import GalleryContext from "../../GalleryContext";
+import LoadingSpinner from "../../components/LoadingSpinner";
+const Slider = lazy(() => import("../../components/SlideShow/SlideShow"));
 
 class SlideShowContainer extends Component {
-  state = {
-    slideShowItems: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      slideShowItems: []
+    };
+  }
 
-  componentDidMount = async () => {
-    this.setState({ slideShowItems: await getGalleryItems() });
+  componentDidMount() {
+    this.getSlideShowItems();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.getSlideShowItems();
+    }
+  }
+
+  getSlideShowItems = () => {
+    const { galleryItems } = this.context;
+    this.setState({ slideShowItems: galleryItems });
   };
 
   render() {
-    if (this.state.slideShowItems === null) {
+    if (
+      this.state.slideShowItems !== undefined &&
+      this.state.slideShowItems !== null
+    ) {
       return (
-        <div style={{ textAlign: "center", marginTop: "200px" }}>
-          Loading...
-        </div>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Slider products={this.state.slideShowItems} />
+        </Suspense>
       );
     } else {
-      return <Slider products={this.state.slideShowItems} />;
+      return <div>Couldn't get Images</div>;
     }
   }
 }
+SlideShowContainer.contextType = GalleryContext;
 
 export default SlideShowContainer;

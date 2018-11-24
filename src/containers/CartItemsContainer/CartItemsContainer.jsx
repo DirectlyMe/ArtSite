@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CartItem from "../../components/CartItem/CartItem";
 import LineBreak from "../../components/LineBreak";
 import CartLabels from "../../components/CartLabels/CartLabels";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import { getCart, removeFromCart } from "../../api/CartCalls";
 import "./styles.css";
 
@@ -33,9 +34,7 @@ class CartItemsContainer extends Component {
   render() {
     if (this.state.cart === null) {
       return (
-        <div style={{ textAlign: "center", marginTop: "200px" }}>
-          Loading...
-        </div>
+        <LoadingSpinner />
       );
     } else if (this.state.cart.length === 0) {
       return (

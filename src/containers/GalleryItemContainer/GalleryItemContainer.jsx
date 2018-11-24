@@ -1,19 +1,37 @@
 import React, { Component } from "react";
+import GalleryContext from "../../GalleryContext";
 import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
 import PageHeading from "../../components/PageHeading/PageHeading";
 import ProductDescription from "../../components/ProductDescription/ProductDescription";
-import { getSingleItem } from "../../api/GalleryCalls";
 import { addToCart } from "../../api/CartCalls";
 
 class GalleryItemContainer extends Component {
-  state = {
-    galleryItem: null
+  constructor(props) {
+    super(props);
+    this.state = {
+      galleryItem: null
+    };
+  }
+
+  componentDidMount() {
+    this.getItem();
   };
 
-  componentDidMount = async () => {
-    const { id } = this.props;
-    this.setState({ galleryItem: await getSingleItem(id) });
-  };
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) { 
+      this.getItem();
+    }
+  }
+
+  getItem = () => {
+    if (this.context.galleryItems !== undefined && this.context.galleryItems !== null) {
+      if (this.context.galleryItems.length !== 0) {
+        const { id } = this.props;
+        const item = this.context.galleryItems.filter(item => item._id === id);
+        this.setState({ galleryItem: item[0] });
+      }
+    }
+  }
 
   postItem = () => {
     addToCart(this.state.galleryItem._id);
@@ -42,5 +60,6 @@ class GalleryItemContainer extends Component {
     }
   }
 }
+GalleryItemContainer.contextType = GalleryContext;
 
 export default GalleryItemContainer;

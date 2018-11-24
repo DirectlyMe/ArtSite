@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ReactComponent as RightArrow } from "../../images/nextArrow.svg";
 // import { Link } from "react-router-dom";
 import "./styles.scss";
 
@@ -36,7 +37,8 @@ class PageDropDown extends Component {
     return (
       <div>
         <div onClick={this.showMenu} className="page-selector">
-          {this.props.currentPage}
+          <div className="page-title">{this.props.currentPage}</div>
+          <RightArrow className="more-arrow" />
         </div>
         {this.state.showMenu ? (
           <div

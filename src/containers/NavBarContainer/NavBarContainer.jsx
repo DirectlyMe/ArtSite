@@ -8,7 +8,7 @@ export default class NavBarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDrawerOpen: false
+      isDrawerOpen: false,
     };
   }
 
@@ -17,7 +17,9 @@ export default class NavBarContainer extends Component {
     this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
   };
 
-  cartPress = () => console.log("God Damnit!!!!!!");
+  updateCurrentPage = (page) => {
+    this.setState({ currentPage: page });
+  }
 
   render() {
     return (

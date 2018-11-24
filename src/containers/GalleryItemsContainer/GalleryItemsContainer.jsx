@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getGalleryItems } from "../../api/GalleryCalls";
+import GalleryContext from "../../GalleryContext";
 import GalleryItem from "../../components/GalleryItem/GalleryItem";
 import "./styles.css";
 
@@ -9,8 +9,14 @@ class GalleryItemsContainer extends Component {
   };
 
   componentDidMount = async () => {
-    this.setState({ galleryItems: await getGalleryItems() });
+    this.setState({ galleryItems: this.context.galleryItems });
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({ galleryItems: this.context.galleryItems });
+    }
+  }
 
   render() {
     if (this.state.galleryItems === null) {
@@ -29,5 +35,6 @@ class GalleryItemsContainer extends Component {
     }
   }
 }
+GalleryItemsContainer.contextType = GalleryContext;
 
 export default GalleryItemsContainer;

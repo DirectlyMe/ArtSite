@@ -1,5 +1,6 @@
 import React, { Component, Suspense, lazy } from "react";
 import PageDropDown from "../PageDropDown/PageDropDown";
+import LoadingSpinner from "../LoadingSpinner";
 import "./desktopStyles.scss";
 const GalleryScroller = lazy(() =>
   import("../GalleryScroller/GalleryScroller")
@@ -33,7 +34,7 @@ class NavBar extends Component {
       <nav className="navbar" style={{ height: this.state.height }}>
         <div className="navbar-wrapper">
           <PageDropDown currentPage={this.state.currentPage} />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingSpinner />} >
             <GalleryScroller />
           </Suspense>
         </div>
