@@ -17,7 +17,8 @@ const ScrollerItem = ({ item, color }) => {
           margin: "2px 30px 15px 30px",
           borderRadius: "10px",
           boxShadow: "2px 3px 3px rgba(0,0,0,.5)",
-          backgroundColor: `#${color}`
+          backgroundColor: `#${color}`,
+          fontFamily: "'Lato', sans-serif"
         }}>
         {item.title}
       </div>

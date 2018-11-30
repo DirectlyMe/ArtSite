@@ -13,9 +13,9 @@ class GalleryItemsContainer extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.setState({ galleryItems: this.context.galleryItems });
-    }
+    if (prevProps === this.props) return;
+
+    this.setState({ galleryItems: this.context.galleryItems });
   }
 
   render() {

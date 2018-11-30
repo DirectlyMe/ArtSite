@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import "./styles.css";
 
-const Drawer = ({ isDrawerOpen }) => {
+const Drawer = React.forwardRef((props, ref) => {
   return (
     <div
       className={classNames("Drawer", {
-        ["DrawerOpen"]: isDrawerOpen // eslint-disable-line
+        ["DrawerOpen"]: props.isDrawerOpen // eslint-disable-line
       })}
+      ref={ref}
     >
       <Link to="/" className="item">
         Home
@@ -24,6 +25,6 @@ const Drawer = ({ isDrawerOpen }) => {
       </Link>
     </div>
   );
-};
+});
 
 export default Drawer;

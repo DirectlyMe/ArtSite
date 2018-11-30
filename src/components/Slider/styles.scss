@@ -1,0 +1,13 @@
+.slider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  overflow: hidden;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.slides-wrapper {
+  position: relative;
+}

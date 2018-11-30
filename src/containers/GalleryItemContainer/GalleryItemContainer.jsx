@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GalleryContext from "../../GalleryContext";
 import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
-import PageHeading from "../../components/PageHeading/PageHeading";
+import PageHeading from "../../components/PageHeading";
 import ProductDescription from "../../components/ProductDescription/ProductDescription";
 import { addToCart } from "../../api/CartCalls";
 
@@ -48,7 +48,7 @@ class GalleryItemContainer extends Component {
       const { title, images, description, price } = this.state.galleryItem;
       return (
         <div className="GalleryContent">
-          <PageHeading text={title} />
+          <PageHeading text={title} size={22} />
           <ItemImgGallery images={images} />
           <ProductDescription
             price={price}

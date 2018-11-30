@@ -16,9 +16,9 @@ class SlideShowContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.getSlideShowItems();
-    }
+    if (prevProps === this.props) return;
+    
+    this.getSlideShowItems();
   }
 
   getSlideShowItems = () => {

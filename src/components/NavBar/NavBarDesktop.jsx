@@ -1,4 +1,5 @@
 import React, { Component, Suspense, lazy } from "react";
+import GalleryContext from "../../GalleryContext";
 import PageDropDown from "../PageDropDown/PageDropDown";
 import LoadingSpinner from "../LoadingSpinner";
 import "./desktopStyles.scss";
@@ -11,27 +12,12 @@ class NavBar extends Component {
     super(props);
     this.state = {
       currentPage: "Home",
-      width: 0,
-      height: 0
     };
   }
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-  };
-
   render() {
     return (
-      <nav className="navbar" style={{ height: this.state.height }}>
+      <nav className="navbar" style={{ height: this.context.height, width: this.context.width * .18 }}>
         <div className="navbar-wrapper">
           <PageDropDown currentPage={this.state.currentPage} />
           <Suspense fallback={<LoadingSpinner />} >
@@ -42,5 +28,6 @@ class NavBar extends Component {
     );
   }
 }
+NavBar.contextType = GalleryContext;
 
 export default NavBar;

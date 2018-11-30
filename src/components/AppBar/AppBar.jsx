@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import IconButton from "../IconButton/IconButton";
 import "./styles.css";
 
-const AppBar = ({ cartFunc, toggleDrawer }) => {
+const AppBar = ({ toggleDrawer }) => {
   return (
     <div className="AppBar">
       <Link className="heading" to="/">

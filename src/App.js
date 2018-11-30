@@ -13,7 +13,6 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import GalleryContext from "./GalleryContext";
 import HomePage from "./screens/HomePage/HomePage";
 import CartPage from "./screens/CartPage/CartPage";
-import NavBar from "./containers/NavBarContainer/NavBarContainer";
 import { getGalleryItems } from "./api/GalleryCalls";
 import "./App.css";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
@@ -30,14 +29,49 @@ class App extends Component {
     super();
     this.state = {
       galleryItems: [],
-      currentPage: "Home"
+      currentPage: "Home",
+      height: 0,
+      width: 0, 
+      //currentBackground: "https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",
     };
   }
 
   componentDidMount = async () => {
+    this.updateWindowSize();
+    window.addEventListener("resize", this.updateWindowSize);
+
     const items = await getGalleryItems();
     this.setState({ galleryItems: items });
-  };
+
+    //this.rotateBackground();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowSize);
+    clearInterval(this.interval);
+  }
+
+  updateWindowSize = () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    this.setState({ width, height });
+  }
+/*  May use this at somepoint but we're not there yet.
+  rotateBackground = () => {
+    if (window.innerWidth >= 900) {      
+      const backgroundImages = ["https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",
+        "https://images.unsplash.com/photo-1543079342-6509eb35f1ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=01eb15c6dbf4e02f2dc92857d448e982&auto=format&fit=crop&w=1350&q=80",
+        "https://images.unsplash.com/photo-1543070945-15aab30a3e62?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e69a86814f6664ea2aceb9add0f5120a&auto=format&fit=crop&w=1350&q=80"];
+      let index = 1;
+  
+      this.ImageInterval = setInterval(() => {
+        if (index === backgroundImages.length - 1) index = 0;
+        this.setState({ currentBackground: backgroundImages[index] });
+        index++;
+      }, 10000);
+    }
+  }
+*/
 
   render() {
     return (
@@ -45,7 +79,7 @@ class App extends Component {
         <div className="app">
           <NavBarContainer />
           <Route exact path="/" component={HomePage} />
-          <Suspense fallback={<LoadingSpinner />} delayMS={1000}>
+          <Suspense fallback={<LoadingSpinner />}>
             <Route path="/gallery" component={GalleryPage} />
             <Route path="/galleryitem/:id" component={GalleryItemPage} />
           </Suspense>
