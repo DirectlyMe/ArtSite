@@ -18,7 +18,7 @@ class Slider extends Component {
   componentDidMount() {
     let { galleryItems } = this.context;
     if (galleryItems.length > 0) {
-      this.generateSlides(galleryItems, 3);
+      this.generateSlides(galleryItems);
     }
   }
 
@@ -27,7 +27,7 @@ class Slider extends Component {
 
     let { galleryItems } = this.context;
     if (galleryItems.length > 0) {
-      this.generateSlides(galleryItems, 3);
+      this.generateSlides(galleryItems);
     }
   }
 
@@ -56,7 +56,26 @@ class Slider extends Component {
     }));
   };
 
-  generateSlides = (sliderItems, numItems) => {
+  generateSlides = (sliderItems) => {
+    const windowWidth = this.context.width;
+    let width = 0;
+    let height = 0;
+    let numItems = 0;
+
+    if (windowWidth <= 1200) {
+    width = 500;
+    height = 390;
+    numItems = 1;
+    } else if (windowWidth <= 1500) {
+      width = 380;
+      height = 350;
+      numItems = 2;
+    } else {
+      height = 400;
+      width = 390;
+      numItems = 3;
+    }
+
     let slides = [];
     for (let i = 0; i < sliderItems.length; i += numItems) {
       const slide = (
@@ -64,23 +83,23 @@ class Slider extends Component {
             <Slide
               image={sliderItems[i].images[0]}
               text={sliderItems[i].description}
-              height={400}
-              width={370}
+              height={height}
+              width={width}
             />
             {i + 1 !== sliderItems.length && numItems > 1 ? (
               <Slide
                 image={sliderItems[i + 1].images[3]}
                 text={sliderItems[i + 1].description}
-                height={400}
-                width={370}
+                height={height}
+                width={width}
               />
             ) : null}
             {i + 2 !== sliderItems.length && numItems > 2 ? (
               <Slide
                 image={sliderItems[i + 1].images[1]}
                 text={sliderItems[i + 1].description}
-                height={400}
-                width={370}
+                height={height}
+                width={width}
               />
             ) : null}
         </div>
