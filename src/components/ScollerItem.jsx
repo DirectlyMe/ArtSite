@@ -2,9 +2,9 @@ import React from "react";
 
 const ScrollerItem = ({ item, color }) => {
   return (
-    <div>
+    <div style={{ position: "relative", zIndex: 1 }}>
       <img
-        style={{ borderRadius: "10px", boxShadow: "2px 3px 3px rgba(0,0,0,.5)", }}
+        style={{ borderRadius: "10px" }}
         alt="something"
         src={item.images[0]}
         width="80%"
@@ -16,7 +16,6 @@ const ScrollerItem = ({ item, color }) => {
           padding: "10px",
           margin: "2px 30px 15px 30px",
           borderRadius: "10px",
-          boxShadow: "2px 3px 3px rgba(0,0,0,.5)",
           backgroundColor: `#${color}`,
           fontFamily: "'Lato', sans-serif"
         }}>

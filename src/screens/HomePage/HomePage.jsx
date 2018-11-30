@@ -33,11 +33,11 @@ class HomePage extends Component {
           <div
             style={{
               width: width * 0.82,
-              height: height,
+              height: height
             }}>
             <div style={{ marginTop: 50 }}>
-              <PageHeading text="Featured" size={40} paddingTop={20} />
-              <Slider />
+              <PageHeading text="Featured" size={40} paddingTop={0} />
+                <Slider />
             </div>
           </div>
         </MediaQuery>
