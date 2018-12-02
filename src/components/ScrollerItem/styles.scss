@@ -1,0 +1,23 @@
+.scroller-item {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+
+  &:hover {
+    transition: transform ease-in .1s;
+    transform: scale(1.02);
+  }
+}
+
+.price-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: solid .5px rgba(0,0,0,.3);
+  padding: 10px 20px;
+  margin: 2px 30px 15px 30px;
+  border-radius: 10px;
+  font-family: Lato, sans-serif;
+}
+

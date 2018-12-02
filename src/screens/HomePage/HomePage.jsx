@@ -34,9 +34,10 @@ class HomePage extends Component {
             style={{
               width: width * 0.82,
               height: height
-            }}>
-            <div style={{ marginTop: 50 }}>
-              <PageHeading text="Featured" size={40} paddingTop={0} />
+            }}
+            className="content">
+            <div>
+              <PageHeading text="Featured" size={40} marginTop={30} />
                 <Slider />
             </div>
           </div>

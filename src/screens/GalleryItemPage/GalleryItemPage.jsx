@@ -5,8 +5,6 @@ import Footer from "../../components/Footer/Footer";
 
 
 class GalleryItemPage extends Component {
-  state = {};
-
   render() {
     return (
       <div>

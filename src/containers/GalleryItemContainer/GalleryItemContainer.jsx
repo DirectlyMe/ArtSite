@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MediaQuery from "react-responsive";
 import Context from "../../Context";
 import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
 import PageHeading from "../../components/PageHeading";
@@ -15,23 +16,25 @@ class GalleryItemContainer extends Component {
 
   componentDidMount() {
     this.getItem();
-  };
+  }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) { 
+    if (prevProps !== this.props) {
       this.getItem();
     }
   }
 
   getItem = () => {
-    if (this.context.galleryItems !== undefined && this.context.galleryItems !== null) {
-      if (this.context.galleryItems.length !== 0) {
-        const { id } = this.props;
-        const item = this.context.galleryItems.filter(item => item._id === id);
-        this.setState({ galleryItem: item[0] });
-      }
+    const { galleryItems } = this.context;
+
+    if (galleryItems === undefined || galleryItems === null) return;
+
+    if (galleryItems.length !== 0) {
+      const { id } = this.props;
+      const item = galleryItems.filter(item => item._id === id);
+      this.setState({ galleryItem: item[0] });
     }
-  }
+  };
 
   postItem = () => {
     addToCart(this.state.galleryItem._id);
@@ -47,14 +50,21 @@ class GalleryItemContainer extends Component {
     } else {
       const { title, images, description, price } = this.state.galleryItem;
       return (
-        <div className="GalleryContent">
-          <PageHeading text={title} size={22} />
-          <ItemImgGallery images={images} />
-          <ProductDescription
-            price={price}
-            description={description}
-            postItem={this.postItem}
-          />
+        <div>
+          <MediaQuery query="(max-width: 899px)">
+            <div className="GalleryContent">
+              <PageHeading text={title} size={22} />
+              <ItemImgGallery images={images} />
+              <ProductDescription
+                price={price}
+                description={description}
+                postItem={this.postItem}
+              />
+            </div>
+          </MediaQuery>
+          <MediaQuery query="(min-width: 900px)">
+            <div />
+          </MediaQuery>
         </div>
       );
     }

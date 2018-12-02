@@ -4,10 +4,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBars,
   faCamera,
-  faShoppingCart
+  faShoppingCart,
+  faUndo,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faCircle, } from "@fortawesome/free-regular-svg-icons";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Context from "./Context";
@@ -22,7 +23,7 @@ const GalleryItemPage = lazy(() =>
   import("./screens/GalleryItemPage/GalleryItemPage")
 );
 
-library.add(faBars, faCamera, faShoppingCart, faInstagram, faCircle, faUndo);
+library.add(faBars, faCamera, faShoppingCart, faInstagram, faCircle, faUndo, faSearch);
 
 class App extends Component {
   constructor() {
@@ -31,7 +32,8 @@ class App extends Component {
       galleryItems: [],
       currentPage: "Home",
       height: 0,
-      width: 0, 
+      width: 0,
+      setCurrentPage: this.setCurrentPage 
       //currentBackground: "https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",
     };
   }
@@ -56,7 +58,11 @@ class App extends Component {
     const height = window.innerHeight;
     this.setState({ width, height });
   }
-/*  May use this at somepoint but we're not there yet.
+
+  setCurrentPage = (page) => {
+    this.setState({ currentPage: page });
+  }
+/*  May use this at some point but we're not there yet.
   rotateBackground = () => {
     if (window.innerWidth >= 900) {      
       const backgroundImages = ["https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",

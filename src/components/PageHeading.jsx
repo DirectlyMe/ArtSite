@@ -1,6 +1,6 @@
 import React from "react";
 
-const PageHeading = ({ text, size, paddingTop }) => {
+const PageHeading = ({ text, size, marginTop }) => {
   return (
     <div
       style={{
@@ -8,8 +8,8 @@ const PageHeading = ({ text, size, paddingTop }) => {
         fontFamily: "Dancing Script",
         textAlign: "center",
         fontWeight: 400,
-        paddingTop: paddingTop,
-        paddingBottom: 10
+        marginTop: `${marginTop}px`,
+        marginBottom: 10
       }}>
       {text}
     </div>

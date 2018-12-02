@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MediaQuery from "react-responsive";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import AppBar from "../../components/AppBar/AppBar";
 import Drawer from "../../components/Drawer/Drawer";
@@ -8,7 +9,7 @@ import IconButton from "../../components/IconButton/IconButton";
 import Context from "../../Context";
 import "./styles.scss";
 
-export default class NavBarContainer extends Component {
+class NavBarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,10 +21,8 @@ export default class NavBarContainer extends Component {
 
   openDrawer = event => {
     event.preventDefault();
-    console.log(this.drawer.current);
 
     this.setState({ isDrawerOpen: true }, () => {
-      console.log("adding event listener");
       document.addEventListener("click", this.closeMenu);
     });
   };
@@ -31,7 +30,6 @@ export default class NavBarContainer extends Component {
   closeMenu = event => {
     const node = this.drawer.current;
     if (node) {
-      console.log(node);
       if (!node.contains(event.target)) {
         this.setState({ isDrawerOpen: false }, () => {
           document.removeEventListener("click", this.closeMenu);
@@ -59,6 +57,7 @@ export default class NavBarContainer extends Component {
         </MediaQuery>
         <MediaQuery query="(min-width: 900px)">
           <NavDesktop />
+          <FontAwesomeIcon icon="search" className="search-icon"/>
           <Link to="/cart" className="cartLink">
             <IconButton iconName={"shopping-cart"} iconClass="cartIcon" />
           </Link>
@@ -68,3 +67,5 @@ export default class NavBarContainer extends Component {
   }
 }
 NavBarContainer.contextType = Context;
+
+export default NavBarContainer;

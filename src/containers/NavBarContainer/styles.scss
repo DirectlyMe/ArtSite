@@ -10,24 +10,37 @@
   .cartIcon {
     cursor: pointer;
     margin-right: 15px;
-    font-size: 24px;
+    font-size: 33px;
+
+    &:hover {
+      color: #eeeeee;
+    }
   }
 
-  .cartIcon:hover {
-    color: #eeeeee;
+  .search-icon {
+    position: fixed;
+    z-index: 999;
+    top: 25px;
+    right: 100px;
+    cursor: pointer;
+    font-size: 33px;
+
+    &:hover {
+      color: #eeeeee;
+    }
   }
 
   .cartLink {
     position: fixed;
     z-index: 999;
-    top: 40px;
+    top: 25px;
     right: 40px;
     text-decoration: none;
     color: black;
-  }
 
-  .cartLink:visited {
-    text-decoration: none;
-    color: black;
+    &:visited {
+      text-decoration: none;
+      color: black;
+    }
   }
 }

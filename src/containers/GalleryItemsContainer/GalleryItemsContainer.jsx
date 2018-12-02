@@ -8,7 +8,7 @@ class GalleryItemsContainer extends Component {
     galleryItems: null
   };
 
-  componentDidMount = async () => {
+  componentDidMount() {
     this.setState({ galleryItems: this.context.galleryItems });
   };
 
