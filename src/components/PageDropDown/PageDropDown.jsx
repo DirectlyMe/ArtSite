@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ReactComponent as RightArrow } from "../../images/nextArrow.svg";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 class PageDropDown extends Component {
@@ -45,7 +45,10 @@ class PageDropDown extends Component {
             className="drop-down"
             ref={this.dropDownMenu}
           >
-            <div className="page-button">testing</div>
+            <Link to="/" className="page-link">
+            <div className="page-button">
+              Home
+            </div></Link>
             <hr />
             <div className="page-button">testing</div>
             <hr />

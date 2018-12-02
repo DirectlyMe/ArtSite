@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import MediaQuery from "react-responsive";
 import Context from "../../Context";
-import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
-import PageHeading from "../../components/PageHeading";
-import ProductDescription from "../../components/ProductDescription/ProductDescription";
 import { addToCart } from "../../api/CartCalls";
+import GalleryItemPage from "../../screens/GalleryItemPage/GalleryItemPage";
 
 class GalleryItemContainer extends Component {
   constructor(props) {
@@ -30,7 +27,7 @@ class GalleryItemContainer extends Component {
     if (galleryItems === undefined || galleryItems === null) return;
 
     if (galleryItems.length !== 0) {
-      const { id } = this.props;
+      const { id } = this.props.match.params;
       const item = galleryItems.filter(item => item._id === id);
       this.setState({ galleryItem: item[0] });
     }
@@ -48,24 +45,11 @@ class GalleryItemContainer extends Component {
         </div>
       );
     } else {
-      const { title, images, description, price } = this.state.galleryItem;
       return (
-        <div>
-          <MediaQuery query="(max-width: 899px)">
-            <div className="GalleryContent">
-              <PageHeading text={title} size={22} />
-              <ItemImgGallery images={images} />
-              <ProductDescription
-                price={price}
-                description={description}
-                postItem={this.postItem}
-              />
-            </div>
-          </MediaQuery>
-          <MediaQuery query="(min-width: 900px)">
-            <div />
-          </MediaQuery>
-        </div>
+        <GalleryItemPage
+          galleryItem={this.state.galleryItem}
+          postItemFunc={this.postItem}
+        />
       );
     }
   }

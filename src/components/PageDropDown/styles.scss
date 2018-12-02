@@ -5,64 +5,52 @@
   justify-content: center;
   width: 100%;
   text-align: center;
-  padding: 14px 0px;
-  font-family: 'Dancing Script', cursive;
+  padding: 13px 0px;
+  font-family: "Dancing Script", cursive;
   font-size: 40px;
-  box-shadow: 0px 3px 4px rgba(0,0,0,.5);
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
   z-index: 999;
   cursor: pointer;
 
-  
   .page-title {
     margin-left: 20%;
   }
-  
+
   .more-arrow {
-    margin-left: .3em;
+    margin-left: 0.3em;
     height: 35px;
     margin-top: 8px;
   }
 
   &:hover {
     .page-title {
-      transition: transform ease-in .1s;
-      transform: scale(1.05)
+      transition: transform ease-in 0.1s;
+      transform: scale(1.05);
     }
     .more-arrow {
-      transition: transform ease-in .1s;
-      transform: scale(1.05)
+      transition: transform ease-in 0.1s;
+      transform: scale(1.05);
     }
   }
 }
 
 .drop-down {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   position: absolute;
   text-align: center;
   right: -15.13em;
   top: 0;
   box-sizing: border-box;
-  box-shadow: 2px 2px 3px rgba(0,0,0,.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   background-color: white;
   width: 15em;
 
   .page-button {
     font-size: 35px;
-    background-color: white;
-    width: 100%;
-    padding: .2em 0em;
-    box-shadow: 0 0 0 rgba(0,0,0,1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 1);
     cursor: pointer;
     border-radius: 10px;
-
-    @keyframes page-selected {
-      from {
-        background-color: white;
-      }
-      to {
-        background-color: rgb(255, 240, 240);
-      }
-    }
+    text-decoration: none;
 
     &:last-of-type {
       margin-bottom: 10px;
@@ -73,13 +61,21 @@
     }
 
     &:hover {
-      animation-duration: .5s;
-      animation-name: page-selected;
-      animation-fill-mode: forwards;
+      transform: scale(1.05);
+      transition: transform ease-out 0.1s;
     }
   }
 
   hr {
     width: 85%;
+  }
+
+  .page-link {
+    text-decoration: none;
+    color: black;
+
+    &:visited {
+      color: black;
+    }
   }
 }

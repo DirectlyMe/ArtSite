@@ -19,8 +19,8 @@ import "./App.css";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
 
 const GalleryPage = lazy(() => import("./screens/GalleryPage/GalleryPage"));
-const GalleryItemPage = lazy(() =>
-  import("./screens/GalleryItemPage/GalleryItemPage")
+const GalleryItemContainer = lazy(() =>
+  import("./containers/GalleryItemContainer/GalleryItemContainer")
 );
 
 library.add(faBars, faCamera, faShoppingCart, faInstagram, faCircle, faUndo, faSearch);
@@ -87,7 +87,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage} />
           <Suspense fallback={<LoadingSpinner />}>
             <Route path="/gallery" component={GalleryPage} />
-            <Route path="/galleryitem/:id" component={GalleryItemPage} />
+            <Route path="/gallery-item/:id" component={GalleryItemContainer} />
           </Suspense>
           <Route path="/cart" component={CartPage} />
         </div>

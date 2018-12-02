@@ -20,7 +20,7 @@ const SlideShow = ({ products }) => {
             <h1>{item.title}</h1>
             <p>{item.description}</p>
             <button>
-              <Link className="itemLink" to={`galleryitem/${item._id}`}>
+              <Link className="itemLink" to={`gallery-item/${item._id}`}>
                 View
               </Link>
             </button>

@@ -35,10 +35,10 @@ class HomePage extends Component {
               width: width * 0.82,
               height: height
             }}
-            className="content">
+            className="home-content">
             <div>
               <PageHeading text="Featured" size={40} marginTop={30} />
-                <Slider />
+              <Slider />
             </div>
           </div>
         </MediaQuery>

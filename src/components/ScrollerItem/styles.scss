@@ -21,3 +21,12 @@
   font-family: Lato, sans-serif;
 }
 
+.page-link {
+  text-decoration: none;
+  color: black;
+
+  &:visited {
+    color: black;
+  }
+}
+

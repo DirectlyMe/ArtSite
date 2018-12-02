@@ -15,7 +15,7 @@ class GalleryScroller extends Component {
         if (index === backgroundColors.length - 1) index = 0;
         index++;
   
-        return <ScrollerItem key={i} item={item} color={color} />;
+        return <ScrollerItem key={i} item={item} color={color} className="scroller-item" />;
       });
       
       return galleryItems;
@@ -27,7 +27,7 @@ class GalleryScroller extends Component {
     const galleryItems = this.generateItems();
     return (
       <div style={{ overflow: "hidden" /* needed to hide scrollbar */ }}>
-        <div className="scroller" style={{ height: this.context.height - 114 }}>
+        <div className="scroller" style={{ height: this.context.height - 85 }}>
           {galleryItems}
         </div>
       </div>

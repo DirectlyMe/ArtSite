@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Slide from "../Slide";
+import Slide from "../Slide/Slide";
 import { ReactComponent as RightArrow } from "../../images/RightArrow.svg";
 import { ReactComponent as LeftArrow } from "../../images/LeftArrow.svg";
 import Context from "../../Context";
@@ -71,8 +71,8 @@ class Slider extends Component {
       numItems = 1;
     } else if (windowWidth <= 1500) {
       width = 380;
-      slideHeight = 350;
-      sliderHeight = 430;
+      slideHeight = 330;
+      sliderHeight = 410;
       numItems = 2;
     } else {
       slideHeight = 370;
@@ -91,6 +91,7 @@ class Slider extends Component {
             price={sliderItems[i].price}
             height={slideHeight}
             width={width}
+            link={sliderItems[i]._id}
           />
           {i + 1 !== sliderItems.length && numItems > 1 ? (
             <Slide
@@ -99,15 +100,17 @@ class Slider extends Component {
               price={sliderItems[i + 1].price}
               height={slideHeight}
               width={width}
+              link={sliderItems[i + 1]._id}
             />
           ) : null}
           {i + 2 !== sliderItems.length && numItems > 2 ? (
             <Slide
-              image={sliderItems[i + 1].images[1]}
-              text={sliderItems[i + 1].title}
-              price={sliderItems[i + 1].price}
+              image={sliderItems[i + 2].images[1]}
+              text={sliderItems[i + 2].title}
+              price={sliderItems[i + 2].price}
               height={slideHeight}
               width={width}
+              link={sliderItems[i + 2]._id}
             />
           ) : null}
         </div>
