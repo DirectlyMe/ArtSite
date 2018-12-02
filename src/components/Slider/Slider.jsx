@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slide from "../Slide";
 import { ReactComponent as RightArrow } from "../../images/RightArrow.svg";
 import { ReactComponent as LeftArrow } from "../../images/LeftArrow.svg";
-import GalleryContext from "../../GalleryContext";
+import Context from "../../Context";
 import "./styles.scss";
 
 class Slider extends Component {
@@ -71,7 +71,7 @@ class Slider extends Component {
       height = 350;
       numItems = 2;
     } else {
-      height = 400;
+      height = 370;
       width = 390;
       numItems = 3;
     }
@@ -130,6 +130,6 @@ class Slider extends Component {
     );
   }
 }
-Slider.contextType = GalleryContext;
+Slider.contextType = Context;
 
 export default Slider;

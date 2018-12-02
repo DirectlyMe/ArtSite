@@ -10,7 +10,7 @@ import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
 import LoadingSpinner from "./components/LoadingSpinner";
-import GalleryContext from "./GalleryContext";
+import Context from "./Context";
 import HomePage from "./screens/HomePage/HomePage";
 import CartPage from "./screens/CartPage/CartPage";
 import { getGalleryItems } from "./api/GalleryCalls";
@@ -75,7 +75,7 @@ class App extends Component {
 
   render() {
     return (
-      <GalleryContext.Provider value={this.state}>
+      <Context.Provider value={this.state}>
         <div className="app">
           <NavBarContainer />
           <Route exact path="/" component={HomePage} />
@@ -85,7 +85,7 @@ class App extends Component {
           </Suspense>
           <Route path="/cart" component={CartPage} />
         </div>
-      </GalleryContext.Provider>
+      </Context.Provider>
     );
   }
 }

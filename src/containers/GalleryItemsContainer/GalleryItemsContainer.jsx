@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GalleryContext from "../../GalleryContext";
+import Context from "../../Context";
 import GalleryItem from "../../components/GalleryItem/GalleryItem";
 import "./styles.css";
 
@@ -35,6 +35,6 @@ class GalleryItemsContainer extends Component {
     }
   }
 }
-GalleryItemsContainer.contextType = GalleryContext;
+GalleryItemsContainer.contextType = Context;
 
 export default GalleryItemsContainer;

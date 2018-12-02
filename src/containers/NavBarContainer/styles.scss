@@ -6,4 +6,28 @@
     z-index: 999;
     width: 18%;
   }
+
+  .cartIcon {
+    cursor: pointer;
+    margin-right: 15px;
+    font-size: 24px;
+  }
+
+  .cartIcon:hover {
+    color: #eeeeee;
+  }
+
+  .cartLink {
+    position: fixed;
+    z-index: 999;
+    top: 40px;
+    right: 40px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .cartLink:visited {
+    text-decoration: none;
+    color: black;
+  }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GalleryContext from "../../GalleryContext";
+import Context from "../../Context";
 import ScrollerItem from "../ScollerItem";
 import "./styles.scss";
 
@@ -34,6 +34,6 @@ class GalleryScroller extends Component {
     );
   }
 }
-GalleryScroller.contextType = GalleryContext;
+GalleryScroller.contextType = Context;
 
 export default GalleryScroller;

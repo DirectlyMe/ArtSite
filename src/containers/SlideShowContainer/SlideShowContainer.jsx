@@ -1,5 +1,5 @@
 import React, { Component, lazy, Suspense } from "react";
-import GalleryContext from "../../GalleryContext";
+import Context from "../../Context";
 import LoadingSpinner from "../../components/LoadingSpinner";
 const Slider = lazy(() => import("../../components/SlideShow/SlideShow"));
 
@@ -41,6 +41,6 @@ class SlideShowContainer extends Component {
     }
   }
 }
-SlideShowContainer.contextType = GalleryContext;
+SlideShowContainer.contextType = Context;
 
 export default SlideShowContainer;

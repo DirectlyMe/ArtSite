@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MediaQuery from "react-responsive";
 import Slider from "../../components/Slider/Slider";
-import GalleryContext from "../../GalleryContext";
+import Context from "../../Context";
 import SlideShowContainer from "../../containers/SlideShowContainer/SlideShowContainer";
 import LinkBox from "../../components/LinkBox/LinkBox";
 import LineBreak from "../../components/LineBreak";
@@ -45,6 +45,6 @@ class HomePage extends Component {
     );
   }
 }
-HomePage.contextType = GalleryContext;
+HomePage.contextType = Context;
 
 export default HomePage;

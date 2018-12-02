@@ -1,7 +1,8 @@
 import React, { Component, Suspense, lazy } from "react";
-import GalleryContext from "../../GalleryContext";
+import Context from "../../Context";
 import PageDropDown from "../PageDropDown/PageDropDown";
 import LoadingSpinner from "../LoadingSpinner";
+
 import "./desktopStyles.scss";
 const GalleryScroller = lazy(() =>
   import("../GalleryScroller/GalleryScroller")
@@ -28,6 +29,6 @@ class NavBar extends Component {
     );
   }
 }
-NavBar.contextType = GalleryContext;
+NavBar.contextType = Context;
 
 export default NavBar;

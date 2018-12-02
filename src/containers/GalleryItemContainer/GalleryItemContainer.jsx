@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GalleryContext from "../../GalleryContext";
+import Context from "../../Context";
 import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
 import PageHeading from "../../components/PageHeading";
 import ProductDescription from "../../components/ProductDescription/ProductDescription";
@@ -60,6 +60,6 @@ class GalleryItemContainer extends Component {
     }
   }
 }
-GalleryItemContainer.contextType = GalleryContext;
+GalleryItemContainer.contextType = Context;
 
 export default GalleryItemContainer;
