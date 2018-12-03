@@ -1,15 +1,15 @@
 import React from "react";
-import Iconbutton from "../IconButton/IconButton";
+import IconButton from "../IconButton/IconButton";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
 import "./styles.css";
 
-const Footer = () => {
+const Footer = ({ width, position }) => {
   return (
-    <div className="Footer">
+    <div className="Footer" style={{ width: width, position: position }}>
       <div className="FooterElement">@2018 Kelsey Williams</div>
       <div>
         <div className="FooterElement">
-          <Iconbutton iconName={faInstagram} iconClass="InstagramIcon" />
+          <IconButton iconName={faInstagram} iconClass="InstagramIcon" />
           <a
             href="https://www.instagram.com/kelseyloves_art/?hl=en"
             style={{ textDecoration: "none", color: "black" }}

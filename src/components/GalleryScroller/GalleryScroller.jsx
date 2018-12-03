@@ -26,7 +26,7 @@ class GalleryScroller extends Component {
   render() {
     const galleryItems = this.generateItems();
     return (
-      <div style={{ overflow: "hidden" /* needed to hide scrollbar */ }}>
+      <div style={{ overflow: "hidden" /* needed to hide scroll bar */ }}>
         <div className="scroller" style={{ height: this.context.height - 85 }}>
           {galleryItems}
         </div>

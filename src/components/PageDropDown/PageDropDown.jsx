@@ -50,11 +50,11 @@ class PageDropDown extends Component {
               Home
             </div></Link>
             <hr />
-            <div className="page-button">testing</div>
+            <div className="page-button">Merch</div>
             <hr />
-            <div className="page-button">testing</div>
+            <div className="page-button">Contact</div>
             <hr />
-            <div className="page-button">testing</div>
+            <div className="page-button">Cart</div>
           </div>
         ) : null}
       </div>
