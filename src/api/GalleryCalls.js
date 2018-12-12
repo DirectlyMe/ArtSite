@@ -2,13 +2,13 @@ import { serverConfig as config } from "../config/serverConfig";
 
 
 export function getGalleryItems() {
-  return fetch(`http://${config.IP}:${config.PORT}/gallery/getGallery`, {
+  return fetch(`http://${config.IP}:${config.PORT}/gallery/get-gallery`, {
       method: "GET",
-      mode: "cors"
+      mode: "cors",
+      credentials: "same-origin"
     })
       .then(response => response.json())
       .catch(err => err);
-  
 }
 
 export function getSingleItem(itemId) {

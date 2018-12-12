@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import "normalize.css/normalize.css";
 import "./slider-animations.css";
 import "./styles.css";
 
@@ -20,7 +19,7 @@ const SlideShow = ({ products }) => {
             <h1>{item.title}</h1>
             <p>{item.description}</p>
             <button>
-              <Link className="itemLink" to={`gallery-item/${item._id}`}>
+              <Link className="itemLink" to={`gallery-item/${item.product_id}`}>
                 View
               </Link>
             </button>

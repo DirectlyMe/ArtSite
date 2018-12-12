@@ -1,26 +1,26 @@
 import React, { Component } from "react";
-import CartItem from "../../components/CartItem/CartItem";
-import LineBreak from "../../components/LineBreak";
-import CartLabels from "../../components/CartLabels/CartLabels";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import CartPage from "../../screens/CartPage/CartPage";
 import { getCart, removeFromCart } from "../../api/CartCalls";
 import "./styles.css";
 
 class CartItemsContainer extends Component {
-  state = {
-    cart: null,
-    total: 0
-  };
+  constructor(props) {
+    super(props); 
+    this.state = {
+      cart: null,
+      total: 0
+    };
+  }
 
   componentDidMount = async () => {
     this.setState({ cart: await getCart() });
     this.calcPrice();
   };
 
-  remove = async id => {
+  remove = async (id) => {
     await removeFromCart(id);
     this.setState(prevState => {
-      return { cart: prevState.cart.filter(item => item._id !== id) };
+      return { cart: prevState.cart.filter(item => item.product_id !== id) };
     });
     this.calcPrice();
   };
@@ -32,49 +32,8 @@ class CartItemsContainer extends Component {
   };
 
   render() {
-    if (this.state.cart === null) {
-      return (
-        <LoadingSpinner />
-      );
-    } else if (this.state.cart.length === 0) {
-      return (
-        <div>
-          <CartLabels />
-          <LineBreak />
-          <div style={{ textAlign: "center" }}>Oh no it's empty!</div>
-          <LineBreak />
-          <div className="TotalLabels">
-            <div className="TotalLabel">Total</div>
-            <div className="TotalPrice">${this.state.total}</div>
-          </div>
-          <div className="CheckoutButton">Checkout</div>
-        </div>
-      );
-    } else {
-      const cartItems = this.state.cart.map(item => (
-        <CartItem
-          key={item._id}
-          productID={item._id}
-          productName={item.title}
-          productQuantity={item.quantity}
-          productPrice={item.price}
-          remove={this.remove}
-        />
-      ));
-      return (
-        <div>
-          <CartLabels />
-          <LineBreak />
-          <div>{cartItems}</div>
-          <LineBreak />
-          <div className="TotalLabels">
-            <div className="TotalLabel">Total</div>
-            <div className="TotalPrice">${this.state.total}</div>
-          </div>
-          <div className="CheckoutButton">Checkout</div>
-        </div>
-      );
-    }
+    const { cart, total } = this.state;
+    return <CartPage />;
   }
 }
 

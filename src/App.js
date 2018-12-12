@@ -8,13 +8,14 @@ import {
   faUndo,
   faSearch
 } from "@fortawesome/free-solid-svg-icons";
-import { faCircle, } from "@fortawesome/free-regular-svg-icons";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Context from "./Context";
 import HomePage from "./screens/HomePage/HomePage";
 import CartPage from "./screens/CartPage/CartPage";
 import { getGalleryItems } from "./api/GalleryCalls";
+import { getCart } from "./api/CartCalls";
 import "./App.css";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
 
@@ -23,17 +24,27 @@ const GalleryItemContainer = lazy(() =>
   import("./containers/GalleryItemContainer/GalleryItemContainer")
 );
 
-library.add(faBars, faCamera, faShoppingCart, faInstagram, faCircle, faUndo, faSearch);
+library.add(
+  faBars,
+  faCamera,
+  faShoppingCart,
+  faInstagram,
+  faCircle,
+  faUndo,
+  faSearch
+);
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       galleryItems: [],
+      cartItems: null,
+      cartTotal: 0,
       currentPage: "Home",
       height: 0,
       width: 0,
-      setCurrentPage: this.setCurrentPage 
+      setCurrentPage: this.setCurrentPage
       //currentBackground: "https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",
     };
   }
@@ -43,10 +54,12 @@ class App extends Component {
     window.addEventListener("resize", this.updateWindowSize);
 
     const items = await getGalleryItems();
+    //const cart = await getCart();
+
     this.setState({ galleryItems: items });
 
     //this.rotateBackground();
-  }
+  };
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowSize);
@@ -57,12 +70,12 @@ class App extends Component {
     const width = window.innerWidth;
     const height = window.innerHeight;
     this.setState({ width, height });
-  }
+  };
 
-  setCurrentPage = (page) => {
+  setCurrentPage = page => {
     this.setState({ currentPage: page });
-  }
-/*  May use this at some point but we're not there yet.
+  };
+  /*  May use this at some point but we're not there yet.
   rotateBackground = () => {
     if (window.innerWidth >= 900) {      
       const backgroundImages = ["https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",

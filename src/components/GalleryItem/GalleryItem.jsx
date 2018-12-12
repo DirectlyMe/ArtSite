@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles.css";
+import "./styles.scss";
 
 const GalleryItem = ({ productId, galleryImage, description, title }) => {
   return (
-    <div className="GalleryItem">
-      <Link to={`/gallery-item/${productId}`} className="ProductLink">
+    <Link to={`/gallery-item/${productId}`} className="ProductLink">
+      <div className="GalleryItem">
         <img src={galleryImage} alt="Kelsey's Art" />
         <div className="GalleryTitle">{title}</div>
         <div className="GalleryDescription">{description}</div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

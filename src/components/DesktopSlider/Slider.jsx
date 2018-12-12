@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Slide from "../Slide/Slide";
+import Slide from "../DesktopSlide/DesktopSlide";
 import { ReactComponent as RightArrow } from "../../images/RightArrow.svg";
 import { ReactComponent as LeftArrow } from "../../images/LeftArrow.svg";
 import Context from "../../Context";
@@ -82,35 +82,39 @@ class Slider extends Component {
     }
 
     let slides = [];
+    console.log(sliderItems.length);
     for (let i = 0; i < sliderItems.length; i += numItems) {
       const slide = (
         <div className="slide-grouping-wrapper">
           <Slide
+            key={i}
             image={sliderItems[i].images[0]}
             text={sliderItems[i].title}
             price={sliderItems[i].price}
             height={slideHeight}
             width={width}
-            link={sliderItems[i]._id}
+            link={sliderItems[i].product_id}
           />
-          {i + 1 !== sliderItems.length && numItems > 1 ? (
+          { i + 1 < sliderItems.length && numItems > 1 ? (
             <Slide
+              key={i+1}
               image={sliderItems[i + 1].images[3]}
               text={sliderItems[i + 1].title}
               price={sliderItems[i + 1].price}
               height={slideHeight}
               width={width}
-              link={sliderItems[i + 1]._id}
+              link={sliderItems[i + 1].product_id}
             />
           ) : null}
-          {i + 2 !== sliderItems.length && numItems > 2 ? (
+          { i + 2 < sliderItems.length && numItems > 2 ? (
             <Slide
+              key={i+2}
               image={sliderItems[i + 2].images[1]}
               text={sliderItems[i + 2].title}
               price={sliderItems[i + 2].price}
               height={slideHeight}
               width={width}
-              link={sliderItems[i + 2]._id}
+              link={sliderItems[i + 2].product_id}
             />
           ) : null}
         </div>
@@ -125,7 +129,7 @@ class Slider extends Component {
     const { slides, sliderHeight } = this.state;
 
     return (
-      <div className="slider" style={{ height: sliderHeight }}>
+      <div className="desktop-slider" style={{ height: sliderHeight }}>
         <div
           className="slides-wrapper"
           style={{

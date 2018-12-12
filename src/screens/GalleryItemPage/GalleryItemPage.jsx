@@ -28,7 +28,7 @@ class GalleryItemPage extends Component {
         <MediaQuery query="(min-width: 900px)">
           <div
             style={{
-              width: width * 0.82,
+              width: width * 0.81,
               height: height
             }}
             className="content"
@@ -36,7 +36,7 @@ class GalleryItemPage extends Component {
             <PageHeading text={title} size={40} marginTop={30} />
             <img
               src={images[0]}
-              height="530px"
+              height="70%"
               width="75%"
               className="gallery-image"
               alt="gallery one"
@@ -47,7 +47,7 @@ class GalleryItemPage extends Component {
             </div>
             <img
               src={images[1]}
-              height="530px"
+              height="70%"
               width="75%"
               className="gallery-image"
               alt="gallery one"
@@ -58,7 +58,7 @@ class GalleryItemPage extends Component {
             </div>
             <img
               src={images[2]}
-              height="530px"
+              height="70%"
               width="75%"
               className="gallery-image"
               alt="gallery one"

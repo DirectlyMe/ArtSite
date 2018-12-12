@@ -1,4 +1,4 @@
-.slide {
+.desktop-slide {
   display: inline-block;
   margin: 20px 40px;
   border-radius: 10px;
@@ -10,21 +10,22 @@
     transform: scale(1.01);
     transition: transform ease-out .1s;
   }
+
+  .slide-image {
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .slide-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+    padding: 10px 25px;
+    font-family: "Dancing Script";
+    font-size: 26px;
+  }
 }
 
-.slide-image {
-  border-radius: 10px 10px 0 0;
-}
-
-.slide-text {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  padding: 10px 25px;
-  font-family: "Dancing Script";
-  font-size: 26px;
-}
 
 .page-link {
   text-decoration: none;

@@ -6,12 +6,14 @@
   padding-top: 15px;
   padding-right: 17px;
   text-align: center;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
+  margin-left: 3%;
 
   .scroller-item:last-of-type {
     margin-bottom: 1em;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .scroller {
   }
 }

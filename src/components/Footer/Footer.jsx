@@ -6,7 +6,7 @@ import "./styles.css";
 const Footer = ({ width, position }) => {
   return (
     <div className="Footer" style={{ width: width, position: position }}>
-      <div className="FooterElement">@2018 Kelsey Williams</div>
+      <div className="FooterElement" style={{ paddingLeft: "2em" }}>@2018 Kelsey Williams</div>
       <div>
         <div className="FooterElement">
           <IconButton iconName={faInstagram} iconClass="InstagramIcon" />

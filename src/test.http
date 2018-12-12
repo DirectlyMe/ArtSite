@@ -1,0 +1,3 @@
+GET http://localhost:8080/gallery/get-gallery
+###
+POST http://localhost:8080/cart/add-item/12312314

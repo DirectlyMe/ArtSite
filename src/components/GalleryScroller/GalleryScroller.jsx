@@ -10,7 +10,7 @@ class GalleryScroller extends Component {
     let { galleryItems } = this.context;
 
     if (galleryItems.length > 0) {
-      galleryItems = this.context.galleryItems.map((item, i) => {
+      galleryItems = galleryItems.map((item, i) => {
         let color = backgroundColors[index];
         if (index === backgroundColors.length - 1) index = 0;
         index++;

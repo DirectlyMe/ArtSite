@@ -24,17 +24,22 @@ class GalleryItemContainer extends Component {
   getItem = () => {
     const { galleryItems } = this.context;
 
-    if (galleryItems === undefined || galleryItems === null) return;
+    if (
+      galleryItems === undefined ||
+      galleryItems === null ||
+      galleryItems.length === 0
+    )
+      return;
 
-    if (galleryItems.length !== 0) {
-      const { id } = this.props.match.params;
-      const item = galleryItems.filter(item => item._id === id);
-      this.setState({ galleryItem: item[0] });
-    }
+    console.log(galleryItems);
+    const { id } = this.props.match.params;
+    const item = galleryItems.filter(item => item.product_id === Number(id));
+    console.log("item: " + item);
+    this.setState({ galleryItem: item[0] });
   };
 
   postItem = () => {
-    addToCart(this.state.galleryItem._id);
+    addToCart(this.state.galleryItem.product_id);
   };
 
   render() {

@@ -5,7 +5,7 @@ import "./styles.scss";
 const Slide = ({ image, text, price, height, width, link }) => {
   return (
     <Link to={`/gallery-item/${link}`} className="page-link">
-      <div className="slide">
+      <div className="desktop-slide">
         <img
           src={image}
           alt="Featured Gallery Item"
