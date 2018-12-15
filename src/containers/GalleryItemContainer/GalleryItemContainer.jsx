@@ -30,11 +30,9 @@ class GalleryItemContainer extends Component {
       galleryItems.length === 0
     )
       return;
-
-    console.log(galleryItems);
+      
     const { id } = this.props.match.params;
     const item = galleryItems.filter(item => item.product_id === Number(id));
-    console.log("item: " + item);
     this.setState({ galleryItem: item[0] });
   };
 

@@ -82,10 +82,10 @@ class Slider extends Component {
     }
 
     let slides = [];
-    console.log(sliderItems.length);
+    
     for (let i = 0; i < sliderItems.length; i += numItems) {
       const slide = (
-        <div className="slide-grouping-wrapper">
+        <div key={i} className="slide-grouping-wrapper">
           <Slide
             key={i}
             image={sliderItems[i].images[0]}

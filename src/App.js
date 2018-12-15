@@ -1,12 +1,15 @@
 import React, { Component, lazy, Suspense } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBars,
   faCamera,
   faShoppingCart,
   faUndo,
-  faSearch
+  faSearch,
+  faPlus,
+  faMinus,
+  faAngleDown
 } from "@fortawesome/free-solid-svg-icons";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
@@ -16,7 +19,7 @@ import HomePage from "./screens/HomePage/HomePage";
 import CartPage from "./screens/CartPage/CartPage";
 import { getGalleryItems } from "./api/GalleryCalls";
 import { getCart } from "./api/CartCalls";
-import "./App.css";
+import "./App.scss";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
 
 const GalleryPage = lazy(() => import("./screens/GalleryPage/GalleryPage"));
@@ -31,7 +34,10 @@ library.add(
   faInstagram,
   faCircle,
   faUndo,
-  faSearch
+  faSearch,
+  faPlus,
+  faMinus,
+  faAngleDown
 );
 
 class App extends Component {
@@ -99,7 +105,12 @@ class App extends Component {
           <NavBarContainer />
           <Route exact path="/" component={HomePage} />
           <Suspense fallback={<LoadingSpinner />}>
-            <Route path="/gallery" component={GalleryPage} />
+            <Route
+              path="/gallery"
+              render={() =>
+                window.innerWidth > 900 ? <Redirect to="/" /> : <GalleryPage />
+              }
+            />
             <Route path="/gallery-item/:id" component={GalleryItemContainer} />
           </Suspense>
           <Route path="/cart" component={CartPage} />

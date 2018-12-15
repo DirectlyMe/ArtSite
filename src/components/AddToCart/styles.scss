@@ -1,0 +1,107 @@
+@import "../../color-guide";
+
+.add-to-cart {
+  position: fixed;
+  bottom: 70px;
+  right: 60px;
+  border-radius: 50%;
+  padding: 0.6em;
+  background-color: $secondary-color;
+  box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: transform ease-out 0.05s;
+  }
+}
+
+.add-to-cart--menu {
+  font-size: 20px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 130px;
+  border-radius: 10px;
+  bottom: 145px;
+  right: 10px;
+  padding: 1em;
+  background-color: #ffffff;
+  box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
+
+
+  .quantity-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0px;
+    border-bottom: solid 1px;
+
+    .quantity-minus--btn {
+      background-color: #ffffff; /* Green */
+      border: none;
+      margin-right: 20px;
+    }
+    .quantity-plus--btn {
+      background-color: #ffffff; /* Green */
+      border: none;
+      margin-left: 20px;
+    }
+  }
+
+  .type-options {
+    position: relative;
+    display: inline-block;
+    padding: 5px 0 12px 0px;
+    border-bottom: solid 1.3px;
+
+    .type-selector {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-top: 5px;
+      padding: 5px;
+      border: solid 1px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .type-dropdown {
+      display: none;
+      background-color: white;
+      position: absolute;
+      text-decoration: none;
+      list-style-type: none;
+      z-index: 1;
+      border-radius: 10px;
+      box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
+
+      li {
+        color: black;
+        padding: 5px 32px;
+        text-decoration: none;
+        display: block;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $accent-color;
+        }
+      }
+    }
+
+    &:hover .type-dropdown {
+      display: block;
+    }
+  }
+
+  .add-to-cart--btn {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: $primary-color;
+    cursor: pointer;
+  }
+}

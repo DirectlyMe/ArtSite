@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import Context from "../../Context";
 import MediaQuery from "react-responsive";
+import Context from "../../Context";
 import PageHeading from "../../components/PageHeading";
 import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
 import ProductDescription from "../../components/ProductDescription/ProductDescription";
 import Footer from "../../components/Footer/Footer";
+import AddToCartBtn from "../../components/AddToCart/AddToCartBtn";
 import "./styles.scss";
 
 class GalleryItemPage extends Component {
   render() {
     const { width, height } = this.context;
-    const { title, images, description, price } = this.props.galleryItem;
+    const { product_id, title, images, description, price } = this.props.galleryItem;
     return (
       <div className="gallery-item-screen-desktop">
         <MediaQuery query="(max-width: 899px)">
@@ -64,7 +65,8 @@ class GalleryItemPage extends Component {
               alt="gallery one"
             />
           </div>
-          <Footer width={width * .82} position="fixed" />
+          <AddToCartBtn productId={product_id} />
+          <Footer width={width * 0.82} position="fixed" />
         </MediaQuery>
       </div>
     );

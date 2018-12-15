@@ -43,9 +43,6 @@ class HomePage extends Component {
             <PageHeading text="About Me" size={35} marginTop={45} />
             <div className="about-me-wrapper">
               <div className="about-me">
-                <button onClick={() => addToCart(1213231)}>Add to cart</button>
-                <button onClick={() => removeFromCart(1213231)}>Remove from cart</button>
-                <button onClick={() => getCart()}>Get Cart</button>
               </div>
             </div>
           </div>
