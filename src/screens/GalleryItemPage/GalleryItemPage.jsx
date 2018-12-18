@@ -6,12 +6,19 @@ import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
 import ProductDescription from "../../components/ProductDescription/ProductDescription";
 import Footer from "../../components/Footer/Footer";
 import AddToCartBtn from "../../components/AddToCart/AddToCartBtn";
+import ItemTypeSelector from "../../components/ItemTypeSelector/ItemTypeSelector";
 import "./styles.scss";
 
 class GalleryItemPage extends Component {
   render() {
     const { width, height } = this.context;
-    const { product_id, title, images, description, price } = this.props.galleryItem;
+    const { galleryItem, selectedType, selectTypeFunc } = this.props;
+    const { product_id, title, images, types, description, price } = galleryItem;
+    console.log("galleryItem rendered " + selectedType );
+
+    let type = types.filter(type => type.type === selectedType);
+    type = type[0];
+
     return (
       <div className="gallery-item-screen-desktop">
         <MediaQuery query="(max-width: 899px)">
@@ -35,6 +42,7 @@ class GalleryItemPage extends Component {
             className="content"
           >
             <PageHeading text={title} size={40} marginTop={30} />
+            <ItemTypeSelector types={types} selectedType={selectedType} selectTypeFunc={selectTypeFunc} />
             <img
               src={images[0]}
               height="70%"
@@ -43,8 +51,14 @@ class GalleryItemPage extends Component {
               alt="gallery one"
             />
             <div className="product-description">
-              <div>{description}</div>
-              <div>{description}</div>
+              <div>
+                Materials<br/>
+              {type.materials}
+              </div>
+              <div>
+                Dimensions<br/>
+              {type.width} x {type.height}
+              </div>
             </div>
             <img
               src={images[1]}
@@ -54,8 +68,10 @@ class GalleryItemPage extends Component {
               alt="gallery one"
             />
             <div className="product-description">
-              <div>{description}</div>
-              <div>{description}</div>
+              <div>
+                Price <br/>
+              {type.price}
+              </div>
             </div>
             <img
               src={images[2]}
@@ -65,7 +81,7 @@ class GalleryItemPage extends Component {
               alt="gallery one"
             />
           </div>
-          <AddToCartBtn productId={product_id} />
+          <AddToCartBtn productId={product_id} title={title} />
           <Footer width={width * 0.82} position="fixed" />
         </MediaQuery>
       </div>

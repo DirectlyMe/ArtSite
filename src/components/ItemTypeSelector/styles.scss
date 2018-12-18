@@ -1,0 +1,28 @@
+@import "../../style-guide";
+
+.type-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px;
+
+  .type-selector--node {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-size: 22px;
+    margin: 5px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      transition: transform ease-out .1s;
+      transform: scale(1.04);
+    }
+  }
+
+  .type-selector--node---selected {
+    background-color: $primary-color;
+  }
+}

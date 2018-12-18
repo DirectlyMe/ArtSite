@@ -7,7 +7,8 @@ class GalleryItemContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      galleryItem: null
+      galleryItem: null,
+      selectedType: null
     };
   }
 
@@ -30,14 +31,28 @@ class GalleryItemContainer extends Component {
       galleryItems.length === 0
     )
       return;
-      
+
     const { id } = this.props.match.params;
     const item = galleryItems.filter(item => item.product_id === Number(id));
-    this.setState({ galleryItem: item[0] });
+    const print = item[0].types.filter(itemType => itemType.type === "Print");
+
+    if (print.length > 0) {
+      this.setState({ galleryItem: item[0], selectedType: print[0].type });
+    } else {
+      this.setState({ 
+        galleryItem: item[0],
+        selectedType: item[0].types[0].type 
+      });
+    }
   };
 
   postItem = () => {
     addToCart(this.state.galleryItem.product_id);
+  };
+
+  selectType = type => {
+    console.log(type);
+    this.setState({ selectedType: type });
   };
 
   render() {
@@ -50,8 +65,9 @@ class GalleryItemContainer extends Component {
     } else {
       return (
         <GalleryItemPage
-          galleryItem={this.state.galleryItem}
+          {...this.state}
           postItemFunc={this.postItem}
+          selectTypeFunc={this.selectType}
         />
       );
     }

@@ -3,9 +3,12 @@ import Context from "../../Context";
 import GalleryItem from "../../components/GalleryItem/GalleryItem";
 
 class GalleryItemsContainer extends Component {
-  state = {
-    galleryItems: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      galleryItems: null,
+    };
+  }
 
   componentDidMount() {
     this.setState({ galleryItems: this.context.galleryItems });

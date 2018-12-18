@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { addToCart } from "../../api/CartCalls";
 import "./styles.scss";
+import { toast } from "react-toastify";
 
 class AddToCartButton extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class AddToCartButton extends Component {
 
     this.optionsMenu = React.createRef();
   }
-  
+
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState({
@@ -46,9 +47,27 @@ class AddToCartButton extends Component {
     }
   };
 
+  addToCartPressed = async () => {
+    const response = await addToCart(this.props.productId, this.state.quantity, this.state.selectedType);
+    if (response === true) {
+      toast.success(`${this.props.title} added to cart!`, {
+        position: toast.POSITION.TOP_RIGHT,
+        duration: 500,
+        className: "add-to-cart-toast--success"
+      });
+    } else {
+      toast.error(`Sorry ${this.props.title} wasn't added to cart, try checking your connection`, {
+        position: toast.POSITION.TOP_RIGHT,
+        className: "add-to-cart-toast--error"
+      });
+    }
+  };
+
   render() {
     const typesList = this.state.types.map(type => (
-      <li key={type} onClick={() => this.setState({ selectedType: type })}>{type}</li>
+      <li key={type} onClick={() => this.setState({ selectedType: type })}>
+        {type}
+      </li>
     ));
     return (
       <div onClick={this.showMenu}>
@@ -98,9 +117,7 @@ class AddToCartButton extends Component {
             <span style={{ paddingTop: "12px" }}>
               <button
                 className="add-to-cart--btn"
-                onClick={() =>
-                  addToCart(this.props.productId, this.state.quantity)
-                }
+                onClick={() => this.addToCartPressed()}
               >
                 Add
               </button>

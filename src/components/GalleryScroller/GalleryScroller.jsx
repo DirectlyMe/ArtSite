@@ -14,14 +14,31 @@ class GalleryScroller extends Component {
         let color = backgroundColors[index];
         if (index === backgroundColors.length - 1) index = 0;
         index++;
-  
-        return <ScrollerItem key={i} item={item} color={color} className="scroller-item" />;
+
+        const printItems = item.types.filter(
+          itemType => itemType.type === "Print"
+        );
+        if (printItems.length > 0) {
+          item.price = printItems[0].price;
+        } else {
+          item.price = item.types[0].price;
+        }
+
+        return (
+          <ScrollerItem
+            key={i}
+            item={item}
+            color={color}
+            className="scroller-item"
+          />
+        );
       });
-      
+
       return galleryItems;
     }
+
     return [];
-  }
+  };
 
   render() {
     const galleryItems = this.generateItems();

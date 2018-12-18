@@ -5,17 +5,18 @@ import CartLabels from "../../components/CartLabels/CartLabels";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import PageHeading from "../../components/PageHeading";
 import Footer from "../../components/Footer/Footer";
-import "./styles.css";
+import "./styles.scss";
 
 class CartPage extends Component {
   render() {
     return (
-      <div>
+      <div className="cart-page-desktop">
         <PageHeading text="Cart" size={22} />
         <div className="CartContent">
 
-          <Footer />
+          
         </div>
+        <Footer />
       </div>
     );
   }

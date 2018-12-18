@@ -16,11 +16,13 @@ import { faInstagram } from "@fortawesome/fontawesome-free-brands";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Context from "./Context";
 import HomePage from "./screens/HomePage/HomePage";
-import CartPage from "./screens/CartPage/CartPage";
+import CartContainer from "./containers/CartItemsContainer/CartItemsContainer";
 import { getGalleryItems } from "./api/GalleryCalls";
 import { getCart } from "./api/CartCalls";
 import "./App.scss";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const GalleryPage = lazy(() => import("./screens/GalleryPage/GalleryPage"));
 const GalleryItemContainer = lazy(() =>
@@ -45,13 +47,13 @@ class App extends Component {
     super();
     this.state = {
       galleryItems: [],
-      cartItems: null,
+      cartItems: [],
       cartTotal: 0,
       currentPage: "Home",
       height: 0,
       width: 0,
-      setCurrentPage: this.setCurrentPage
-      //currentBackground: "https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",
+      setCurrentPage: this.setCurrentPage,
+      updateCart: this.updateCart,
     };
   }
 
@@ -60,11 +62,9 @@ class App extends Component {
     window.addEventListener("resize", this.updateWindowSize);
 
     const items = await getGalleryItems();
-    //const cart = await getCart();
+    const cart = await getCart();
 
-    this.setState({ galleryItems: items });
-
-    //this.rotateBackground();
+    this.setState({ galleryItems: items, cartItems: cart });
   };
 
   componentWillUnmount() {
@@ -81,22 +81,11 @@ class App extends Component {
   setCurrentPage = page => {
     this.setState({ currentPage: page });
   };
-  /*  May use this at some point but we're not there yet.
-  rotateBackground = () => {
-    if (window.innerWidth >= 900) {      
-      const backgroundImages = ["https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80",
-        "https://images.unsplash.com/photo-1543079342-6509eb35f1ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=01eb15c6dbf4e02f2dc92857d448e982&auto=format&fit=crop&w=1350&q=80",
-        "https://images.unsplash.com/photo-1543070945-15aab30a3e62?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e69a86814f6664ea2aceb9add0f5120a&auto=format&fit=crop&w=1350&q=80"];
-      let index = 1;
-  
-      this.ImageInterval = setInterval(() => {
-        if (index === backgroundImages.length - 1) index = 0;
-        this.setState({ currentBackground: backgroundImages[index] });
-        index++;
-      }, 10000);
-    }
+
+  updateCart = async () => {
+    const cart = await getCart();
+    this.setState({ cartItems: cart });
   }
-*/
 
   render() {
     return (
@@ -113,8 +102,9 @@ class App extends Component {
             />
             <Route path="/gallery-item/:id" component={GalleryItemContainer} />
           </Suspense>
-          <Route path="/cart" component={CartPage} />
+          <Route path="/cart" component={CartContainer} />
         </div>
+        <ToastContainer />
       </Context.Provider>
     );
   }

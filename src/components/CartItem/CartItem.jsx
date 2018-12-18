@@ -1,6 +1,6 @@
 import React from "react";
 import IconButton from "../IconButton/IconButton";
-import "./styles.css";
+import "./styles.scss";
 
 const CartItem = ({
   productID,

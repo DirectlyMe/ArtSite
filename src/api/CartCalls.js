@@ -1,16 +1,27 @@
 import { serverConfig as config } from "../config/serverConfig";
 
-export function addToCart(id, quantity = 1) {
-  console.log(id, quantity);
-  fetch(`http://${config.IP}:${config.PORT}/cart/add-item`, {
+export function addToCart(id, quantity = 1, type = "") {
+  const data = {
+    product_id: id,
+    quantity: quantity,
+    type: type
+  };
+
+  return fetch(`http://${config.IP}:${config.PORT}/cart/add-item`, {
     credentials: "include",
     method: "POST",
     mode: "cors",
-    body: {
-      id,
-      quantity
-    }
-  }).then(response => console.log(response.json()));
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  }).then(response => {
+    console.log(response);
+    return true;
+  }).catch(err => {
+    console.log(err);
+    return false;
+  });
 }
 
 export async function getCart() {

@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -36,7 +37,6 @@
   
   .right-arrow {
     position: absolute;
-    top: 47%;
     right: 3%;
     z-index: 999;
     color: #fff;
@@ -48,7 +48,6 @@
   
   .left-arrow {
     position: absolute;
-    top: 47%;
     left: 3%;
     z-index: 999;
     color: #fff;
@@ -56,9 +55,5 @@
       &:focus {
         outline: 0;
       }
-  }
-
-  @media screen and (max-width: 1250px) {
-    
   }
 }

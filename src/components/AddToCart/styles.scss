@@ -1,4 +1,4 @@
-@import "../../color-guide";
+@import "../../style-guide";
 
 .add-to-cart {
   position: fixed;
@@ -104,4 +104,16 @@
     background-color: $primary-color;
     cursor: pointer;
   }
+}
+
+.add-to-cart-toast--success {
+  border-radius: 10px;
+  box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.add-to-cart-toast--error {
+  border-radius: 10px;
+  box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
+  padding: 10px;
 }

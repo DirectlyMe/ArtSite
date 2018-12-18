@@ -7,7 +7,6 @@ import LinkBox from "../../components/LinkBox/LinkBox";
 import LineBreak from "../../components/LineBreak";
 import Footer from "../../components/Footer/Footer";
 import PageHeading from "../../components/PageHeading";
-import { addToCart, removeFromCart, getCart } from "../../api/CartCalls";
 import "./styles.scss";
 
 class HomePage extends Component {
