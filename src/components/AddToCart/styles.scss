@@ -17,6 +17,7 @@
 }
 
 .add-to-cart--menu {
+  font-family: $font-secondary;
   font-size: 20px;
   position: fixed;
   display: flex;
@@ -62,6 +63,7 @@
       justify-content: space-around;
       margin-top: 5px;
       padding: 5px;
+      width: 6em;
       border: solid 1px;
       border-radius: 10px;
       cursor: pointer;
@@ -79,7 +81,8 @@
 
       li {
         color: black;
-        padding: 5px 32px;
+        padding: 5px;
+        width: 6em;
         text-decoration: none;
         display: block;
         border-radius: 10px;
@@ -97,12 +100,18 @@
   }
 
   .add-to-cart--btn {
-    font-family: 'Dancing Script', cursive;
-    font-size: 30px;
+    font-family: $font-primary;
+    font-size: $font-size--medium;
     border-radius: 10px;
+    margin-top: 2px;
     width: 100%;
     background-color: $primary-color;
     cursor: pointer;
+  }
+
+  .price-label {
+    font-size: $font-size--small;
+    padding: 10px 0px;
   }
 }
 

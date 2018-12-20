@@ -12,6 +12,7 @@ class Slider extends Component {
       sliderHeight: 0,
       currentIndex: 0,
       translateValue: 0,
+      arrowPosition: "",
       slides: []
     };
   }
@@ -63,22 +64,26 @@ class Slider extends Component {
     let slideHeight = 0;
     let sliderHeight = 0;
     let numItems = 0;
+    let position = "";
 
     if (windowWidth <= 1200) {
       width = 500;
       slideHeight = 390;
       sliderHeight = 470;
       numItems = 1;
-    } else if (windowWidth <= 1500) {
+      position = "7%";
+    } else if (windowWidth <= 1800) {
       width = 380;
       slideHeight = 330;
       sliderHeight = 410;
       numItems = 2;
+      position = "5%";
     } else {
       slideHeight = 370;
       width = 390;
       sliderHeight = 460;
       numItems = 3;
+      position = "1%";
     }
 
     let slides = [];
@@ -122,28 +127,20 @@ class Slider extends Component {
       slides.push(slide);
     }
 
-    this.setState({ slides, sliderHeight });
+    this.setState({ slides, sliderHeight, arrowPosition: position });
   };
 
   render() {
     const { slides, sliderHeight } = this.state;
 
-    return (
-      <div className="desktop-slider" style={{ height: sliderHeight }}>
-        <div
-          className="slides-wrapper"
-          style={{
-            // image transition animation
-            transform: `translateX(${this.state.translateValue}px)`,
-            transition: "transform ease-out 0.70s"
-          }}
-        >
+    return <div className="desktop-slider" style={{ height: sliderHeight }}>
+        <div className="slides-wrapper" style={{ // image transition animation
+            transform: `translateX(${this.state.translateValue}px)`, transition: "transform ease-out 0.70s" }}>
           {slides}
         </div>
-        <LeftArrow className="left-arrow" onClick={this.goToPrevSlide} />
-        <RightArrow className="right-arrow" onClick={this.goToNextSlide} />
-      </div>
-    );
+        <LeftArrow className="left-arrow" style={{ left: this.state.arrowPosition }} onClick={this.goToPrevSlide} />
+        <RightArrow className="right-arrow" style={{ right: this.state.arrowPosition }}  onClick={this.goToNextSlide} />
+      </div>;
   }
 }
 Slider.contextType = Context;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import "./styles.css";
+import "./styles.scss";
 
 const LinkBox = ({ boxClass, text, route }) => {
   return (

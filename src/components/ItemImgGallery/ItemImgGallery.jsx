@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles.css";
+import "./styles.scss";
 
 class ItemImgGallery extends Component {
   state = {

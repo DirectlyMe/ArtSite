@@ -1,5 +1,5 @@
 import React from "react";
-import IconButton from "../IconButton/IconButton";
+import IconButton from "../IconButton";
 import "./styles.scss";
 
 const CartItem = ({

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import Context from "../../Context";
 import { addToCart } from "../../api/CartCalls";
 import GalleryItemPage from "../../screens/GalleryItemPage/GalleryItemPage";
@@ -39,15 +40,29 @@ class GalleryItemContainer extends Component {
     if (print.length > 0) {
       this.setState({ galleryItem: item[0], selectedType: print[0].type });
     } else {
-      this.setState({ 
+      this.setState({
         galleryItem: item[0],
-        selectedType: item[0].types[0].type 
+        selectedType: item[0].types[0].type
       });
     }
   };
 
-  postItem = () => {
-    addToCart(this.state.galleryItem.product_id);
+  addToCart = async (product_id, quantity, selectedType) => {
+    const response = await addToCart(product_id, quantity, selectedType);
+    if (response === true) {
+      toast.success(`"${this.state.galleryItem.title}" : "${selectedType}" added to cart!`, {
+        className: "add-to-cart-toast--success"
+      });
+    } else {
+      toast.error(
+        `Sorry ${
+          this.state.galleryItem.title
+        } wasn't added to cart, try checking your connection`,
+        {
+          className: "add-to-cart-toast--error"
+        }
+      );
+    }
   };
 
   selectType = type => {
@@ -68,6 +83,7 @@ class GalleryItemContainer extends Component {
           {...this.state}
           postItemFunc={this.postItem}
           selectTypeFunc={this.selectType}
+          addToCartFunc={this.addToCart}
         />
       );
     }

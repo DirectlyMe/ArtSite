@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AppBar from "../../components/AppBar/AppBar";
 import Drawer from "../../components/Drawer/Drawer";
 import NavDesktop from "../../components/NavBar/NavBarDesktop";
-import IconButton from "../../components/IconButton/IconButton";
+import IconButton from "../../components/IconButton";
 import Context from "../../Context";
 import "./styles.scss";
 

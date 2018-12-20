@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { addToCart } from "../../api/CartCalls";
 import "./styles.scss";
-import { toast } from "react-toastify";
 
 class AddToCartButton extends Component {
   constructor(props) {
@@ -11,20 +9,34 @@ class AddToCartButton extends Component {
       quantity: 1,
       showMenu: false,
       showTypes: false,
-      types: ["Print", "Canvas"],
-      selectedType: "Print"
+      selectedType: {},
+      basePrice: 0,
+      calculatedPrice: 0
     };
 
     this.optionsMenu = React.createRef();
   }
 
+  componentDidMount() {
+    this.setState({
+      selectedType: this.props.selectedType,
+      basePrice: this.props.selectedType.price
+    });
+    setTimeout(() => {
+      this.calcPrice(this.state.basePrice, this.state.quantity);
+    }, 0);
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState({
-        quantity: 1,
-        selectedType: "Print"
+        selectedType: this.props.selectedType,
+        basePrice: this.props.selectedType.price,
+        quantity: 1
       });
-      console.log(this.props.productId);
+      setTimeout(() => {
+        this.calcPrice(this.state.basePrice, this.state.quantity);
+      }, 0);
     }
   }
 
@@ -47,26 +59,43 @@ class AddToCartButton extends Component {
     }
   };
 
-  addToCartPressed = async () => {
-    const response = await addToCart(this.props.productId, this.state.quantity, this.state.selectedType);
-    if (response === true) {
-      toast.success(`${this.props.title} added to cart!`, {
-        position: toast.POSITION.TOP_RIGHT,
-        duration: 500,
-        className: "add-to-cart-toast--success"
-      });
-    } else {
-      toast.error(`Sorry ${this.props.title} wasn't added to cart, try checking your connection`, {
-        position: toast.POSITION.TOP_RIGHT,
-        className: "add-to-cart-toast--error"
-      });
-    }
+  changeSelectedType = type => {
+    this.setState({
+      selectedType: type,
+      basePrice: type.price
+    });
+
+    setTimeout(() => {
+      this.calcPrice(this.state.basePrice, this.state.quantity);
+    }, 0);
+  };
+
+  calcPrice = (price, quantity) => {
+    const itemPrice = price * quantity;
+    this.setState({ price: itemPrice, quantity });
+  };
+
+  quantityDecrease = () => {
+    let { basePrice, quantity } = this.state;
+
+    if (quantity <= 1) return;
+
+    quantity -= 1;
+    this.calcPrice(basePrice, quantity);
+  };
+
+  quantityIncrease = () => {
+    let { basePrice, quantity, selectedType } = this.state;
+
+    selectedType.type !== "Canvas" ? quantity += 1 : quantity = 1;
+
+    this.calcPrice(basePrice, quantity);
   };
 
   render() {
-    const typesList = this.state.types.map(type => (
-      <li key={type} onClick={() => this.setState({ selectedType: type })}>
-        {type}
+    const typesList = this.props.item.types.map(type => (
+      <li key={type.type} onClick={() => this.changeSelectedType(type)}>
+        {type.type}
       </li>
     ));
     return (
@@ -78,26 +107,14 @@ class AddToCartButton extends Component {
             <div className="quantity-options">
               <button
                 className="quantity-minus--btn"
-                onClick={event => {
-                  event.preventDefault();
-                  if (this.state.quantity > 1) {
-                    this.setState(prevState => ({
-                      quantity: prevState.quantity - 1
-                    }));
-                  }
-                }}
+                onClick={() => this.quantityDecrease()}
               >
                 <FontAwesomeIcon icon="minus" size="lg" />
               </button>
               <div className="quantity-number">{this.state.quantity}</div>
               <button
                 className="quantity-plus--btn"
-                onClick={event => {
-                  event.preventDefault();
-                  this.setState(prevState => ({
-                    quantity: prevState.quantity + 1
-                  }));
-                }}
+                onClick={() => this.quantityIncrease()}
               >
                 <FontAwesomeIcon icon="plus" size="lg" />
               </button>
@@ -105,7 +122,7 @@ class AddToCartButton extends Component {
             <div style={{ paddingTop: "10px" }}>Type</div>
             <div className="type-options">
               <div className="type-selector" onClick={this.showTypes}>
-                {this.state.selectedType}
+                {this.state.selectedType.type}
                 <FontAwesomeIcon
                   icon="angle-down"
                   size="1x"
@@ -114,14 +131,19 @@ class AddToCartButton extends Component {
               </div>
               <div className="type-dropdown">{typesList}</div>
             </div>
-            <span style={{ paddingTop: "12px" }}>
-              <button
-                className="add-to-cart--btn"
-                onClick={() => this.addToCartPressed()}
-              >
-                Add
-              </button>
-            </span>
+            <div className="price-label">${this.state.price}</div>
+            <button
+              className="add-to-cart--btn"
+              onClick={() =>
+                this.props.addToCartFunc(
+                  this.props.item.product_id,
+                  this.state.quantity,
+                  this.state.selectedType.type
+                )
+              }
+            >
+              Add
+            </button>
           </div>
         ) : null}
       </div>

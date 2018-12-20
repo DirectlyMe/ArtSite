@@ -1,7 +1,7 @@
 import React from "react";
-import IconButton from "../IconButton/IconButton";
+import IconButton from "../IconButton";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
-import "./styles.css";
+import "./styles.scss";
 
 const Footer = ({ width, position }) => {
   return (

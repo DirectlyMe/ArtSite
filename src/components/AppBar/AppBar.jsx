@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import IconButton from "../IconButton/IconButton";
-import "./styles.css";
+import IconButton from "../IconButton";
+import "./styles.scss";
 
 const AppBar = ({ toggleDrawer }) => {
   return (

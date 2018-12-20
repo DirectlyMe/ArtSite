@@ -37,9 +37,9 @@
   
   .right-arrow {
     position: absolute;
-    right: 3%;
     z-index: 999;
     color: #fff;
+    margin-top: 1%;
   
       &:focus {
         outline: 0;
@@ -48,7 +48,6 @@
   
   .left-arrow {
     position: absolute;
-    left: 3%;
     z-index: 999;
     color: #fff;
   
