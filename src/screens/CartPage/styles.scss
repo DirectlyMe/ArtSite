@@ -1,20 +1,106 @@
-@media screen and (min-width: 800px) {
-  .CartContent {
-    width: 800px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+@import "../../style-guide";
+
+@media screen and (max-width: 899px) {
+  .cart-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-page--checkout {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 20px 40px;
+
+    .cart-page--checkout---btn {
+      text-transform: capitalize;
+      font-family: $font-secondary;
+      font-size: $font-size--small;
+      padding: 20px 30px;
+      border-radius: 10px;
+      background-color: $primary-color;
+      box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+
+    .cart-page--checkout---apple-pay {
+      text-transform: capitalize;
+      padding: 25px 40px;
+      -webkit-appearance: -apple-pay-button;
+      -apple-pay-button-type: buy;
+      cursor: pointer;
+    }
   }
 }
 
 @media screen and (min-width: 900px) {
-  .cart-page-desktop {
+  .cart-page {
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    margin-left: 18%;
+    flex-direction: column;
+    margin-left: 20%;
+
+    &:before {
+      content: "";
+      background-image: url("https://images.unsplash.com/photo-1543079342-6509eb35f1ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=01eb15c6dbf4e02f2dc92857d448e982&auto=format&fit=crop&w=1350&q=80");
+      position: fixed;
+      left: 18%;
+      right: 0;
+      z-index: -1;
+
+      display: block;
+
+      background-size: cover;
+      opacity: 0.6;
+      width: 100%;
+      height: 100%;
+
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      filter: blur(5px);
+    }
+
+    .cart-page--content {
+      width: 100%;
+      margin-top: 5%;
+
+      .cart-page--total-price {
+        font-family: $font-secondary;
+        font-size: $font-size--small;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+      }
+
+      .cart-page--checkout {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+        padding: 20px 40px;
+
+        .cart-page--checkout---btn {
+          text-transform: capitalize;
+          font-family: $font-secondary;
+          font-size: $font-size--small;
+          padding: 25px 40px;
+          border-radius: 10px;
+          background-color: $primary-color;
+          cursor: pointer;
+        }
+
+        .cart-page--checkout---apple-pay {
+          text-transform: capitalize;
+          padding: 25px 40px;
+          -webkit-appearance: -apple-pay-button;
+          -apple-pay-button-type: buy;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

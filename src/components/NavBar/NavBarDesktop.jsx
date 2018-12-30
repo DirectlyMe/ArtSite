@@ -1,29 +1,33 @@
-import React, { Component, Suspense, lazy } from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Context from "../../Context";
-import PageDropDown from "../PageDropDown/PageDropDown";
-import LoadingSpinner from "../LoadingSpinner";
-
+import GalleryScroller from "../GalleryScroller/GalleryScroller";
 import "./desktopStyles.scss";
-const GalleryScroller = lazy(() =>
-  import("../GalleryScroller/GalleryScroller")
-);
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: "Home",
+      currentPage: "Home"
     };
   }
 
   render() {
     return (
-      <nav className="navbar" style={{ height: this.context.height, width: this.context.width * .18 }}>
+      <nav
+        className="navbar"
+        style={{
+          height: this.context.height,
+          width: this.context.width * 0.18
+        }}
+      >
         <div className="navbar-wrapper">
-          <PageDropDown currentPage={this.state.currentPage} />
-          <Suspense fallback={<LoadingSpinner />} >
-            <GalleryScroller />
-          </Suspense>
+          <div className="page-selector">
+            <Link to="/" className="page-link">
+              Home
+            </Link>
+          </div>
+          <GalleryScroller />
         </div>
       </nav>
     );

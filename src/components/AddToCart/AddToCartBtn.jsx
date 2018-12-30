@@ -62,7 +62,8 @@ class AddToCartButton extends Component {
   changeSelectedType = type => {
     this.setState({
       selectedType: type,
-      basePrice: type.price
+      basePrice: type.price,
+      quantity: 1
     });
 
     setTimeout(() => {

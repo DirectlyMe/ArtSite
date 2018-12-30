@@ -8,7 +8,9 @@
   padding: 10px;
 
   .type-selector--node {
+    text-transform: capitalize;
     background-color: rgba(0,0,0,0);
+    font-family: $font-secondary;
     border: none;
     font-size: 22px;
     margin: 5px;

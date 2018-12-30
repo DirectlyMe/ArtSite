@@ -38,9 +38,13 @@ class NavBarContainer extends Component {
     }
   };
 
-  updateCurrentPage = page => {
-    this.setState({ currentPage: page });
-  };
+  navSelected = () => {
+    setTimeout(() => {
+      this.setState({ isDrawerOpen: false }, () => {
+        document.removeEventListener("click", this.closeMenu);
+      });
+    }, 0);
+  }
 
   render() {
     return (
@@ -51,7 +55,7 @@ class NavBarContainer extends Component {
             <Drawer
               isDrawerOpen={this.state.isDrawerOpen}
               ref={this.drawer}
-              closeMenu={this.closeMenu}
+              navSelectedFunc={this.navSelected}
             />
           </div>
         </MediaQuery>

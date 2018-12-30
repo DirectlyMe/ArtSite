@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MediaQuery from "react-responsive";
 import Slider from "../../components/DesktopSlider/Slider";
 import Context from "../../Context";
-import SlideShowContainer from "../../containers/SlideShowContainer/SlideShowContainer";
+import SlideShowContainer from "../../containers/SlideShowContainer";
 import LinkBox from "../../components/LinkBox/LinkBox";
 import LineBreak from "../../components/LineBreak";
 import Footer from "../../components/Footer/Footer";
@@ -37,7 +37,7 @@ class HomePage extends Component {
             }}
             className="home-content"
           >
-            <PageHeading text="Featured" size={40} marginTop={30} />
+            <PageHeading text="Featured" size={48} marginTop={30} />
             <Slider />
             <PageHeading text="About Me" size={35} marginTop={45} />
             <div className="about-me-wrapper">

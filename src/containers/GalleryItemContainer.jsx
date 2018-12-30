@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
-import Context from "../../Context";
-import { addToCart } from "../../api/CartCalls";
-import GalleryItemPage from "../../screens/GalleryItemPage/GalleryItemPage";
+import Context from "../Context";
+import { addToCart } from "../api/CartCalls";
+import GalleryItemPage from "../screens/GalleryItemPage/GalleryItemPage";
 
 class GalleryItemContainer extends Component {
   constructor(props) {
@@ -50,8 +50,9 @@ class GalleryItemContainer extends Component {
   addToCart = async (product_id, quantity, selectedType) => {
     const response = await addToCart(product_id, quantity, selectedType);
     if (response === true) {
-      toast.success(`"${this.state.galleryItem.title}" : "${selectedType}" added to cart!`, {
-        className: "add-to-cart-toast--success"
+      toast.success(`"${this.state.galleryItem.title}" "${selectedType}" added to cart!`, {
+        className: "add-to-cart-toast--success",
+        position: toast.POSITION.TOP_CENTER,
       });
     } else {
       toast.error(
@@ -59,7 +60,7 @@ class GalleryItemContainer extends Component {
           this.state.galleryItem.title
         } wasn't added to cart, try checking your connection`,
         {
-          className: "add-to-cart-toast--error"
+          className: "add-to-cart-toast--error",
         }
       );
     }

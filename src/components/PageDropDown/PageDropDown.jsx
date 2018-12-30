@@ -10,8 +10,6 @@ class PageDropDown extends Component {
     this.state = {
       showMenu: false
     };
-
-    this.dropDownMenu = React.createRef();
   }
 
   showMenu = event => {
@@ -38,7 +36,6 @@ class PageDropDown extends Component {
       <div>
         <div onClick={this.showMenu} className="page-selector">
           <div className="page-title">{this.props.currentPage}</div>
-          <RightArrow className="more-arrow" />
         </div>
         {this.state.showMenu ? (
           <div

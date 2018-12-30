@@ -7,7 +7,7 @@ const AppBar = ({ toggleDrawer }) => {
   return (
     <div className="AppBar">
       <Link className="heading" to="/">
-        Kelsey Loves Art
+        Olyve Art
       </Link>
       <div className="icons">
         <Link to="/cart" className="cartLink">

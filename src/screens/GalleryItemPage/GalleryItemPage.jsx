@@ -29,7 +29,7 @@ class GalleryItemPage extends Component {
       <div className="gallery-item-screen-desktop">
         <MediaQuery query="(max-width: 899px)">
           <div>
-            <PageHeading text={title} size={22} />
+            <PageHeading text={title} size={30} />
             <ItemImgGallery images={images} />
             <ProductDescription
               price={price}
@@ -47,7 +47,7 @@ class GalleryItemPage extends Component {
             }}
             className="content"
           >
-            <PageHeading text={title} size={40} marginTop={30} />
+            <PageHeading text={title} size={48} marginTop={30} />
             <ItemTypeSelector
               types={types}
               selectedType={selectedType}

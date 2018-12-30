@@ -4,27 +4,19 @@ import classNames from "classnames";
 import "./styles.scss";
 
 const Drawer = React.forwardRef((props, ref) => {
-  return (
-    <div
-      className={classNames("Drawer", {
+  return <div className={classNames("Drawer", {
         ["DrawerOpen"]: props.isDrawerOpen // eslint-disable-line
-      })}
-      ref={ref}
-    >
-      <Link to="/" className="item">
+      })} ref={ref}>
+      <Link to="/" className="item" onClick={() => props.navSelectedFunc()}>
         Home
       </Link>
-      <Link to="/gallery" className="item">
+      <Link to="/gallery" className="item" onClick={() => props.navSelectedFunc()}>
         Gallery
       </Link>
-      <Link to="/" className="item">
-        Merch
-      </Link>
-      <Link to="/cart" className="item">
+    <Link to="/cart" className="item" onClick={() => props.navSelectedFunc()}>
         Cart
       </Link>
-    </div>
-  );
+    </div>;
 });
 
 export default Drawer;

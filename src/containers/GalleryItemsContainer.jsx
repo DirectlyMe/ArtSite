@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Context from "../../Context";
-import GalleryItem from "../../components/GalleryItem/GalleryItem";
+import Context from "../Context";
+import GalleryItem from "../components/GalleryItem/GalleryItem";
 
 class GalleryItemsContainer extends Component {
   constructor(props) {
