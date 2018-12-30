@@ -1,6 +1,6 @@
 export const serverConfig = {
   IP: "localhost",
-  PORT: 8080
+  PORT: 443
 };
 
 export const paymentConfig = {
