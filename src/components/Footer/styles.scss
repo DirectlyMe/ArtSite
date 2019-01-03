@@ -1,4 +1,4 @@
-.Footer {
+.footer {
     font-family: 'ST Strong' sans-serif;
     position: fixed;
     right: 0;
@@ -11,12 +11,18 @@
     background-color: rgba(255, 255, 255, .6);
 }
 
-.FooterElement {
+.footer-element {
     display: flex;
     padding: 10px
 }
 
-.InstagramIcon {
+@media screen and (min-width: 900px) {
+    .footer-tag {
+        padding-left: 2em;
+    }    
+}
+
+.instagram-icon {
     font-size: 14px;
     padding-right: 5px;
 }

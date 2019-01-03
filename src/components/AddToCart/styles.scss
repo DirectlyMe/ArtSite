@@ -19,6 +19,7 @@
 .add-to-cart--menu {
   font-family: $font-secondary;
   font-size: 20px;
+  text-align: center;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -30,7 +31,6 @@
   padding: 1em;
   background-color: #ffffff;
   box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
-
 
   .quantity-options {
     display: flex;
@@ -45,7 +45,7 @@
       margin-right: 20px;
       padding: 5px 10px;
       box-shadow: none;
-        box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.2);
     }
     .quantity-plus--btn {
       background-color: #ffffff; /* Green */
@@ -53,7 +53,7 @@
       margin-left: 20px;
       padding: 5px 10px;
       box-shadow: none;
-        box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -76,7 +76,7 @@
     }
 
     .type-dropdown {
-      display: none;
+      display: block;
       background-color: white;
       position: absolute;
       text-decoration: none;
@@ -99,10 +99,6 @@
         }
       }
     }
-
-    &:hover .type-dropdown {
-      display: block;
-    }
   }
 
   .add-to-cart--btn {
@@ -114,7 +110,7 @@
     width: 100%;
     background-color: $primary-color;
     cursor: pointer;
-      box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.3);
   }
 
   .price-label {
@@ -133,4 +129,17 @@
   border-radius: 10px;
   box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
   padding: 10px;
+}
+
+@media screen and (max-width: 899px) {
+  .add-to-cart {
+    right: 50px;
+    bottom: 50px;
+    padding: 16px;
+  }
+
+  .add-to-cart--menu {
+    bottom: 120px;
+    right: 0px;
+  }
 }

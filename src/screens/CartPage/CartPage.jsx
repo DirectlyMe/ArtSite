@@ -37,8 +37,11 @@ class CartPage extends Component {
         </MediaQuery>
         <MediaQuery query="(max-width: 899px)">
           <div className="cart-page" style={{ height: height }}>
-            <PageHeading text="Cart" size={34} marginTop={0} />
+            <PageHeading text="Cart" size={34} marginTop={80} />
             <div>{cartItems}</div>
+          <div className="cart-page--total-price">
+            Total: ${this.props.total}
+          </div>
             <div className="cart-page--checkout">
               <button className="cart-page--checkout---btn" onClick={this.props.checkoutOrderFunc}>
                 Checkout

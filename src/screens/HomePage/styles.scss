@@ -1,88 +1,94 @@
-.Slogan {
-  font-family: "Dancing Script", cursive;
-  font-size: 24px;
-  text-align: center;
-  margin-top: 20px;
-}
+@import "../../style-guide";
 
-.Linebreak {
-  width: 90%;
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
+@media screen and (max-width: 899px) {
+  .Slogan {
+    font-family: "Dancing Script", cursive;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .Linebreak {
+    width: 90%;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .Linebreak:last-of-type {
+    margin-bottom: 25px;
+  }
+  
+  .WideBox {
+    font-family: "Dancing Script", cursive;
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 10px auto;
+    padding: 30px;
+    text-align: center;
+    background-color: $primary-color;
+  }
+  
+  .WideBox:hover {
+    background-color: rgba(224, 249, 255, 0.3);
+  }
+  
+  .Boxes {
+    padding-bottom: 25px;
+  }
+  
+  .WideBoxSecond {
+    font-family: "Dancing Script", cursive;
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    background-color: $accent-color;
+  }
 
-.Linebreak:last-of-type {
-  margin-bottom: 25px;
-}
 
-.WideBox {
-  font-family: "Dancing Script", cursive;
-  font-size: 30px;
-  box-sizing: border-box;
-  width: 80%;
-  margin: auto;
-  padding: 30px;
-  text-align: center;
-  background-color: rgba(224, 249, 255, 0.65);
-}
-
-.WideBox:hover {
-  background-color: rgba(224, 249, 255, 0.3);
-}
-
-.Boxes {
-  padding-bottom: 25px;
-}
-
-.WideBoxPink {
-  font-family: "Dancing Script", cursive;
-  font-size: 30px;
-  box-sizing: border-box;
-  width: 80%;
-  margin: auto;
-  padding: 30px;
-  text-align: center;
-  background-color: #fff7f7;
-}
-
-.WideBoxPink:hover {
-  background-color: rgba(255, 247, 247, 0.5);
-}
-
-.TwoBoxesInline {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 10px;
-}
-
-.InlineBoxGreen {
-  font-family: "Dancing Script", cursive;
-  font-size: 30px;
-  box-sizing: border-box;
-  width: 45%;
-  padding: 30px;
-  text-align: center;
-  background-color: rgba(214, 255, 226, 0.65);
-}
-
-.InlineBoxGreen:hover {
-  background-color: rgba(214, 255, 226, 0.3);
-}
-
-.InlineBoxYellow {
-  font-family: "Dancing Script", cursive;
-  font-size: 30px;
-  box-sizing: border-box;
-  width: 45%;
-  padding: 30px;
-  text-align: center;
-  background-color: rgba(253, 252, 188, 0.65);
-}
-
-.InlineBoxYellow:hover {
-  background-color: rgba(253, 252, 188, 0.3);
+  
+  .WideBoxPink:hover {
+    background-color: rgba(255, 247, 247, 0.5);
+  }
+  
+  .TwoBoxesInline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
+  }
+  
+  .InlineBoxGreen {
+    font-family: "Dancing Script", cursive;
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 45%;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(214, 255, 226, 0.65);
+  }
+  
+  .InlineBoxGreen:hover {
+    background-color: rgba(214, 255, 226, 0.3);
+  }
+  
+  .InlineBoxYellow {
+    font-family: "Dancing Script", cursive;
+    font-size: 30px;
+    box-sizing: border-box;
+    width: 45%;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(253, 252, 188, 0.65);
+  }
+  
+  .InlineBoxYellow:hover {
+    background-color: rgba(253, 252, 188, 0.3);
+  }
 }
 
 @media screen and (min-width: 900px) {

@@ -1,3 +1,5 @@
+@import "../../style-guide";
+
 @media screen and (max-width: 799px) {
     .GalleryItem {
         width: 100%;
@@ -12,16 +14,17 @@
     }
 
     .GalleryTitle {
+        font-family: $font-primary;
+        font-size: $font-size--medium;
         text-align: center;
-        font-size: 20px;
         font-weight: 500;
         padding-top: 10px;
         padding-bottom: 5px;
     }
     
     .GalleryDescription {
+        font-size: $font-size--smallest;
         text-align: center;
-        font-size: 14px;
         padding: 10px
     }
 }

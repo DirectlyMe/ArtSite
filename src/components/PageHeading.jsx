@@ -9,7 +9,7 @@ const PageHeading = ({ text, size, marginTop }) => {
         textAlign: "center",
         fontWeight: 400,
         marginTop: `${marginTop}px`,
-        marginBottom: 10
+        marginBottom: "15px"
       }}>
       {text}
     </div>

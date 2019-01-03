@@ -15,11 +15,8 @@ const CartItem = ({ cartItem, removeItemFunc }) => {
             <span className="cart-item--title">{cartItem.title}</span>
             <div className="cart-item--properties">
               <div className="cart-item--properties---row-one">
-                <div>
-                  <br />
                   <span className="cart-item--property-header">Type</span>
                   <span>{cartItem.type}</span>
-                </div>
               </div>
               <div className="cart-item--properties---row-two">
                 <span className="cart-item--property-header">Quantity</span>
@@ -42,9 +39,9 @@ const CartItem = ({ cartItem, removeItemFunc }) => {
             <div className="cart-item--property-quantity">
               Quantity: {cartItem.quantity}
             </div>
-            <div className="cart-item--remove-btn" onClick={() => removeItemFunc(cartItem.product_id, cartItem.type)}>
+            <button className="cart-item--remove-btn" onClick={() => removeItemFunc(cartItem.product_id, cartItem.type)}>
               Remove
-            </div>
+            </button>
           </div>
         </div>
       </MediaQuery>

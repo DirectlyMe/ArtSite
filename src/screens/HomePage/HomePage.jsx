@@ -15,19 +15,17 @@ class HomePage extends Component {
     return (
       <div className="home-screen-desktop">
         <MediaQuery query="(max-width: 899px)">
-          <SlideShowContainer />
-          <div className="Boxes">
-            <div className="Slogan">will art for food</div>
-            <LineBreak />
-            <LinkBox boxClass="WideBox" text={"Gallery"} route={"/gallery"} />
-            <div className="TwoBoxesInline">
-              <LinkBox boxClass="InlineBoxGreen" text={"Contact"} route={"/"} />
-              <LinkBox boxClass="InlineBoxYellow" text={"Merch"} route={"/"} />
+          <div style={{ marginTop: "40px" }}>
+            <SlideShowContainer />
+            <div className="Boxes">
+              <div className="Slogan">will art for food</div>
+              <LineBreak />
+              <LinkBox boxClass="WideBox" text="Gallery" route={"/gallery"} />
+              <LinkBox boxClass="WideBoxSecond" text="About" route={"/"} />
+              <LineBreak />
             </div>
-            <LinkBox boxClass="WideBoxPink" text={"Featured"} route={"/"} />
-            <LineBreak />
+            <Footer />
           </div>
-          <Footer />
         </MediaQuery>
         <MediaQuery query="(min-width: 900px)">
           <div
@@ -41,8 +39,7 @@ class HomePage extends Component {
             <Slider />
             <PageHeading text="About Me" size={35} marginTop={45} />
             <div className="about-me-wrapper">
-              <div className="about-me">
-              </div>
+              <div className="about-me" />
             </div>
           </div>
           <Footer width={width * 0.82} />

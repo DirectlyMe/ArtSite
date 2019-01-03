@@ -52,7 +52,6 @@ class GalleryItemContainer extends Component {
     if (response === true) {
       toast.success(`"${this.state.galleryItem.title}" "${selectedType}" added to cart!`, {
         className: "add-to-cart-toast--success",
-        position: toast.POSITION.TOP_CENTER,
       });
     } else {
       toast.error(
@@ -67,7 +66,6 @@ class GalleryItemContainer extends Component {
   };
 
   selectType = type => {
-    console.log(type);
     this.setState({ selectedType: type });
   };
 

@@ -15,9 +15,15 @@
     }
   }
 
+  @media screen and (max-width: 1199px) {
+    img {
+      height: 12vh;
+    }
+  }
+
   &:hover {
     transition: transform ease-in .1s;
-    transform: scale(1.02);
+    transform: scale(1.015);
   }
 }
 

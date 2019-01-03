@@ -9,7 +9,7 @@ export async function addToCart(id, quantity = 1, type = "") {
 
   try {
     const response = await fetch(
-      `https://${config.IP}:${config.PORT}/cart/add-item`,
+      `${config.IP}:${config.PORT}/cart/add-item`,
       {
         credentials: "include",
         method: "POST",
@@ -31,7 +31,7 @@ export async function addToCart(id, quantity = 1, type = "") {
 export async function getCart() {
   try {
     const response = await fetch(
-      `https://${config.IP}:${config.PORT}/cart/get-cart`,
+      `${config.IP}:${config.PORT}/cart/get-cart`,
       {
         credentials: "include",
         method: "GET",
@@ -52,7 +52,7 @@ export async function removeFromCart(id, type) {
 
   try {
     const response = await fetch(
-      `https://${config.IP}:${config.PORT}/cart/remove-item`,
+      `${config.IP}:${config.PORT}/cart/remove-item`,
       {
         credentials: "include",
         method: "DELETE",

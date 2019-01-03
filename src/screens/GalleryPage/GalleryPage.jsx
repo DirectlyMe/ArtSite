@@ -6,7 +6,7 @@ import PageHeading from "../../components/PageHeading";
 function GalleryPage() {
   return (
     <div>
-      <PageHeading text="Gallery" size={30} />
+      <PageHeading text="Gallery" size={30} marginTop={80} />
       <GalleryItemsContainer />
       <Footer />
     </div>

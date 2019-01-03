@@ -3,7 +3,6 @@ import MediaQuery from "react-responsive";
 import Context from "../../Context";
 import PageHeading from "../../components/PageHeading";
 import ItemImgGallery from "../../components/ItemImgGallery/ItemImgGallery";
-import ProductDescription from "../../components/ProductDescription/ProductDescription";
 import Footer from "../../components/Footer/Footer";
 import AddToCartBtn from "../../components/AddToCart/AddToCartBtn";
 import ItemTypeSelector from "../../components/ItemTypeSelector/ItemTypeSelector";
@@ -17,27 +16,33 @@ class GalleryItemPage extends Component {
       title,
       images,
       types,
-      description,
-      price
     } = galleryItem;
-    console.log("galleryItem rendered " + selectedType);
 
     let type = types.filter(type => type.type === selectedType);
-    type = type[0];
+    type = type[0];   // use this to get selected type's specs
 
     return (
       <div className="gallery-item-screen-desktop">
         <MediaQuery query="(max-width: 899px)">
-          <div>
-            <PageHeading text={title} size={30} />
+          <div style={{ marginTop: "80px"}}>
+            <PageHeading text={title} size={30} marginTop={10} />
             <ItemImgGallery images={images} />
-            <ProductDescription
-              price={price}
-              description={description}
-              postItem={this.props.postItemFunc}
+            <ItemTypeSelector
+              types={types}
+              selectedType={selectedType}
+              selectTypeFunc={selectTypeFunc}
+            />
+            <div className="gallery-item--description">
+
+            </div>
+            <AddToCartBtn
+              item={galleryItem}
+              selectedType={type}
+              selectTypeFunc={selectTypeFunc}
+              addToCartFunc={addToCartFunc}
             />
           </div>
-          <Footer />
+          <Footer width={width} />
         </MediaQuery>
         <MediaQuery query="(min-width: 900px)">
           <div
@@ -55,12 +60,10 @@ class GalleryItemPage extends Component {
             />
             <img
               src={images[0]}
-              height="70%"
-              width="75%"
-              className="gallery-image"
+              className="gallery-item--image"
               alt="gallery one"
             />
-            <div className="product-description">
+            <div className="gallery-item--description">
               <div>
                 Materials
                 <br />
@@ -71,25 +74,14 @@ class GalleryItemPage extends Component {
                 <br />
                 {type.width} x {type.height}
               </div>
-            </div>
-            <img
-              src={images[1]}
-              height="70%"
-              width="75%"
-              className="gallery-image"
-              alt="gallery one"
-            />
-            <div className="product-description">
-              <div className="product-price">
-                Price <br />
+              <div>
+                Price<br />
                 ${type.price}
               </div>
             </div>
             <img
-              src={images[2]}
-              height="70%"
-              width="75%"
-              className="gallery-image"
+              src={images[1]}
+              className="gallery-item--image"
               alt="gallery one"
             />
           </div>

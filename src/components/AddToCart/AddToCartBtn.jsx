@@ -59,15 +59,21 @@ class AddToCartButton extends Component {
     }
   };
 
+  showTypes = () => {
+    this.setState(prevState => ({ showTypes: !prevState.showTypes}));
+  }
+
   changeSelectedType = type => {
-    this.setState({
+    this.setState(prevState => ({
       selectedType: type,
       basePrice: type.price,
-      quantity: 1
-    });
+      quantity: 1,
+    }));
 
+    
     setTimeout(() => {
       this.calcPrice(this.state.basePrice, this.state.quantity);
+      this.showTypes();
     }, 0);
   };
 
@@ -99,6 +105,7 @@ class AddToCartButton extends Component {
         {type.type}
       </li>
     ));
+
     return (
       <div onClick={this.showMenu}>
         <FontAwesomeIcon icon="plus" size="2x" className="add-to-cart" />
@@ -130,7 +137,11 @@ class AddToCartButton extends Component {
                   style={{ paddingTop: "2px" }}
                 />
               </div>
-              <div className="type-dropdown">{typesList}</div>
+              { this.state.showTypes ? 
+                <div className="type-dropdown">{typesList}</div>
+                :
+                null
+              }
             </div>
             <div className="price-label">${this.state.price}</div>
             <button
