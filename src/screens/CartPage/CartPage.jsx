@@ -10,8 +10,8 @@ class CartPage extends Component {
   render() {
     const { width, height } = this.context;
 
-    const cartItems = this.context.cartItems.map(item => (
-      <CartItem cartItem={item} removeItemFunc={this.props.removeItemFunc} />
+    const cartItems = this.context.cartItems.map((item, index) => (
+      <CartItem key={index} cartItem={item} removeItemFunc={this.props.removeItemFunc} />
     ));
 
     return <div>

@@ -62,12 +62,15 @@ class App extends Component {
     window.addEventListener("resize", this.updateWindowSize);
 
     let items = await getGalleryItems();
-    let cart = await getCart();
 
-    items = this.sortAlphabetically(items);
-    cart = this.sortAlphabetically(cart);
-
-    this.setState({ galleryItems: items, cartItems: cart });
+    if (items.length > 0) {
+      items = this.sortAlphabetically(items); 
+      
+      this.setState({ galleryItems: items });
+      this.updateCart();
+    } else {
+      console.log("couldn't get gallery items");
+    }
   };
 
   componentWillUnmount() {
@@ -87,7 +90,9 @@ class App extends Component {
 
   updateCart = async () => {
     let cart = await getCart();
-    cart = this.sortAlphabetically(cart);
+    cart.length > 0
+      ? (cart = this.sortAlphabetically(cart))
+      : console.log("cart empty");
 
     this.setState({ cartItems: cart });
   };

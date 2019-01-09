@@ -64,7 +64,7 @@ class CartContainer extends Component {
         response.complete("success");
       })
       .catch(err => {
-        console.log("Payment request cancelled");
+        console.log(err);
       });
   };
 

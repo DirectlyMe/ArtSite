@@ -33,7 +33,13 @@ class GalleryItemPage extends Component {
               selectTypeFunc={selectTypeFunc}
             />
             <div className="gallery-item--description">
-
+              <ul className="gallery-item--description-list">
+                <li>
+                  Price: {type.price}
+                </li>
+                <li>Materials: {type.materials}</li>
+                <li>Dimensions: {type.width} x {type.height}</li>
+              </ul>
             </div>
             <AddToCartBtn
               item={galleryItem}
