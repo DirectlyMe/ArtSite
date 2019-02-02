@@ -18,29 +18,28 @@ class Slider extends Component {
   }
 
   componentDidMount() {
-    let { galleryItems } = this.context;
-    if (galleryItems.length > 0) {
-      this.generateSlides(galleryItems);
+    let { featuredItems } = this.context;
+    if (featuredItems.length > 0) {
+      this.generateSlides(featuredItems);
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps === this.props) return;
-
-    let { galleryItems } = this.context;
-    if (galleryItems.length > 0) {
-      this.generateSlides(galleryItems);
+    if (prevProps !== this.props) {
+      let { featuredItems } = this.context;
+      if (featuredItems.length > 0) {
+        this.generateSlides(featuredItems);
+      }
     }
   }
 
   goToPrevSlide = () => {
-    if (this.state.currentIndex === 0) {
+    if (this.state.currentIndex === 0) 
       return;
-    }
 
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex - 1,
-      translateValue: prevState.translateValue + this.context.width * 0.82
+      translateValue: prevState.translateValue + this.context.width * 0.81
     }));
   };
 
@@ -54,7 +53,7 @@ class Slider extends Component {
 
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex + 1,
-      translateValue: prevState.translateValue + -this.context.width * 0.82
+      translateValue: prevState.translateValue + -this.context.width * 0.81
     }));
   };
 
@@ -95,7 +94,7 @@ class Slider extends Component {
             key={i}
             image={sliderItems[i].images[0]}
             text={sliderItems[i].title}
-            price={sliderItems[i].price}
+            price={sliderItems[i].types[0].price}
             height={slideHeight}
             width={width}
             link={sliderItems[i].product_id}
@@ -103,9 +102,9 @@ class Slider extends Component {
           { i + 1 < sliderItems.length && numItems > 1 ? (
             <Slide
               key={i+1}
-              image={sliderItems[i + 1].images[3]}
+              image={sliderItems[i + 1].images[0]}
               text={sliderItems[i + 1].title}
-              price={sliderItems[i + 1].price}
+              price={sliderItems[i + 1].types[0].price}
               height={slideHeight}
               width={width}
               link={sliderItems[i + 1].product_id}
@@ -114,9 +113,9 @@ class Slider extends Component {
           { i + 2 < sliderItems.length && numItems > 2 ? (
             <Slide
               key={i+2}
-              image={sliderItems[i + 2].images[1]}
+              image={sliderItems[i + 2].images[0]}
               text={sliderItems[i + 2].title}
-              price={sliderItems[i + 2].price}
+              price={sliderItems[i + 2].types[0].price}
               height={slideHeight}
               width={width}
               link={sliderItems[i + 2].product_id}

@@ -11,7 +11,10 @@
     justify-content: center;
     padding: 3% 0;
     margin-left: 10%;
+    margin-bottom: 1%;
     border-bottom: 2px solid;
+    // background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 
     &:last-of-type {
       border-bottom: none;
@@ -19,9 +22,8 @@
 
     &:hover {
       transition: transform ease-out 0.1s;
-      transform: scale(1.007);
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
+      transform: scale(1.004);
+      background-color: rgba(255, 255, 255, 0.3);
     }
 
     .cart-item--remove-btn {
@@ -43,6 +45,7 @@
       width: 28vw;
       border-radius: 12px;
       margin-left: 5%;
+      object-fit: cover;
     }
 
     @media screen and (min-width: 1000px) {

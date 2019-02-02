@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import GalleryScroller from "../GalleryScroller/GalleryScroller";
 import { ReactComponent as OlyveIcon } from "../../images/OlyveIcon.svg";
-import Context from "../../Context";
 import "./desktopStyles.scss";
 
 class NavBar extends Component {
@@ -18,8 +17,8 @@ class NavBar extends Component {
       <nav
         className="navbar"
         style={{
-          height: this.context.height,
-          width: this.context.width * 0.18
+          height: this.props.height,
+          width: this.props.width * 0.18
         }}
       >
         <div className="navbar-wrapper">
@@ -29,12 +28,11 @@ class NavBar extends Component {
               <div className="navbar--home">Olyve Art</div>
             </div>
           </Link>
-          <GalleryScroller />
+          <GalleryScroller galleryItems={this.props.galleryItems} height={this.props.height}/>
         </div>
       </nav>
     );
   }
 }
-NavBar.contextType = Context;
 
 export default NavBar;

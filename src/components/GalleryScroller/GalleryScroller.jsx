@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Context from "../../Context";
 import ScrollerItem from "../ScrollerItem/ScollerItem";
 import "./styles.scss";
 
@@ -7,7 +6,7 @@ class GalleryScroller extends Component {
   generateItems = () => {
     const backgroundColors = ["FCFFB3", "8FD7E1", "AAFFE7", "FFC95F"];
     let index = 0;
-    let { galleryItems } = this.context;
+    let { galleryItems } = this.props;
 
     if (galleryItems.length > 0) {
       galleryItems = galleryItems.map((item, i) => {
@@ -15,9 +14,7 @@ class GalleryScroller extends Component {
         if (index === backgroundColors.length - 1) index = 0;
         index++;
 
-        const printItems = item.types.filter(
-          itemType => itemType.type === "Print"
-        );
+        const printItems = item.types.filter(itemType => itemType.type === "Print");
         if (printItems.length > 0) {
           item.price = printItems[0].price;
         } else {
@@ -25,12 +22,7 @@ class GalleryScroller extends Component {
         }
 
         return (
-          <ScrollerItem
-            key={i}
-            item={item}
-            color={color}
-            className="scroller-item"
-          />
+          <ScrollerItem key={i} item={item} color={color} className="scroller-item" />
         );
       });
 
@@ -42,15 +34,15 @@ class GalleryScroller extends Component {
 
   render() {
     const galleryItems = this.generateItems();
+    
     return (
       <div style={{ overflow: "hidden" /* needed to hide scroll bar */ }}>
-        <div className="scroller" style={{ height: this.context.height - 85 }}>
+        <div className="scroller" style={{ height: this.props.height - 85 }}>
           {galleryItems}
         </div>
       </div>
     );
   }
 }
-GalleryScroller.contextType = Context;
 
 export default GalleryScroller;

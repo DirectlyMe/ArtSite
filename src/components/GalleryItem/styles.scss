@@ -1,32 +1,43 @@
 @import "../../style-guide";
 
 @media screen and (max-width: 799px) {
-    .GalleryItem {
+    .gallery-item {
         width: 100%;
         height: 50vh;
         z-index: 1;
         margin-bottom: 5%;
     }
 
-    .GalleryItem img {
+    .gallery-item img {
         width: 100%;
-        height: 80%;
+        height: 90%;
+        object-fit: cover;
     }
 
-    .GalleryTitle {
-        font-family: $font-primary;
-        font-size: $font-size--medium;
-        text-align: center;
-        font-weight: 500;
-        padding-top: 10px;
-        padding-bottom: 5px;
+    .gallery-item--info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0px 12%;
+
+        .gallery-item--title {
+            font-family: $font-primary;
+            font-size: $font-size--medium;
+            text-align: center;
+            font-weight: 500;
+            padding-top: 10px;
+            padding-bottom: 5px;
+        }
+        
+        .gallery-item--price {
+            font-family: $font-secondary;
+            font-size: $font-size--small;
+            text-align: center;
+            padding: 10px
+        }
     }
-    
-    .GalleryDescription {
-        font-size: $font-size--smallest;
-        text-align: center;
-        padding: 10px
-    }
+
 }
 
 .ProductLink {

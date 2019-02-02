@@ -29,7 +29,7 @@ class GalleryItemsContainer extends Component {
           key={item.product_id}
           productId={item.product_id}
           galleryImage={item.images[0]}
-          description={item.description}
+          price={item.types[0].price}
           title={item.title}
         />
       ));

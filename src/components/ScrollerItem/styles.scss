@@ -4,20 +4,21 @@
   cursor: pointer;
 
   img {
-    height: 22vh;
+    height: 24vh;
     border-radius: 10px;
     box-shadow: 2px 2px 3px rgba(0,0,0,.5);
+    object-fit: cover;
   } 
 
   @media screen and (max-width: 1400px) {
     img {
-      height: 20vh;
+      height: 22vh;
     }
   }
 
   @media screen and (max-width: 1199px) {
     img {
-      height: 12vh;
+      height: 18vh;
     }
   }
 

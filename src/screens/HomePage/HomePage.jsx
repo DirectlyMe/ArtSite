@@ -35,7 +35,7 @@ class HomePage extends Component {
             }}
             className="home-content"
           >
-            <PageHeading text="Featured" size={48} marginTop={30} />
+            <PageHeading text="Featured" size={48} marginTop={60} />
             <Slider />
             <PageHeading text="About Me" size={35} marginTop={45} />
             <div className="about-me-wrapper">

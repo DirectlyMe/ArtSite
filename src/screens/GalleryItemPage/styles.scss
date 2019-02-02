@@ -1,140 +1,153 @@
 @import "../../style-guide";
 
 @media screen and (max-width: 899px) {
-  .gallery-item--description {
-    font-family: $font-secondary;
-    font-size: $font-size--smallest;
-
-    .gallery-item--description-list {
-      list-style: none;
-      margin: 0;
-      padding-left: 30px;
-
-      li {
-        padding: 8px;
-      }
+    .gallery-item--image {
+        width: 100%;
+        height: auto;
+        max-height: 55vh;
+        object-fit: cover;
     }
-  }
+
+    .gallery-item--description {
+        font-family: $font-secondary;
+        font-size: $font-size--smallest;
+
+        .gallery-item--description-list {
+            list-style: none;
+            margin: 0;
+            padding-left: 30px;
+
+            li {
+                padding: 8px;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 900px) {
-  .gallery-item-screen-desktop {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    margin-left: 18%;
-  }
-
-  .gallery-item--image {
-    border-radius: 10px;
-    height: 40vh;
-    width: 75%;
-    margin: 10px;
-
-    &:first-of-type {
-      margin-top: 25px;
+    .gallery-item-screen-desktop {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        margin-left: 18%;
     }
 
-    &:last-of-type {
-      margin-bottom: 5%;
+    .gallery-item--image {
+        border-radius: 10px;
+        height: 40vh;
+        width: 75%;
+        margin: 10px;
+
+        &:first-of-type {
+            margin-top: 25px;
+        }
     }
-  }
 
-  .gallery-item--description {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    font-size: $font-size--small;
-    font-weight: 500;
-    margin: 20px;
-  }
+    .gallery-item--description {
+        display: flex;
+        flex-direction: row;
+        font-size: $font-size--small;
+        font-weight: 500;
+        margin: 20px;
 
-  .gallery-item--price {
-    font-size: $font-size--small;
-  }
+        div {
+            width: calc((50% / 3) - 20px);
+        }
+    }
 
-  .content:before {
-    content: "";
-    position: fixed;
-    left: 18%;
-    right: 0;
-    z-index: -1;
+    .gallery-item--price {
+        font-size: $font-size--small;
+    }
 
-    display: block;
-    background-image: url("https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80");
-    background-size: cover;
-    opacity: 0.7;
-    width: 100%;
-    height: 100%;
+    .content {
+        margin-bottom: 10%;
+    }
 
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-  }
+    .content:before {
+        content: "";
+        position: fixed;
+        left: 18%;
+        right: 0;
+        z-index: -1;
+
+        display: block;
+        background-image: url("https://images.unsplash.com/photo-1547959121-f0f22224ffb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80");
+        background-size: cover;
+        opacity: 0.7;
+        width: 100%;
+        height: 100%;
+
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+    }
 }
 
 @media screen and (min-width: 1200px) {
-  .gallery-item-screen-desktop {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    margin-left: 18%;
-  }
-
-  .gallery-item--image {
-    border-radius: 10px;
-    height: 70vh;
-    width: 75%;
-    margin: 10px;
-
-    &:first-of-type {
-      margin-top: 25px;
+    .gallery-item-screen-desktop {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        margin-left: 18%;
     }
 
-    &:last-of-type {
-      margin-bottom: 5%;
+    .gallery-item--image {
+        border-radius: 10px;
+        height: auto;
+        max-height: 600px;
+        width: auto;
+        max-width: 80%;
+        margin: 10px;
+        margin-bottom: 25px;
+
+        &:first-of-type {
+            margin-top: 25px;
+        }
     }
-  }
 
-  .gallery-item--description {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    font-size: $font-size--small;
-    font-weight: 500;
-    margin: 20px;
-  }
+    .gallery-item--description {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        font-size: $font-size--small;
+        font-weight: 500;
+        margin: 20px 0px;
+    }
 
-  .gallery-item--price {
-    font-size: $font-size--small;
-  }
+    .gallery-item--price {
+        font-size: $font-size--small;
+    }
 
-  .content:before {
-    content: "";
-    position: fixed;
-    left: 18%;
-    right: 0;
-    z-index: -1;
+    .content {
+        margin-bottom: 10%;
+    }
 
-    display: block;
-    background-image: url("https://images.unsplash.com/photo-1543098052-46a1387df8f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=169eed0f9b879b7a5b36b69e41e8afcc&auto=format&fit=crop&w=1350&q=80");
-    background-size: cover;
-    opacity: 0.7;
-    width: 100%;
-    height: 100%;
+    .content:before {
+        content: "";
+        position: fixed;
+        left: 18%;
+        right: 0;
+        z-index: -1;
 
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-  }
+        display: block;
+        background-image: url("https://images.unsplash.com/photo-1547959121-f0f22224ffb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80");
+        background-size: cover;
+        opacity: 0.8;
+        width: 100%;
+        height: 100%;
+
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);
+    }
 }

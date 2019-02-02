@@ -16,11 +16,13 @@ class CartContainer extends Component {
   }
 
   componentDidMount = async () => {
-    this.calcPrice();
+    // if (this.context.cartItems !== undefined && this.context.cartItems.length > 0) {
+      this.calcPrice();
+    // }
   };
 
-  removeItem = async (id, type) => {
-    await removeFromCart(id, type);
+  removeItem = async (id, quantity, type) => {
+    await removeFromCart(id, quantity, type);
     this.calcPrice();
   };
 
@@ -33,7 +35,7 @@ class CartContainer extends Component {
   };
 
   checkoutOrder = () => {
-    if (!window.PaymentRequest || this.state.total === 0) return;
+    // if (!window.PaymentRequest || this.state.total === 0) return;
 
     const payments = this.context.cartItems.map(item => {
       return {

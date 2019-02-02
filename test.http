@@ -1,3 +1,6 @@
 GET http://localhost:8080/gallery/get-gallery
 ###
+
+GET http://localhost:80/gallery/get-featured
+###
 POST http://localhost:8080/cart/add-item/12312314

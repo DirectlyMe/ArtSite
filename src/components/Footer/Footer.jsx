@@ -7,7 +7,7 @@ import "./styles.scss";
 const Footer = ({ width, position }) => {
   return (
     <div className="footer" style={{ width: width, position: position }}>
-      <div className={classnames("footer-element", "footer-tag")}>@2018 Kelsey Williams</div>
+      <div className={classnames("footer-element", "footer-tag")}>@2019 Kelsey Williams</div>
       <div>
         <div className="footer-element">
           <IconButton iconName={faInstagram} iconClass="InstagramIcon" />

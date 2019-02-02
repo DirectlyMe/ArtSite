@@ -2,138 +2,151 @@ import React, { Component, lazy, Suspense } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faBars,
-  faCamera,
-  faShoppingCart,
-  faUndo,
-  faSearch,
-  faPlus,
-  faMinus,
-  faAngleDown
+    faBars,
+    faCamera,
+    faShoppingCart,
+    faUndo,
+    faSearch,
+    faPlus,
+    faMinus,
+    faAngleDown
 } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer } from "react-toastify";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
-import LoadingSpinner from "./components/LoadingSpinner";
 import Context from "./Context";
 import HomePage from "./screens/HomePage/HomePage";
-import CartContainer from "./containers/CartContainer";
-import { getGalleryItems } from "./api/GalleryCalls";
-import { getCart } from "./api/CartCalls";
-import "./App.scss";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
+import LoadingSpinner from "./components/LoadingSpinner";
+import { getGalleryItems, getFeaturedItems } from "./api/GalleryCalls";
+import { getCart } from "./api/CartCalls";
 import "react-toastify/dist/ReactToastify.min.css";
+import "./App.scss";
 
 const GalleryPage = lazy(() => import("./screens/GalleryPage/GalleryPage"));
-const GalleryItemContainer = lazy(() =>
-  import("./containers/GalleryItemContainer")
-);
+const GalleryItemContainer = lazy(() => import("./containers/GalleryItemContainer"));
+const PaymentFormContainer = lazy(() => import("./containers/PaymentFormContainer"));
+const CartContainer = lazy(() => import("./containers/CartContainer"));
 
 library.add(
-  faBars,
-  faCamera,
-  faShoppingCart,
-  faInstagram,
-  faCircle,
-  faUndo,
-  faSearch,
-  faPlus,
-  faMinus,
-  faAngleDown
+    faBars,
+    faCamera,
+    faShoppingCart,
+    faInstagram,
+    faCircle,
+    faUndo,
+    faSearch,
+    faPlus,
+    faMinus,
+    faAngleDown
 );
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      galleryItems: [],
-      cartItems: [],
-      cartTotal: 0,
-      currentPage: "Home",
-      height: 0,
-      width: 0,
-      setCurrentPage: this.setCurrentPage,
-      updateCart: this.updateCart
-    };
-  }
-
-  componentDidMount = async () => {
-    this.updateWindowSize();
-    window.addEventListener("resize", this.updateWindowSize);
-
-    let items = await getGalleryItems();
-
-    if (items.length > 0) {
-      items = this.sortAlphabetically(items); 
-      
-      this.setState({ galleryItems: items });
-      this.updateCart();
-    } else {
-      console.log("couldn't get gallery items");
+    constructor() {
+        super();
+        this.state = {
+            galleryItems: [],
+            featuredItems: [],
+            cartItems: [],
+            userInfo: {},
+            cartTotal: 0,
+            height: 0,
+            width: 0,
+            updateCart: this.updateCart,
+            updateUserInfo: this.updateUserInfo
+        };
     }
-  };
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowSize);
-    clearInterval(this.interval);
-  }
+    componentDidMount = async () => {
+        this.updateWindowSize();
+        window.addEventListener("resize", this.updateWindowSize);
 
-  updateWindowSize = () => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    this.setState({ width, height });
-  };
+        // get application data
 
-  setCurrentPage = page => {
-    this.setState({ currentPage: page });
-  };
+        let galleryItems = await getGalleryItems();
 
-  updateCart = async () => {
-    let cart = await getCart();
-    cart.length > 0
-      ? (cart = this.sortAlphabetically(cart))
-      : console.log("cart empty");
+        if (galleryItems.length > 0) {
+            const featuredItems = await getFeaturedItems();
 
-    this.setState({ cartItems: cart });
-  };
+            galleryItems = this.sortAlphabetically(galleryItems);
 
-  sortAlphabetically = arr => {
-    arr = arr.sort((a, b) => {
-      const aName = a.title.toUpperCase();
-      const bName = b.title.toUpperCase();
-      if (aName < bName) {
-        return -1;
-      } else if (aName > bName) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+            this.setState({ galleryItems, featuredItems });
+            this.updateCart();
+        } else {
+            console.log("couldn't get gallery items");
+        }
+    };
 
-    return arr;
-  };
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateWindowSize);
+        clearInterval(this.interval);
+    }
 
-  render() {
-    return (
-      <Context.Provider value={this.state}>
-        <div className="app">
-          <NavBarContainer />
-          <Route exact path="/" component={HomePage} />
-          <Suspense fallback={<LoadingSpinner />}>
-            <Route
-              path="/gallery"
-              render={() =>
-                window.innerWidth > 900 ? <Redirect to="/" /> : <GalleryPage />
-              }
-            />
-            <Route path="/gallery-item/:id" component={GalleryItemContainer} />
-          </Suspense>
-          <Route path="/cart" component={CartContainer} />
-        </div>
-        <ToastContainer />
-      </Context.Provider>
-    );
-  }
+    updateWindowSize = () => {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        this.setState({ width, height });
+    };
+
+    updateCart = async () => {
+        let cart = await getCart();
+        cart.length > 0
+            ? (cart = this.sortAlphabetically(cart))
+            : console.log("cart empty");
+
+        this.setState({ cartItems: cart });
+    };
+
+    updateUserInfo = (userInfo) => {
+        console.log(userInfo);
+        this.setState({ userInfo });
+    };
+
+    sortAlphabetically = arr => {
+        arr = arr.sort((a, b) => {
+            const aName = a.title.toUpperCase();
+            const bName = b.title.toUpperCase();
+            if (aName < bName) {
+                return -1;
+            } else if (aName > bName) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        return arr;
+    };
+
+    render() {
+        return (
+            <Context.Provider value={this.state}>
+                <div className="app">
+                    <NavBarContainer />
+                    <Route exact path="/" component={HomePage} />
+                    <Suspense fallback={<LoadingSpinner />}>
+                        <Route
+                            path="/gallery"
+                            render={() =>
+                                window.innerWidth > 900 ? (
+                                    <Redirect to="/" />
+                                ) : (
+                                    <GalleryPage />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/gallery-item/:id"
+                            component={GalleryItemContainer}
+                        />
+                        <Route path="/checkout" component={PaymentFormContainer} />
+                        <Route path="/cart" component={CartContainer} />
+                    </Suspense>
+                </div>
+                <ToastContainer />
+            </Context.Provider>
+        );
+    }
 }
 
 export default App;

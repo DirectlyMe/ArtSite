@@ -53,4 +53,10 @@
       width: 80px;
     }
   }
+
+  @media screen and (max-width: 1200px) {
+    .page-selector {
+      font-size: 30px;
+    }
+  }
 }

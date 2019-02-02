@@ -3,19 +3,12 @@ import Context from "../Context";
 import Slider from "../components/SlideShow/SlideShow";
 
 class SlideShowContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slideShowItems: []
-    };
-  }
-
   render() {
     if (
-      this.state.slideShowItems !== undefined &&
-      this.state.slideShowItems !== null
+      this.context.featuredItems !== undefined &&
+      this.context.featuredItems !== null
     ) {
-      return <Slider products={this.context.galleryItems} />;
+      return <Slider products={this.context.featuredItems} />;
     } else {
       return <div>Couldn't get Images</div>;
     }
