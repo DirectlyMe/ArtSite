@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import ScrollerItem from "../ScrollerItem/ScollerItem";
 import "./styles.scss";
 
-class GalleryScroller extends Component {
-  generateItems = () => {
+const GalleryScroller = ({ galleryItems, height }) => {
+  function generateItems() {
     const backgroundColors = ["FCFFB3", "8FD7E1", "AAFFE7", "FFC95F"];
     let index = 0;
-    let { galleryItems } = this.props;
 
     if (galleryItems.length > 0) {
       galleryItems = galleryItems.map((item, i) => {
@@ -32,17 +31,15 @@ class GalleryScroller extends Component {
     return [];
   };
 
-  render() {
-    const galleryItems = this.generateItems();
+  const listItems = generateItems();
     
-    return (
-      <div style={{ overflow: "hidden" /* needed to hide scroll bar */ }}>
-        <div className="scroller" style={{ height: this.props.height - 85 }}>
-          {galleryItems}
-        </div>
+  return (
+    <div style={{ overflow: "hidden" /* needed to hide scroll bar */ }}>
+      <div className="scroller" style={{ height: height - 85 }}>
+        {listItems}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default GalleryScroller;
