@@ -4,7 +4,7 @@
     position: fixed;
     top: 20px;
     right: 150px;
-    width: 200px;
+    width: inherit;
     z-index: 1000;
 
     .search-bar--input {
@@ -55,5 +55,3 @@
         }
     }
 }
-
-

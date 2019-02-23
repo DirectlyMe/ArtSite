@@ -1,4 +1,4 @@
-import { serverConfig as config } from "../config/serverConfig";
+ import { serverConfig as config } from "../config/serverConfig";
 
 export async function postTransactionInfo(userInfo) {
     try {

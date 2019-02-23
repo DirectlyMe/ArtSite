@@ -38,6 +38,24 @@
         }
     }
 
+    .search-icon {
+        z-index: 999;
+        cursor: pointer;
+        font-size: 24px;
+        margin-right: 8px;
+        &:hover {
+            color: #eeeeee;
+        }
+    }
+
+    .navbar--search-bar {
+        width: 80%;
+        display: block;
+        z-index: 10000;
+        top: 500px;
+        right: 500px;
+        cursor: pointer;
+    }
 }
 
 
