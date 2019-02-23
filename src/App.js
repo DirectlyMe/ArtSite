@@ -1,5 +1,5 @@
 import React, { Component, lazy, Suspense } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
     faBars,
@@ -24,8 +24,12 @@ import "react-toastify/dist/ReactToastify.min.css";
 import "./App.scss";
 
 const GalleryPage = lazy(() => import("./screens/GalleryPage/GalleryPage"));
-const GalleryItemContainer = lazy(() => import("./containers/GalleryItemContainer"));
-const PaymentFormContainer = lazy(() => import("./containers/PaymentFormContainer"));
+const GalleryItemContainer = lazy(() =>
+    import("./containers/GalleryItemContainer")
+);
+const PaymentFormContainer = lazy(() =>
+    import("./containers/PaymentFormContainer")
+);
 const CartContainer = lazy(() => import("./containers/CartContainer"));
 
 library.add(
@@ -53,7 +57,8 @@ class App extends Component {
             height: 0,
             width: 0,
             updateCart: this.updateCart,
-            updateUserInfo: this.updateUserInfo
+            updateUserInfo: this.updateUserInfo,
+            updateCartTotal: this.updateCartTotal
         };
     }
 
@@ -97,10 +102,14 @@ class App extends Component {
         this.setState({ cartItems: cart });
     };
 
-    updateUserInfo = (userInfo) => {
+    updateUserInfo = userInfo => {
         console.log(userInfo);
         this.setState({ userInfo });
     };
+
+    updateCartTotal = total => {
+        this.setState({ cartTotal: total });
+    }
 
     sortAlphabetically = arr => {
         arr = arr.sort((a, b) => {
@@ -123,25 +132,30 @@ class App extends Component {
             <Context.Provider value={this.state}>
                 <div className="app">
                     <NavBarContainer />
-                    <Route exact path="/" component={HomePage} />
-                    <Suspense fallback={<LoadingSpinner />}>
-                        <Route
-                            path="/gallery"
-                            render={() =>
-                                window.innerWidth > 900 ? (
-                                    <Redirect to="/" />
-                                ) : (
-                                    <GalleryPage />
-                                )
-                            }
-                        />
-                        <Route
-                            path="/gallery-item/:id"
-                            component={GalleryItemContainer}
-                        />
-                        <Route path="/checkout" component={PaymentFormContainer} />
-                        <Route path="/cart" component={CartContainer} />
-                    </Suspense>
+                    <Switch>
+                        <Route exact path="/" component={HomePage} />
+                        <Suspense fallback={<LoadingSpinner />}>
+                            <Route
+                                path="/gallery"
+                                render={() =>
+                                    window.innerWidth > 900 ? (
+                                        <Redirect to="/" />
+                                    ) : (
+                                        <GalleryPage />
+                                    )
+                                }
+                            />
+                            <Route
+                                path="/gallery-item/:id"
+                                component={GalleryItemContainer}
+                            />
+                            <Route
+                                path="/checkout"
+                                component={PaymentFormContainer}
+                            />
+                            <Route path="/cart" component={CartContainer} />
+                        </Suspense>
+                    </Switch>
                 </div>
                 <ToastContainer />
             </Context.Provider>

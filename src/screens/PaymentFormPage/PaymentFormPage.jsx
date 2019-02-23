@@ -30,16 +30,10 @@ class PaymentFormPage extends Component {
 
     updateUserInfo = event => {
         event.preventDefault();
-       
+
         const userInfo = {
             ...this.state
         };
-
-        for (let info in userInfo) {
-            console.log(info);
-        }
-
-        alert("User info updated" + userInfo);
 
         this.props.postTransactionFunc(userInfo);
     };
@@ -49,14 +43,15 @@ class PaymentFormPage extends Component {
         return (
             <div>
                 <MediaQuery query="(min-width: 900px)">
-                    <div className="checkout-page" style={{ width: width * 0.8 }}>
+                    <div
+                        className="checkout-page"
+                        style={{ width: width * 0.8 }}>
                         <PageHeading text="Checkout" size={48} marginTop={60} />
                         <div className="checkout--payment-forms---wrapper">
                             <h4 className="contact-header">Contact Info</h4>
                             <form
                                 className="checkout--payment-forms"
-                                onSubmit={this.updateUserInfo}
-                            >
+                                onSubmit={this.updateUserInfo}>
                                 <div className="checkout--payment-forms---contact">
                                     <label className="checkout--payment-forms---header">
                                         Email
@@ -81,7 +76,9 @@ class PaymentFormPage extends Component {
                                         />
                                     </label>
                                 </div>
-                                <h4 className="contact-header">Shipping Info</h4>
+                                <h4 className="contact-header">
+                                    Shipping Info
+                                </h4>
                                 <div className="checkout--payment-forms---shipping">
                                     <label className="checkout--payment-forms---header">
                                         First Name
@@ -153,8 +150,7 @@ class PaymentFormPage extends Component {
                                 <div className="checkout--payment-forms---payment-info">
                                     <label
                                         htmlFor="frmNameCC"
-                                        className="checkout--payment-forms---header"
-                                    >
+                                        className="checkout--payment-forms---header">
                                         Name on card
                                         <br />
                                         <input
@@ -169,8 +165,7 @@ class PaymentFormPage extends Component {
                                     </label>
                                     <label
                                         htmlFor="frmCCNum"
-                                        className="checkout--payment-forms---header"
-                                    >
+                                        className="checkout--payment-forms---header">
                                         Card Number
                                         <br />
                                         <input
@@ -187,8 +182,7 @@ class PaymentFormPage extends Component {
                                         className={classnames(
                                             "checkout--payment-forms---header",
                                             "CVC-number"
-                                        )}
-                                    >
+                                        )}>
                                         CVC
                                         <br />
                                         <input

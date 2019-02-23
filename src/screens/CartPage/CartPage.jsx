@@ -9,15 +9,18 @@ import "./styles.scss";
 
 class CartPage extends Component {
     render() {
-        const { width } = this.context;
+        const { width, cartItems } = this.context;
+        let cartEntries = [];
 
-        const cartItems = this.context.cartItems.map((item, index) => (
-            <CartItem
-                key={index}
-                cartItem={item}
-                removeItemFunc={this.props.removeItemFunc}
-            />
-        ));
+        if (cartItems.length > 0) {
+            cartEntries = cartItems.map((item, index) => (
+                <CartItem
+                    key={index}
+                    cartItem={item}
+                    removeItemFunc={this.props.removeItemFunc}
+                />
+            ));
+        }
 
         return (
             <div>
@@ -28,9 +31,9 @@ class CartPage extends Component {
                     >
                         <PageHeading text="Cart" size={48} marginTop={60} />
                         <div className="cart-page--content">
-                            <div className="cart-page--cart-items">{cartItems}</div>
+                            <div className="cart-page--cart-items">{cartEntries}</div>
                             <div className="cart-page--total-price">
-                                Total: ${this.props.total}
+                                Total: ${this.context.total}
                             </div>
                             <div className="cart-page--checkout">
                                 <button
@@ -58,9 +61,9 @@ class CartPage extends Component {
                 <MediaQuery query="(max-width: 899px)">
                     <div className="cart-page">
                         <PageHeading text="Cart" size={34} marginTop={80} />
-                        <div>{cartItems}</div>
+                        <div>{cartEntries}</div>
                         <div className="cart-page--total-price">
-                            Total: ${this.props.total}
+                            Total: ${this.context.total}
                         </div>
                         <div className="cart-page--checkout">
                             <button

@@ -4,5 +4,6 @@
     "swipeable",
     "toastify"
   ],
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "python.linting.pylintEnabled": false
 }

@@ -8,7 +8,6 @@ class CartContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            total: 0,
             calcPriceFunc: this.calcPrice,
             removeItemFunc: this.removeItem,
             checkoutOrderFunc: this.checkoutOrder
@@ -31,7 +30,7 @@ class CartContainer extends Component {
 
         await this.context.updateCart();
         this.context.cartItems.map(item => (total += item.price * item.quantity));
-        this.setState({ total });
+        this.context.updateCartTotal(total);
     };
 
     checkoutOrder = () => {
