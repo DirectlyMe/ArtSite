@@ -57,7 +57,11 @@ class NavBarContainer extends Component {
             <div className="nav-width">
                 <MediaQuery query="(max-width: 899px)">
                     <div style={{ width: "100%", zIndex: 999 }}>
-                        <AppBar toggleDrawer={this.openDrawer} />
+                        <AppBar
+                            toggleDrawerFunc={this.openDrawer}
+                            isSearchExpanded={this.state.isSearchExpanded}
+                            searchBarToggleFunc={this.searchBarToggle}
+                        />
                         <Drawer
                             isDrawerOpen={this.state.isDrawerOpen}
                             ref={this.drawer}
