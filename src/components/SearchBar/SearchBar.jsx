@@ -9,29 +9,26 @@ class SearchBar extends Component {
 
         this.state = {
             currentText: "",
-            fullList: [],
             filteredList: [],
         };
 
         this.searchBar = React.createRef();
+        this.input = React.createRef();
     }
 
     componentDidMount() {
-        const { galleryItems } = this.props;
+        if (this.input.current && this.searchBar.current) {
+            this.input.current.focus();
 
-        this.setState({ fullList: galleryItems });
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps !== this.props) {
+            this.setIsActive();
         }
     }
 
-    handleChange = event => {
+    handleSearchChange = event => {
         const text = event.target.value.toLowerCase();
 
         if (text !== "") {
-            let filteredList = this.state.fullList.filter(item => {
+            let filteredList = this.props.galleryItems.filter(item => {
                 const lc = item.title.toLowerCase();
 
                 if (lc.includes(text)) {
@@ -48,18 +45,19 @@ class SearchBar extends Component {
     };
 
     setIsActive = (event) => {
-        event.preventDefault();
         if (!this.searchBar.current) return;
 
         document.addEventListener("click", this.closeMenu);
     }
 
     closeMenu = (event) => {
-        if (!this.searchBar.current) return; 
+        if (!this.searchBar.current || !this.input.current) return; 
 
         if (!this.searchBar.current.contains(event.target)) {
             this.props.searchBarToggleFunc();
-            document.removeEventListener("click", this.closeMenu);
+            setTimeout(() => {
+                document.removeEventListener("click", this.closeMenu);
+            }, 0);
         }
     }
 
@@ -75,14 +73,14 @@ class SearchBar extends Component {
         ));
 
         return (
-            <div className="search-bar" ref={this.searchBar}>
+            <div className="search-bar" ref={this.searchBar} onClick={this.setIsActive}>
                 <input
                     type="text"
                     className="search-bar--input"
                     placeholder="Search..."
                     value={this.state.currentText}
-                    onClick={this.setIsActive}
-                    onChange={this.handleChange}
+                    onChange={this.handleSearchChange}
+                    ref={this.input}
                 />
                 {this.filteredList !== "" ? (
                     <div className="search-bar--results-menu">

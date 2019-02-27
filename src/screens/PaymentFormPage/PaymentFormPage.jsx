@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import MediaQuery from "react-responsive";
 import classnames from "classnames";
 import Context from "../../Context";
@@ -210,6 +211,7 @@ class PaymentFormPage extends Component {
                                 </div>
                                 <input type="submit" value="Submit" />
                             </form>
+                            <CheckoutForm />
                         </div>
                     </div>
                 </MediaQuery>

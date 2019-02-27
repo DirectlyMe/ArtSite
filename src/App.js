@@ -14,10 +14,10 @@ import {
 import { ToastContainer } from "react-toastify";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
+import {Elements, StripeProvider} from 'react-stripe-elements';
 import Context from "./Context";
 import HomePage from "./screens/HomePage/HomePage";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
-import LoadingSpinner from "./components/LoadingSpinner";
 import { getGalleryItems, getFeaturedItems } from "./api/GalleryCalls";
 import { getCart } from "./api/CartCalls";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -134,7 +134,7 @@ class App extends Component {
                     <NavBarContainer />
                     <Switch>
                         <Route exact path="/" component={HomePage} />
-                        <Suspense fallback={<LoadingSpinner />}>
+                        <Suspense fallback={ <div>loading...</div> }>
                             <Route
                                 path="/gallery"
                                 render={() =>
@@ -149,10 +149,14 @@ class App extends Component {
                                 path="/gallery-item/:id"
                                 component={GalleryItemContainer}
                             />
-                            <Route
-                                path="/checkout"
-                                component={PaymentFormContainer}
-                            />
+                            <StripeProvider apiKey="pk_test_T0QmVwOvjHsnfM3pP4lrjD6J">
+                                <Elements>
+                                    <Route
+                                        path="/checkout"
+                                        component={PaymentFormContainer}
+                                    />                                    
+                                </Elements>
+                            </StripeProvider>
                             <Route path="/cart" component={CartContainer} />
                         </Suspense>
                     </Switch>
