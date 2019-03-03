@@ -9,7 +9,7 @@ import "./styles.scss";
 
 class CartPage extends Component {
     render() {
-        const { width, cartItems } = this.context;
+        const { width, cartItems, cartTotal } = this.context;
         let cartEntries = [];
 
         if (cartItems.length > 0) {
@@ -33,25 +33,11 @@ class CartPage extends Component {
                         <div className="cart-page--content">
                             <div className="cart-page--cart-items">{cartEntries}</div>
                             <div className="cart-page--total-price">
-                                Total: ${this.context.total}
+                                Total: ${cartTotal}
                             </div>
                             <div className="cart-page--checkout">
-                                <button
-                                    className="cart-page--checkout---btn"
-                                    onClick={this.props.checkoutOrderFunc}
-                                >
+                                <Link className="cart-page--checkout---btn" to="/checkout">
                                     Checkout
-                                </button>
-                                {window.ApplePaySession ? (
-                                    <button
-                                        className="cart-page--checkout---apple-pay"
-                                        onClick={this.props.checkoutOrderFunc}
-                                    >
-                                        {" "}
-                                    </button>
-                                ) : null}
-                                <Link className="cart-page--checkout-btn" to="/checkout">
-                                    Go to PaymentPage
                                 </Link>
                             </div>
                         </div>
@@ -63,7 +49,7 @@ class CartPage extends Component {
                         <PageHeading text="Cart" size={34} marginTop={80} />
                         <div>{cartEntries}</div>
                         <div className="cart-page--total-price">
-                            Total: ${this.context.total}
+                            Total: ${cartTotal}
                         </div>
                         <div className="cart-page--checkout">
                             <button

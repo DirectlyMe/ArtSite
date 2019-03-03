@@ -15,6 +15,8 @@ class CartContainer extends Component {
     }
 
     componentDidMount = async () => {
+        await this.context.updateCart();
+        
         if (this.context.cartItems !== undefined && this.context.cartItems.length > 0) {
             this.calcPrice();
         }

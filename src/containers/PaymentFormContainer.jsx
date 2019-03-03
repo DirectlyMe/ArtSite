@@ -2,8 +2,17 @@ import React, { Component } from "react";
 import Context from "../Context";
 import { postTransactionInfo } from "../api/TransactionCalls";
 import PaymentFormPage from "../screens/PaymentFormPage/PaymentFormPage";
+import { toast } from "react-toastify";
 
 class PaymentFormContainer extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+
+        };
+    }
+
     postTransaction = async userInfo => {
         const isValid = this.checkUserInfo(userInfo);
         if (isValid) {
@@ -74,7 +83,9 @@ class PaymentFormContainer extends Component {
 
         for (const item of validList) {
             if (item.valid === false) {
-                alert(`Something doesn't look right, please check the ${item.name} field`);
+                toast.error("Sorry something went wrong, try checking the payment information you entered.", {
+                    className: "submit-payment-toast--error",
+                });
                 return false;
             }
         }
