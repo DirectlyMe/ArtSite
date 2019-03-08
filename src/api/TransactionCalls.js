@@ -2,7 +2,7 @@
 
 export async function postTransactionInfo(userInfo) {
     try {
-        const response = fetch(`${config.IP}:${config.PORT}/transaction/post-transaction`, {
+        const response = await fetch(`${config.IP}:${config.PORT}/transaction/post-transaction`, {
             credentials: "include",
             method: "POST",
             mode: "cors",
@@ -12,9 +12,9 @@ export async function postTransactionInfo(userInfo) {
             }
         });
 
-        return response;
+        return await response.json();
     } catch (err) {
         console.log(err);
-        return false;
+        return "Transaction failed";
     }
 }

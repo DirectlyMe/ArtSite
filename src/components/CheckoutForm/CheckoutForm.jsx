@@ -51,8 +51,6 @@ class CheckoutForm extends Component {
                         ...this.state
                     };
 
-                    console.log("transaction posted");
-
                     this.props.postTransactionFunc(userInfo);
             });
         } else {

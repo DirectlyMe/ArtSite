@@ -5,24 +5,26 @@ import PaymentFormPage from "../screens/PaymentFormPage/PaymentFormPage";
 import { toast } from "react-toastify";
 
 class PaymentFormContainer extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-
-        };
-    }
-
     postTransaction = async userInfo => {
         const isValid = this.checkUserInfo(userInfo);
         if (isValid) {
             const transactionInfo = {
                 ...userInfo,
-                amount: this.context.cartTotal
+                amount: this.context.cartTotal,
+                cartItems: this.context.cartItems
             };
 
             const response = await postTransactionInfo(transactionInfo);
-            alert(response);
+
+            if (response.transactionStatus === true) {
+                toast.success(`Payment Received, we'll be emailing a receipt to ${transactionInfo.email}`, {
+                    className: "submit-payment-toast--success"
+                });
+            } else {
+                toast.error("Sorry something went wrong, try checking the payment information you entered.", {
+                    className: "submit-payment-toast--error",
+                });
+            }
         }
     };
 
