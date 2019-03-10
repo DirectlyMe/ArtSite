@@ -25,10 +25,7 @@ class CartPage extends Component {
         return (
             <div>
                 <MediaQuery query="(min-width: 900px)">
-                    <div
-                        className="cart-page"
-                        style={{ width: width * 0.82 }}
-                    >
+                    <div className="cart-page" style={{ width: width * 0.82 }}>
                         <PageHeading text="Cart" size={48} marginTop={60} />
                         <div className="cart-page--content">
                             <div className="cart-page--cart-items">{cartEntries}</div>
@@ -36,7 +33,10 @@ class CartPage extends Component {
                                 Total: ${cartTotal}
                             </div>
                             <div className="cart-page--checkout">
-                                <Link className="cart-page--checkout---btn" to="/checkout">
+                                <Link
+                                    className="cart-page--checkout---btn"
+                                    to="/checkout"
+                                >
                                     Checkout
                                 </Link>
                             </div>
@@ -48,28 +48,11 @@ class CartPage extends Component {
                     <div className="cart-page">
                         <PageHeading text="Cart" size={34} marginTop={80} />
                         <div>{cartEntries}</div>
-                        <div className="cart-page--total-price">
-                            Total: ${cartTotal}
-                        </div>
+                        <div className="cart-page--total-price">Total: ${cartTotal}</div>
                         <div className="cart-page--checkout">
-                            <button
-                                className="cart-page--checkout---btn"
-                                onClick={this.props.checkoutOrderFunc}
-                            >
+                            <Link className="cart-page--checkout---btn" to="/checkout">
                                 Checkout
-                            </button>
-                            {window.ApplePaySession ? (
-                                <button
-                                    className="cart-page--checkout---apple-pay"
-                                    onClick={this.props.checkoutOrderFunc}
-                                >
-                                    {" "}
-                                </button>
-                            ) : null}
-                            <Link
-                                className="cart-page--checkout-btn-form"
-                                to="/checkout"
-                            />
+                            </Link>
                         </div>
                     </div>
                 </MediaQuery>

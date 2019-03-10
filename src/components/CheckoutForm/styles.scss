@@ -1,20 +1,11 @@
 @import "../../style-guide";
 
-.checkout-form {
-    margin: auto;
-    width: 40%;
-
-    .checkout-form--submit {
-        margin-top: 20px;
-    }
-}
-
 .submit-payment-toast--success {
     border-radius: 10px;
     box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
     padding: 10px;
-  }
-  
+}
+
 .submit-payment-toast--error {
     border-radius: 10px;
     box-shadow: 1.5px 2px 3px rgba(0, 0, 0, 0.5);
@@ -22,18 +13,14 @@
 }
 
 .checkout--payment-forms---wrapper {
-    background-color: rgb(255, 255, 255);
-    margin-left: 14%;
     margin-top: 25px;
     margin-bottom: 5%;
     padding-bottom: 2%;
     border-radius: 10px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    width: 72%;
 
     input,
     select {
-        width: 50%;
+        font-size: 12px;
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
@@ -43,35 +30,106 @@
     }
 
     .contact-header {
-        font-size: $font-size--small;
+        font-size: $font-size--smallest;
         font-family: $font-secondary;
         font-weight: 300;
         text-align: center;
     }
+
+    .checkout--payment-forms {
+        .checkout--payment-forms---header {
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .checkout--payment-forms---contact {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            justify-content: center;
+            text-align: center;
+            
+            input,
+            select {
+                font-size: 12px;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+                width: 300px;
+            }
+        }
+        
+        .checkout--payment-forms---shipping {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            text-align: center;
+        }
+    }
+
+    .checkout-form {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        width: 80%;
+
+        .checkout-form--submit {
+            margin-top: 20px;
+        }
+    }
 }
 
-.checkout--payment-forms {
-    .checkout--payment-forms---header {
-        font-size: 20px;
-        font-weight: 300;
-    }
+@media screen and (min-width: 901px) {
+    .checkout--payment-forms---wrapper {
+        background-color: rgb(255, 255, 255);
+        margin-left: 14%;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+        width: 72%;
 
-    .checkout--payment-forms---contact {
-        display: grid;
-        grid-gap: 10px;
-        grid-template-columns: 0.7fr;
-        grid-template-rows: 1fr 1fr;
-        justify-content: center;
-        text-align: left;
-    }
+        input,
+        select {
+            font-size: 14px;
+            width: 300px;
+        }
 
-    .checkout--payment-forms---shipping {
-        display: grid;
-        grid-gap: 10px;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        justify-content: center;
-        text-align: center;
-        margin: 0px 3.7%;
+        .contact-header {
+            font-size: $font-size--small;
+            font-family: $font-secondary;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .checkout--payment-forms {
+            .checkout--payment-forms---header {
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            .checkout--payment-forms---contact {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+                grid-gap: 10px;
+                text-align: center;
+            }
+
+            .checkout--payment-forms---shipping {
+                grid-gap: 10px;
+                margin: 0px 3.7%;
+            }
+        }
+
+        .checkout-form {
+            margin: auto;
+            width: 40%;
+
+            .checkout-form--submit {
+                margin-top: 20px;
+            }
+        }
     }
 }

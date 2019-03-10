@@ -23,7 +23,14 @@ const PaymentFormPage = ({ postTransactionFunc }) => {
                     </div>
                 </MediaQuery>
                 <MediaQuery query="(max-width: 899px)">
-                    <div />
+                <div className="checkout-page">
+                        <PageHeading text="Checkout" size={34} marginTop={80} />
+                        <Elements>
+                            <CheckoutForm
+                                postTransactionFunc={postTransactionFunc}
+                            />
+                        </Elements>
+                    </div>
                 </MediaQuery>
             </div>
         </StripeProvider>

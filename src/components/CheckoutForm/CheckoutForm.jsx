@@ -159,7 +159,7 @@ class CheckoutForm extends Component {
                     </div>
                     <h4 className="contact-header">Payment Info</h4>
                     <div className="checkout-form">
-                        <CardElement />
+                        <CardElement light/>
                         <button className="checkout-form--submit" onClick={this.submit}>
                             Send
                         </button>
