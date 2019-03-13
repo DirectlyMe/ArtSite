@@ -8,7 +8,7 @@ export async function addToCart(id, quantity = 1, type = "") {
     };
 
     try {
-        await fetch(`${config.IP}:${config.PORT}/api/cart/add-item`, {
+        await fetch(`${config.IP}/api/cart/add-item`, {
             credentials: "include",
             method: "POST",
             mode: "cors",
@@ -25,7 +25,7 @@ export async function addToCart(id, quantity = 1, type = "") {
 
 export async function getCart() {
     try {
-        const response = await fetch(`${config.IP}:${config.PORT}/api/cart/get-cart`, {
+        const response = await fetch(`${config.IP}/api/cart/get-cart`, {
             credentials: "include",
             method: "GET",
             mode: "cors"
