@@ -1,5 +1,5 @@
 // export const serverConfig = { IP: "https://cf81929c.ngrok.io", PORT: 80 };
-export const serverConfig = { IP: "http://127.0.0.1", PORT: 3001 };
+export const serverConfig = { IP: "http://localhost", PORT: 8001 };
 
 export const paymentConfig = {
   paymentMethods: [{

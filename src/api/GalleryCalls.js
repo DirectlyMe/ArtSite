@@ -2,7 +2,7 @@ import { serverConfig as config } from "../config/serverConfig";
 
 export async function getGalleryItems() {
     try {
-        const response = await fetch(`${config.IP}:${config.PORT}/gallery/get-gallery`, {
+        const response = await fetch(`${config.IP}:${config.PORT}/api/gallery/get-gallery`, {
             method: "GET",
             mode: "cors",
             credentials: "same-origin"
@@ -15,9 +15,7 @@ export async function getGalleryItems() {
 
 export async function getSingleItem(itemId) {
     try {
-        const response = await fetch(
-            `${config.IP}:${config.PORT}/gallery/getGalleryItem/${itemId}`
-        );
+        const response = await fetch(`${config.IP}:${config.PORT}/api/gallery/getGalleryItem/${itemId}`);
         return await response.json();
     } catch (err) {
         return err;
@@ -26,7 +24,7 @@ export async function getSingleItem(itemId) {
 
 export async function getFeaturedItems() {
     try {
-        const response = await fetch(`${config.IP}:${config.PORT}/gallery/get-featured`, {
+        const response = await fetch(`${config.IP}:${config.PORT}/api/gallery/get-featured`, {
             method: "GET",
             mode: "cors",
             credentials: "same-origin"

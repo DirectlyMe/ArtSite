@@ -25,7 +25,7 @@ class CartPage extends Component {
         return (
             <div>
                 <MediaQuery query="(min-width: 900px)">
-                    <div className="cart-page" style={{ width: width * 0.82 }}>
+                    <div className="cart-page" style={{ width: width * 0.81 }}>
                         <PageHeading text="Cart" size={48} marginTop={60} />
                         <div className="cart-page--content">
                             <div className="cart-page--cart-items">{cartEntries}</div>

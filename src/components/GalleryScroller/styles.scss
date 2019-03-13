@@ -4,11 +4,13 @@
     width: 100%;
     overflow-y: scroll;
     padding-top: 15px;
-    padding-right: 17px;
-    text-align: center;
-    // margin-left: 3%;
+    //margin-left: 15px;
+    align-items: center;
+    // margin-left: 2%;
 
     .scroller-item:last-of-type {
         margin-bottom: 5%;
     }
+
+    &::-webkit-scrollbar { width: 0 !important }
 }
