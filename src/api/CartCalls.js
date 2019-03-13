@@ -44,7 +44,7 @@ export async function removeFromCart(id, quantity, type) {
     };
 
     try {
-        const response = await fetch(`${config.IP}:${config.PORT}/api/cart/remove-item`, {
+        const response = await fetch(`${config.IP}/api/cart/remove-item`, {
             credentials: "include",
             method: "DELETE",
             mode: "cors",

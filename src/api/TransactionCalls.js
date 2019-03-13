@@ -2,7 +2,7 @@ import { serverConfig as config } from "../config/serverConfig";
 
 export async function postTransactionInfo(userInfo) {
     try {
-        const response = await fetch(`${config.IP}:${config.PORT}/api/transaction/post-transaction`, {
+        const response = await fetch(`${config.IP}/api/transaction/post-transaction`, {
             credentials: "include",
             method: "POST",
             mode: "cors",
