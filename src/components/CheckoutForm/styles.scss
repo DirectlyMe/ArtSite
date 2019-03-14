@@ -59,7 +59,7 @@
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 box-sizing: border-box;
-                width: 300px;
+                max-width: 250px;
             }
         }
         
@@ -69,6 +69,12 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto;
             text-align: center;
+            margin: 0 20px;
+
+            input,
+            select { 
+                width: 150px;
+            }
         }
     }
 
@@ -120,6 +126,12 @@
             .checkout--payment-forms---shipping {
                 grid-gap: 10px;
                 margin: 0px 3.7%;
+
+                input,
+                select {
+                    font-size: 14px;
+                    width: 300px;
+                }
             }
         }
 
