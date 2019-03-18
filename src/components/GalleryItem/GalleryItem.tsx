@@ -1,8 +1,15 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
-const GalleryItem = ({ productId, galleryImage, title, price }) => {
+interface IGalleryItem {
+  productId: number,
+  galleryImage: string,
+  title: string,
+  price: number
+}
+
+const GalleryItem: FunctionComponent<IGalleryItem> = ({ productId, galleryImage, title, price }) => {
   return (
     <Link to={`/gallery-item/${productId}`} className="ProductLink">
       <div className="gallery-item">

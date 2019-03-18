@@ -2,15 +2,28 @@ import { serverConfig as config } from "../config/serverConfig";
 
 export async function postTransactionInfo(userInfo) {
     try {
-        const response = await fetch(`${config.IP}/api/transaction/post-transaction`, {
-            credentials: "include",
-            method: "POST",
-            mode: "cors",
-            body: JSON.stringify(userInfo),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            }
-        });
+        let response;
+        if (process.env.NODE_ENV === "development") {
+            response = await fetch(`${config.IP}:${config.PORT}/transaction/post-transaction`, {
+                credentials: "include",
+                method: "POST",
+                mode: "cors",
+                body: JSON.stringify(userInfo),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            });
+        } else {
+            response = await fetch(`${config.IP}/api/transaction/post-transaction`, {
+                credentials: "include",
+                method: "POST",
+                mode: "cors",
+                body: JSON.stringify(userInfo),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            });
+        }
 
         return await response.json();
     } catch (err) {

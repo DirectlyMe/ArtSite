@@ -33,12 +33,14 @@ class CartPage extends Component {
                                 Total: ${cartTotal}
                             </div>
                             <div className="cart-page--checkout">
-                                <Link
-                                    className="cart-page--checkout---btn"
-                                    to="/checkout"
-                                >
-                                    Checkout
-                                </Link>
+                                {cartEntries.length > 0 ? 
+                                    <Link
+                                        className="cart-page--checkout---btn"
+                                        to="/checkout"
+                                    >
+                                        Checkout
+                                    </Link>
+                                : null}
                             </div>
                         </div>
                         <Footer width={width * 0.82} />
@@ -50,9 +52,11 @@ class CartPage extends Component {
                         <div>{cartEntries}</div>
                         <div className="cart-page--total-price">Total: ${cartTotal}</div>
                         <div className="cart-page--checkout">
+                        { cartEntries.length > 0 ? 
                             <Link className="cart-page--checkout---btn" to="/checkout">
                                 Checkout
                             </Link>
+                        : null}
                         </div>
                     </div>
                 </MediaQuery>
