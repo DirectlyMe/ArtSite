@@ -25,7 +25,7 @@ class HomePage extends Component {
                                 text="Gallery"
                                 route={"/gallery"}
                             />
-                            <LinkBox boxClass="WideBoxSecond" text="About" route={"/"} />
+                            <LinkBox boxClass="WideBoxSecond" text="About" route={"/about"} />
                             <LineBreak />
                         </div>
                         <Footer />
@@ -46,7 +46,7 @@ class HomePage extends Component {
                             <article className="about-me">
                                 <h6>Welcome to Olyve Art!</h6>
                                 <p>
-                                    I'm Kelsey, a artist based in Ogden, Utah. I’ve been
+                                    I'm Kelsey, an artist based in Ogden, Utah. I’ve been
                                     passionate about art since I was 9 years old, and have
                                     continued to grow and create since. <br />
                                     <br />I consider myself to be an abstract artist,

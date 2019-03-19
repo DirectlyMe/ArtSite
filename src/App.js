@@ -17,6 +17,7 @@ import { faInstagram } from "@fortawesome/fontawesome-free-brands";
 import Context from "./Context";
 import HomePage from "./screens/HomePage/HomePage";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
+import AboutPage from "./screens/AboutPage/AboutPage";
 import { getGalleryItems, getFeaturedItems } from "./api/GalleryCalls";
 import { getCart } from "./api/CartCalls";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -146,6 +147,16 @@ class App extends Component {
                             />
                             <Route path="/checkout" component={PaymentFormContainer} />
                             <Route path="/cart" component={CartContainer} />
+                            <Route
+                                path="/about"
+                                render={() =>
+                                    window.innerWidth > 900 ? (
+                                        <Redirect to="/" />
+                                    ) : (
+                                        <AboutPage />
+                                    )
+                                }
+                            />
                         </Suspense>
                     </Switch>
                 </div>

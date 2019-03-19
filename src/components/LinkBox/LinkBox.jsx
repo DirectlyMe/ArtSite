@@ -4,13 +4,11 @@ import classNames from "classnames";
 import "./styles.scss";
 
 const LinkBox = ({ boxClass, text, route }) => {
-  return (
-    <div className={classNames(boxClass, "LinkBox")}>
-      <Link to={route} className="LinkBox">
-        {text}
-      </Link>
-    </div>
-  );
+    return (
+        <Link to={route} className="LinkBox">
+            <div className={classNames(boxClass, "LinkBox")}>{text}</div>
+        </Link>
+    );
 };
 
 export default LinkBox;
