@@ -5,12 +5,20 @@ import PageHeading from "../../components/PageHeading";
 import Footer from "../../components/Footer/Footer";
 import AddToCartBtn from "../../components/AddToCart/AddToCartBtn";
 import ItemTypeSelector from "../../components/ItemTypeSelector/ItemTypeSelector";
+import ExpandedImage from "../../components/ExpandedImage/ExpandedImage";
 import "./styles.scss";
 
 class GalleryItemPage extends Component {
     render() {
         const { width } = this.context;
-        const { galleryItem, selectedType, selectTypeFunc, addToCartFunc } = this.props;
+        const {
+            galleryItem,
+            selectedType,
+            selectTypeFunc,
+            addToCartFunc,
+            toggleExpandedScreenFunc,
+            expandedSelected
+        } = this.props;
         const { title, images, types } = galleryItem;
 
         let type = types.filter(type => type.type === selectedType);
@@ -31,7 +39,7 @@ class GalleryItemPage extends Component {
                             selectedType={selectedType}
                             selectTypeFunc={selectTypeFunc}
                         />
-                        <div className="gallery-item--description">
+                        <div className="gallery-item--description-wrapper">
                             <ul className="gallery-item--description-list">
                                 <li>Price: {type.price}</li>
                                 <li>Materials: {type.materials}</li>
@@ -52,7 +60,7 @@ class GalleryItemPage extends Component {
                 <MediaQuery query="(min-width: 900px)">
                     <div
                         style={{
-                            width: width * 0.81
+                            width: width * 0.82
                         }}
                         className="content"
                     >
@@ -66,21 +74,27 @@ class GalleryItemPage extends Component {
                             src={images[0]}
                             className="gallery-item--image"
                             alt="gallery one"
+                            onClick={() => toggleExpandedScreenFunc()}
                         />
-                        <div className="gallery-item--description">
-                            <div>
-                                Materials
-                                <br />
-                                {type.materials}
-                            </div>
-                            <div>
-                                Dimensions
-                                <br />
-                                {type.width} x {type.height}
-                            </div>
-                            <div>
-                                Price
-                                <br />${type.price}
+                        <div className="gallery-item--description-wrapper">
+                            {galleryItem.description ? (
+                                <p>{galleryItem.description}</p>
+                            ) : null}
+                            <div className="gallery-item-test">
+                                <span>
+                                    Materials
+                                    <br />
+                                    {type.materials}
+                                </span>
+                                <span>
+                                    Dimensions
+                                    <br />
+                                    {type.width} x {type.height} in.
+                                </span>
+                                <span>
+                                    Price
+                                    <br />${type.price}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -91,6 +105,12 @@ class GalleryItemPage extends Component {
                         addToCartFunc={addToCartFunc}
                     />
                     <Footer width={width * 0.82} position="fixed" />
+                    {expandedSelected ? (
+                            <ExpandedImage
+                                toggleExpandedScreenFunc={toggleExpandedScreenFunc}
+                                imageSrc={images[0]}
+                            />
+                        ) : null}
                 </MediaQuery>
             </div>
         );

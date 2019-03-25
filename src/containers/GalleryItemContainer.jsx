@@ -9,7 +9,8 @@ class GalleryItemContainer extends Component {
     super(props);
     this.state = {
       galleryItem: null,
-      selectedType: null
+      selectedType: null,
+      expandedSelected: false,
     };
   }
 
@@ -69,6 +70,12 @@ class GalleryItemContainer extends Component {
     this.setState({ selectedType: type });
   };
 
+  toggleExpandedScreen = () => {
+      this.setState({
+          expandedSelected: !this.state.expandedSelected
+      });
+  };
+
   render() {
     if (this.state.galleryItem === null) {
       return (
@@ -83,6 +90,7 @@ class GalleryItemContainer extends Component {
           postItemFunc={this.postItem}
           selectTypeFunc={this.selectType}
           addToCartFunc={this.addToCart}
+          toggleExpandedScreenFunc={this.toggleExpandedScreen}
         />
       );
     }

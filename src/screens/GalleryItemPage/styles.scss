@@ -8,11 +8,11 @@
         object-fit: cover;
     }
 
-    .gallery-item--description {
+    .gallery-item--description-wrapper {
         font-family: $font-secondary;
         font-size: $font-size--smallest;
 
-        .gallery-item--description-list {
+        .gallery-item--description-wrapper-list {
             list-style: none;
             margin: 0;
             padding-left: 30px;
@@ -36,26 +36,53 @@
         margin-left: 18%;
     }
 
+
     .gallery-item--image {
         border-radius: 10px;
-        height: 40vh;
-        width: 75%;
+        height: auto;
+        max-height: 600px;
+        width: auto;
+        max-width: 80%;
         margin: 10px;
+        margin-bottom: 25px;
 
         &:first-of-type {
             margin-top: 25px;
         }
+    
+        &:hover {
+            cursor: pointer;
+        }
     }
-
-    .gallery-item--description {
+    .gallery-item--description-wrapper {
         display: flex;
-        flex-direction: row;
-        font-size: $font-size--small;
+        flex-direction: column;
+        justify-content: center;
+        font-size: $font-size--smallest;
         font-weight: 500;
-        margin: 20px;
+        width: 100%;
+        align-items: center;
 
-        div {
-            width: calc((50% / 3) - 20px);
+        p {
+            // color: white;
+            width: 50%;
+            padding-bottom: 35px;
+        }
+        
+        .gallery-item-test {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            border-radius: 10px;
+            padding: 15px 0;
+            width: 55%;
+            background-color: rgba(255, 255, 255, .6);
+            box-shadow: $box-shadow;
+            //color: white;
+
+            span {
+                width: calc((100% / 3) - 20px);
+            }
         }
     }
 
@@ -100,25 +127,7 @@
         margin-left: 18%;
     }
 
-    .gallery-item--image {
-        border-radius: 10px;
-        height: auto;
-        max-height: 600px;
-        width: auto;
-        max-width: 80%;
-        margin: 10px;
-        margin-bottom: 25px;
-
-        &:first-of-type {
-            margin-top: 25px;
-        }
-    }
-
-    .gallery-item--description {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        font-size: $font-size--small;
+    .gallery-item--description-wrapper {
         font-weight: 500;
         margin: 20px 0px;
     }
