@@ -4,7 +4,8 @@ import "./styles.scss";
 
 const GalleryScroller = ({ galleryItems, height }) => {
   function generateItems() {
-    const backgroundColors = ["FCFFB3", "8FD7E1", "AAFFE7", "FFC95F"];
+    // const backgroundColors = ["FCFFB3", "8FD7E1", "AAFFE7", "FFC95F"];
+    const backgroundColors = ["F5E2E2", "DFECE2", "EEEEC8"];
     let index = 0;
 
     if (galleryItems.length > 0) {

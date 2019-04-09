@@ -27,24 +27,30 @@ class GalleryItemPage extends Component {
         return (
             <div className="gallery-item-screen-desktop">
                 <MediaQuery query="(max-width: 899px)">
-                    <div style={{ marginTop: "80px" }}>
-                        <PageHeading text={title} size={30} marginTop={10} />
+                    <div className="gallery-item--content">
+                        <PageHeading text={title} size={30} marginTop={80} />
                         <img
                             src={images[0]}
                             className="gallery-item--image"
                             alt="Art piece"
+                            onClick={() => toggleExpandedScreenFunc()}
                         />
                         <ItemTypeSelector
                             types={types}
                             selectedType={selectedType}
                             selectTypeFunc={selectTypeFunc}
                         />
+                        <div className="gallery-item--description">
+                            {galleryItem.description ? (
+                                <p>"{galleryItem.description}"</p>
+                            ) : null}
+                        </div>
                         <div className="gallery-item--description-wrapper">
-                            <ul className="gallery-item--description-list">
+                            <ul className="gallery-item--description-wrapper-list">
                                 <li>Price: {type.price}</li>
                                 <li>Materials: {type.materials}</li>
                                 <li>
-                                    Dimensions: {type.width} x {type.height}
+                                    Dimensions: {type.width} x {type.height} in.
                                 </li>
                             </ul>
                         </div>
@@ -53,7 +59,13 @@ class GalleryItemPage extends Component {
                             selectedType={type}
                             selectTypeFunc={selectTypeFunc}
                             addToCartFunc={addToCartFunc}
-                        />
+                            />
+                        {expandedSelected ? (
+                            <ExpandedImage
+                                toggleExpandedScreenFunc={toggleExpandedScreenFunc}
+                                imageSrc={images[0]}
+                            />
+                        ) : null}
                     </div>
                     <Footer width={width} />
                 </MediaQuery>
@@ -78,7 +90,7 @@ class GalleryItemPage extends Component {
                         />
                         <div className="gallery-item--description-wrapper">
                             {galleryItem.description ? (
-                                <p>{galleryItem.description}</p>
+                                <p>"{galleryItem.description}"</p>
                             ) : null}
                             <div className="gallery-item-test">
                                 <span>
@@ -106,11 +118,11 @@ class GalleryItemPage extends Component {
                     />
                     <Footer width={width * 0.82} position="fixed" />
                     {expandedSelected ? (
-                            <ExpandedImage
-                                toggleExpandedScreenFunc={toggleExpandedScreenFunc}
-                                imageSrc={images[0]}
-                            />
-                        ) : null}
+                        <ExpandedImage
+                            toggleExpandedScreenFunc={toggleExpandedScreenFunc}
+                            imageSrc={images[0]}
+                        />
+                    ) : null}
                 </MediaQuery>
             </div>
         );

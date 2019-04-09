@@ -1,166 +1,178 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./styles.scss";
+import { toast } from "react-toastify";
 
 class AddToCartButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quantity: 1,
-      showMenu: false,
-      showTypes: false,
-      selectedType: {},
-      basePrice: 0,
-      calculatedPrice: 0
+    constructor(props) {
+        super(props);
+        this.state = {
+            quantity: 1,
+            showMenu: false,
+            showTypes: false,
+            selectedType: {},
+            basePrice: 0,
+            calculatedPrice: 0
+        };
+
+        this.optionsMenu = React.createRef();
+    }
+
+    componentDidMount() {
+        this.setState({
+            selectedType: this.props.selectedType,
+            basePrice: this.props.selectedType.price
+        });
+        setTimeout(() => {
+            this.calcPrice(this.state.basePrice, this.state.quantity);
+        }, 0);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps !== this.props) {
+            this.setState({
+                selectedType: this.props.selectedType,
+                basePrice: this.props.selectedType.price,
+                quantity: 1
+            });
+            setTimeout(() => {
+                this.calcPrice(this.state.basePrice, this.state.quantity);
+            }, 0);
+        }
+    }
+
+    showMenu = event => {
+        event.preventDefault();
+
+        this.setState({ showMenu: true }, () => {
+            document.addEventListener("click", this.closeMenu);
+        });
     };
 
-    this.optionsMenu = React.createRef();
-  }
+    closeMenu = event => {
+        const node = this.optionsMenu.current;
+        if (node) {
+            if (!node.contains(event.target)) {
+                this.setState({ showMenu: false }, () => {
+                    document.removeEventListener("click", this.closeMenu);
+                });
+            }
+        }
+    };
 
-  componentDidMount() {
-    this.setState({
-      selectedType: this.props.selectedType,
-      basePrice: this.props.selectedType.price
-    });
-    setTimeout(() => {
-      this.calcPrice(this.state.basePrice, this.state.quantity);
-    }, 0);
-  }
+    showTypes = () => {
+        this.setState(prevState => ({ showTypes: !prevState.showTypes }));
+    };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.setState({
-        selectedType: this.props.selectedType,
-        basePrice: this.props.selectedType.price,
-        quantity: 1
-      });
-      setTimeout(() => {
-        this.calcPrice(this.state.basePrice, this.state.quantity);
-      }, 0);
-    }
-  }
+    changeSelectedType = type => {
+        this.setState(prevState => ({
+            selectedType: type,
+            basePrice: type.price,
+            quantity: 1
+        }));
 
-  showMenu = event => {
-    event.preventDefault();
+        setTimeout(() => {
+            this.calcPrice(this.state.basePrice, this.state.quantity);
+            this.showTypes();
+        }, 0);
+    };
 
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener("click", this.closeMenu);
-    });
-  };
+    calcPrice = (price, quantity) => {
+        const itemPrice = price * quantity;
+        this.setState({ price: itemPrice, quantity });
+    };
 
-  closeMenu = event => {
-    const node = this.optionsMenu.current;
-    if (node) {
-      if (!node.contains(event.target)) {
-        this.setState({ showMenu: false }, () => {
-          document.removeEventListener("click", this.closeMenu);
-        });
-      }
-    }
-  };
+    quantityDecrease = () => {
+        let { basePrice, quantity } = this.state;
 
-  showTypes = () => {
-    this.setState(prevState => ({ showTypes: !prevState.showTypes}));
-  }
+        if (quantity <= 1) return;
 
-  changeSelectedType = type => {
-    this.setState(prevState => ({
-      selectedType: type,
-      basePrice: type.price,
-      quantity: 1,
-    }));
+        quantity -= 1;
+        this.calcPrice(basePrice, quantity);
+    };
 
-    
-    setTimeout(() => {
-      this.calcPrice(this.state.basePrice, this.state.quantity);
-      this.showTypes();
-    }, 0);
-  };
+    quantityIncrease = () => {
+        let { basePrice, quantity, selectedType } = this.state;
 
-  calcPrice = (price, quantity) => {
-    const itemPrice = price * quantity;
-    this.setState({ price: itemPrice, quantity });
-  };
+        selectedType.type !== "Canvas" ? (quantity += 1) : (quantity = 1);
 
-  quantityDecrease = () => {
-    let { basePrice, quantity } = this.state;
+        this.calcPrice(basePrice, quantity);
+    };
 
-    if (quantity <= 1) return;
+    render() {
+        const typesList = this.props.item.types.map(type => (
+            <li key={type.type} onClick={() => this.changeSelectedType(type)}>
+                {type.type}
+            </li>
+        ));
 
-    quantity -= 1;
-    this.calcPrice(basePrice, quantity);
-  };
-
-  quantityIncrease = () => {
-    let { basePrice, quantity, selectedType } = this.state;
-
-    selectedType.type !== "Canvas" ? quantity += 1 : quantity = 1;
-
-    this.calcPrice(basePrice, quantity);
-  };
-
-  render() {
-    const typesList = this.props.item.types.map(type => (
-      <li key={type.type} onClick={() => this.changeSelectedType(type)}>
-        {type.type}
-      </li>
-    ));
-
-    return (
-      <div onClick={this.showMenu}>
-        <FontAwesomeIcon icon="plus" size="2x" className="add-to-cart" />
-        {this.state.showMenu ? (
-          <div className="add-to-cart--menu" ref={this.optionsMenu}>
-            <span>Quantity</span>
-            <div className="quantity-options">
-              <button
-                className="quantity-minus--btn"
-                onClick={() => this.quantityDecrease()}
-              >
-                <FontAwesomeIcon icon="minus" size="lg" />
-              </button>
-              <div className="quantity-number">{this.state.quantity}</div>
-              <button
-                className="quantity-plus--btn"
-                onClick={() => this.quantityIncrease()}
-              >
-                <FontAwesomeIcon icon="plus" size="lg" />
-              </button>
+        return (
+            <div onClick={this.showMenu}>
+                <FontAwesomeIcon icon="plus" size="2x" className="add-to-cart" />
+                {this.state.showMenu ? (
+                    <div className="add-to-cart--menu" ref={this.optionsMenu}>
+                        <span>Quantity</span>
+                        <div className="quantity-options">
+                            <button
+                                className="quantity-minus--btn"
+                                onClick={() => this.quantityDecrease()}
+                            >
+                                <FontAwesomeIcon icon="minus" size="lg" />
+                            </button>
+                            <div className="quantity-number">{this.state.quantity}</div>
+                            <button
+                                className="quantity-plus--btn"
+                                onClick={() => this.quantityIncrease()}
+                            >
+                                <FontAwesomeIcon icon="plus" size="lg" />
+                            </button>
+                        </div>
+                        <div style={{ paddingTop: "10px" }}>Type</div>
+                        <div className="type-options">
+                            <div className="type-selector" onClick={this.showTypes}>
+                                {this.state.selectedType.type}
+                                <FontAwesomeIcon
+                                    icon="angle-down"
+                                    size="1x"
+                                    style={{ paddingTop: "2px" }}
+                                />
+                            </div>
+                            {this.state.showTypes ? (
+                                <div className="type-dropdown">{typesList}</div>
+                            ) : null}
+                        </div>
+                        <div className="price-label">${this.state.price}</div>
+                        {this.state.selectedType.sold ? (
+                            <button
+                                className="add-to-cart--btn---sold"
+                                onClick={() =>
+                                  toast.error("Sorry, the original canvas has already been purchased, however prints are available!", 
+                                  {
+                                    className: "add-to-cart-toast--error",
+                                  })
+                                }
+                            >
+                                Sold
+                            </button>
+                        ) : (
+                            <button
+                                className="add-to-cart--btn"
+                                onClick={() =>
+                                    this.props.addToCartFunc(
+                                        this.props.item.product_id,
+                                        this.state.quantity,
+                                        this.state.selectedType.type
+                                    )
+                                }
+                            >
+                                Add
+                            </button>
+                        )}
+                    </div>
+                ) : null}
             </div>
-            <div style={{ paddingTop: "10px" }}>Type</div>
-            <div className="type-options">
-              <div className="type-selector" onClick={this.showTypes}>
-                {this.state.selectedType.type}
-                <FontAwesomeIcon
-                  icon="angle-down"
-                  size="1x"
-                  style={{ paddingTop: "2px" }}
-                />
-              </div>
-              { this.state.showTypes ? 
-                <div className="type-dropdown">{typesList}</div>
-                :
-                null
-              }
-            </div>
-            <div className="price-label">${this.state.price}</div>
-            <button
-              className="add-to-cart--btn"
-              onClick={() =>
-                this.props.addToCartFunc(
-                  this.props.item.product_id,
-                  this.state.quantity,
-                  this.state.selectedType.type
-                )
-              }
-            >
-              Add
-            </button>
-          </div>
-        ) : null}
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default AddToCartButton;

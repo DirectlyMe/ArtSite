@@ -3,6 +3,7 @@ import { serverConfig as config } from "../config/serverConfig";
 export async function postTransactionInfo(userInfo) {
     try {
         let response;
+        console.log(userInfo);
         if (process.env.NODE_ENV === "development") {
             response = await fetch(`${config.IP}:${config.PORT}/transaction/post-transaction`, {
                 credentials: "include",

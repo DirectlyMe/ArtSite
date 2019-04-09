@@ -25,7 +25,11 @@ class HomePage extends Component {
                                 text="Gallery"
                                 route={"/gallery"}
                             />
-                            <LinkBox boxClass="WideBoxSecond" text="About" route={"/about"} />
+                            <LinkBox
+                                boxClass="WideBoxSecond"
+                                text="About"
+                                route={"/about"}
+                            />
                             <LineBreak />
                         </div>
                         <Footer />
@@ -53,10 +57,9 @@ class HomePage extends Component {
                                     though I love portraits and plant-life. My favorite
                                     mediums include acrylic, ink, gesso, and colored
                                     pencil. I typically use canvas and thick drawing paper
-                                    for my pieces. <br />
-                                    I have experimented with other mediums, but tend to
-                                    stick to my favorites when making new creations.{" "}
-                                    <br />
+                                    for my pieces. <br />I have experimented with other
+                                    mediums, but tend to stick to my favorites when making
+                                    new creations. <br />
                                     <br />
                                     I draw much of my inspiration from different musicians
                                     and the beautiful Ogden valley. I can’t say how many
@@ -66,6 +69,11 @@ class HomePage extends Component {
                                     emotion, and brings joy to those who see it.
                                 </p>
                             </article>
+                            <img
+                                src="https://s3-us-west-2.amazonaws.com/kelseylovesart/images/kelsey_drawing.jpg"
+                                className="about-me--image"
+                                alt="kelsey drawing"
+                            />
                         </div>
                     </div>
                     <Footer width={width * 0.82} />
