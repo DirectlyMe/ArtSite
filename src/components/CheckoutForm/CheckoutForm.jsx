@@ -46,15 +46,29 @@ class CheckoutForm extends Component {
     submit = async ev => {
         ev.preventDefault();
 
-        let { token } = await this.props.stripe.createToken({
-            name: `${this.state.firstName} ${this.state.lastName}`,
-            address_line1: this.state.streetAddress,
-            address_zip: this.state.zipcode,
-            address_city: this.state.city
-        });
+        let billingToken;
+        if (this.state.isBillingSame) {
+            const { token } = await this.props.stripe.createToken({
+                name: `${this.state.firstName} ${this.state.lastName}`,
+                address_line1: this.state.streetAddress,
+                address_zip: this.state.zipcode,
+                address_city: this.state.city
+            });
 
-        if (token) {
-            this.setState({ tokenId: token.id }, () => {
+            billingToken = token;
+        } else {
+            const { token } = await this.props.stripe.createToken({
+                name: `${this.state.billingFirstName} ${this.state.billingLastName}`,
+                address_line1: this.state.billingStreetAddress,
+                address_zip: this.state.billingZipcode,
+                address_city: this.state.billingCity
+            });
+
+            billingToken = token;
+        }
+
+        if (billingToken) {
+            this.setState({ tokenId: billingToken.id }, () => {
                 const userInfo = {
                     ...this.state
                 };
