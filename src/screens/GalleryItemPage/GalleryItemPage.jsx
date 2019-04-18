@@ -72,7 +72,7 @@ class GalleryItemPage extends Component {
                 <MediaQuery query="(min-width: 900px)">
                     <div
                         style={{
-                            width: width * 0.82
+                            width: width * 0.81
                         }}
                         className="content"
                     >

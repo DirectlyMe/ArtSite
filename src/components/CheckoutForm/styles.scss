@@ -70,6 +70,7 @@
             grid-template-rows: auto;
             text-align: center;
             margin: 0 20px;
+            // max-width: 500px;
 
             input,
             select { 
@@ -88,6 +89,51 @@
             margin-top: 20px;
         }
     }
+
+    .checkout--payment-forms---billing-toggle {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border: none;
+        margin-bottom: 15px;
+        font-size: 16px;
+
+        .checkout--payment-forms---billing-toggle {
+            background: white;
+            border: black solid 1px;
+            box-shadow: none;
+            width: 250px;
+            text-transform: capitalize;
+            padding: 10px;
+        }
+
+        .checkout--payment-forms---billing-toggle-active {
+            background: $primary-color;
+        }
+
+    
+        @media screen and (max-width: 500px) {
+            .checkout--payment-forms---billing-toggle {
+                font-size: 16px;
+                width: 150px;
+            }
+        }
+
+    }
+
+    .checkout--payment-forms---billing-info {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        text-align: center;
+        margin: 0 20px;
+
+        input,
+        select { 
+            width: 150px;
+        }
+    }
 }
 
 @media screen and (min-width: 901px) {
@@ -96,12 +142,6 @@
         margin-left: 14%;
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
         width: 72%;
-
-        input,
-        select {
-            font-size: 14px;
-            width: 300px;
-        }
 
         .contact-header {
             font-size: $font-size--small;
@@ -121,6 +161,12 @@
                 grid-template-rows: 1fr 1fr;
                 grid-gap: 10px;
                 text-align: center;
+
+                input,
+                select {
+                    font-size: 14px;
+                    width: 300px;
+                }        
             }
 
             .checkout--payment-forms---shipping {
@@ -132,6 +178,13 @@
                     font-size: 14px;
                     width: 300px;
                 }
+            }
+        }
+
+        .checkout--payment-forms---billing-info {
+            input,
+            select { 
+                width: 300px;
             }
         }
 

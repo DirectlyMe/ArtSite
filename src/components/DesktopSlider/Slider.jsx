@@ -77,12 +77,24 @@ class Slider extends Component {
       sliderHeight = 410;
       numItems = 2;
       position = "5%";
-    } else {
+    } else if (windowWidth <= 1920) {
       slideHeight = 370;
       width = 390;
       sliderHeight = 460;
       numItems = 3;
       position = "1%";
+    } else if (windowWidth >= 2200) {
+      slideHeight = 370;
+      width = 390;
+      sliderHeight = 460;
+      numItems = 3;
+      position = "8%";
+    } else {
+      slideHeight = 370;
+      width = 390;
+      sliderHeight = 460;
+      numItems = 3;
+      position = "3%";
     }
 
     let slides = [];
