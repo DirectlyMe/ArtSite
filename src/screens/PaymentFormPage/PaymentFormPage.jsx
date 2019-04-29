@@ -16,19 +16,15 @@ const PaymentFormPage = ({ postTransactionFunc }) => {
                     <div className="checkout-page" style={{ width: context.width * 0.8 }}>
                         <PageHeading text="Checkout" size={48} marginTop={60} />
                         <Elements>
-                            <CheckoutForm
-                                postTransactionFunc={postTransactionFunc}
-                            />
+                            <CheckoutForm postTransactionFunc={postTransactionFunc} />
                         </Elements>
                     </div>
                 </MediaQuery>
                 <MediaQuery query="(max-width: 899px)">
-                <div className="checkout-page">
+                    <div className="checkout-page">
                         <PageHeading text="Checkout" size={34} marginTop={80} />
                         <Elements>
-                            <CheckoutForm
-                                postTransactionFunc={postTransactionFunc}
-                            />
+                            <CheckoutForm postTransactionFunc={postTransactionFunc} />
                         </Elements>
                     </div>
                 </MediaQuery>

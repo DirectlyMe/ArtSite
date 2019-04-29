@@ -93,99 +93,103 @@ class CheckoutForm extends Component {
     render() {
         return (
             <div className="checkout--payment-forms---wrapper">
-                <h4 className="contact-header">Contact Info</h4>
                 <form className="checkout--payment-forms">
-                    <div className="checkout--payment-forms---contact">
-                        <label className="checkout--payment-forms---header">
-                            Email
-                            <br />
-                            <input
-                                type="text"
-                                required
-                                value={this.state.email}
-                                onChange={this.handleChange}
-                                name="email"
-                            />
-                        </label>
-                        <label className="checkout--payment-forms---header">
-                            Phone
-                            <br />
-                            <input
-                                type="text"
-                                required
-                                value={this.state.phone}
-                                onChange={this.handleChange}
-                                name="telephone"
-                            />
-                        </label>
+                    <div className="checkout--payment-forms---segment">
+                        <h4 className="contact-header">Contact Info</h4>
+                        <div className="checkout--payment-forms---contact">
+                            <label className="checkout--payment-forms---header">
+                                Email
+                                <br />
+                                <input
+                                    type="text"
+                                    required
+                                    value={this.state.email}
+                                    onChange={this.handleChange}
+                                    name="email"
+                                />
+                            </label>
+                            <label className="checkout--payment-forms---header">
+                                Phone
+                                <br />
+                                <input
+                                    type="text"
+                                    required
+                                    value={this.state.phone}
+                                    onChange={this.handleChange}
+                                    name="telephone"
+                                />
+                            </label>
+                        </div>
                     </div>
+                    <div className="checkout--payment-forms---segment">
                     <h4 className="contact-header">Shipping Info</h4>
-                    <div className="checkout--payment-forms---shipping">
-                        <label className="checkout--payment-forms---header">
-                            First Name
-                            <br />
-                            <input
-                                type="text"
-                                required
-                                value={this.state.firstName}
-                                onChange={this.handleChange}
-                                name="firstName"
-                            />
-                        </label>
-                        <label className="checkout--payment-forms---header">
-                            Last Name
-                            <br />
-                            <input
-                                type="text"
-                                required
-                                value={this.state.lastName}
-                                onChange={this.handleChange}
-                                name="lastName"
-                            />
-                        </label>
-                        <label className="checkout--payment-forms---header">
-                            State
-                            <br />
-                            <input
-                                type="text"
-                                required
-                                value={this.state.state}
-                                onChange={this.handleChange}
-                                name="state"
-                            />
-                        </label>
-                        <label className="checkout--payment-forms---header">
-                            City
-                            <br />
-                            <input
-                                type="text"
-                                value={this.state.city}
-                                onChange={this.handleChange}
-                                name="city"
-                            />
-                        </label>
-                        <label className="checkout--payment-forms---header">
-                            Street Address
-                            <br />
-                            <input
-                                type="text"
-                                required
-                                value={this.state.streetAddress}
-                                onChange={this.handleChange}
-                                name="streetAddress"
-                            />
-                        </label>
-                        <label className="checkout--payment-forms---header">
-                            Zipcode
-                            <br />
-                            <input
-                                type="text"
-                                required
-                                value={this.state.zipcode}
-                                onChange={this.handleChange}
-                                name="zipcode"
-                            />
-                        </label>
+                        <div className="checkout--payment-forms---shipping">
+                            <label className="checkout--payment-forms---header">
+                                First Name
+                                <br />
+                                <input
+                                    type="text"
+                                    required
+                                    value={this.state.firstName}
+                                    onChange={this.handleChange}
+                                    name="firstName"
+                                />
+                            </label>
+                            <label className="checkout--payment-forms---header">
+                                Last Name
+                                <br />
+                                <input
+                                    type="text"
+                                    required
+                                    value={this.state.lastName}
+                                    onChange={this.handleChange}
+                                    name="lastName"
+                                />
+                            </label>
+                            <label className="checkout--payment-forms---header">
+                                State
+                                <br />
+                                <input
+                                    type="text"
+                                    required
+                                    value={this.state.state}
+                                    onChange={this.handleChange}
+                                    name="state"
+                                />
+                            </label>
+                            <label className="checkout--payment-forms---header">
+                                City
+                                <br />
+                                <input
+                                    type="text"
+                                    value={this.state.city}
+                                    onChange={this.handleChange}
+                                    name="city"
+                                />
+                            </label>
+                            <label className="checkout--payment-forms---header">
+                                Street Address
+                                <br />
+                                <input
+                                    type="text"
+                                    required
+                                    value={this.state.streetAddress}
+                                    onChange={this.handleChange}
+                                    name="streetAddress"
+                                />
+                            </label>
+                            <label className="checkout--payment-forms---header">
+                                Zipcode
+                                <br />
+                                <input
+                                    type="text"
+                                    required
+                                    value={this.state.zipcode}
+                                    onChange={this.handleChange}
+                                    name="zipcode"
+                                />
+                            </label>
+                        </div>
                     </div>
                     <h4 className="contact-header">Billing Info</h4>
                     <div className="checkout--payment-forms---billing-toggle">
@@ -207,7 +211,7 @@ class CheckoutForm extends Component {
                                 "checkout--payment-forms---billing-toggle",
                                 {
                                     ["checkout--payment-forms---billing-toggle-active"]: !this // eslint-disable-line
-                                        .state.isBillingSame 
+                                        .state.isBillingSame
                                 }
                             )}
                             style={{ borderRadius: "0 10px 10px 0" }}
@@ -217,79 +221,85 @@ class CheckoutForm extends Component {
                         </button>
                     </div>
                     {!this.state.isBillingSame ? (
-                        <div className="checkout--payment-forms---billing-info">
-                            <label className="checkout--payment-forms---header">
-                                First Name
-                                <br />
-                                <input
-                                    type="text"
-                                    required
-                                    value={this.state.billingFirstName}
-                                    onChange={this.handleChange}
-                                    name="billingFirstName"
-                                />
-                            </label>
-                            <label className="checkout--payment-forms---header">
-                                Last Name
-                                <br />
-                                <input
-                                    type="text"
-                                    required
-                                    value={this.state.billingLastName}
-                                    onChange={this.handleChange}
-                                    name="billingLastName"
-                                />
-                            </label>
-                            <label className="checkout--payment-forms---header">
-                                State
-                                <br />
-                                <input
-                                    type="text"
-                                    required
-                                    value={this.state.billingState}
-                                    onChange={this.handleChange}
-                                    name="billingState"
-                                />
-                            </label>
-                            <label className="checkout--payment-forms---header">
-                                City
-                                <br />
-                                <input
-                                    type="text"
-                                    value={this.state.billingCity}
-                                    onChange={this.handleChange}
-                                    name="billingCity"
-                                />
-                            </label>
-                            <label className="checkout--payment-forms---header">
-                                Street Address
-                                <br />
-                                <input
-                                    type="text"
-                                    required
-                                    value={this.state.billingStreetAddress}
-                                    onChange={this.handleChange}
-                                    name="billingStreetAddress"
-                                />
-                            </label>
-                            <label className="checkout--payment-forms---header">
-                                Zipcode
-                                <br />
-                                <input
-                                    type="text"
-                                    required
-                                    value={this.state.billingZipcode}
-                                    onChange={this.handleChange}
-                                    name="billingZipcode"
-                                />
-                            </label>
+                        <div className="checkout--payment-forms---segment">
+                            <div className="checkout--payment-forms---billing-info">
+                                <label className="checkout--payment-forms---header">
+                                    First Name
+                                    <br />
+                                    <input
+                                        type="text"
+                                        required
+                                        value={this.state.billingFirstName}
+                                        onChange={this.handleChange}
+                                        name="billingFirstName"
+                                    />
+                                </label>
+                                <label className="checkout--payment-forms---header">
+                                    Last Name
+                                    <br />
+                                    <input
+                                        type="text"
+                                        required
+                                        value={this.state.billingLastName}
+                                        onChange={this.handleChange}
+                                        name="billingLastName"
+                                    />
+                                </label>
+                                <label className="checkout--payment-forms---header">
+                                    State
+                                    <br />
+                                    <input
+                                        type="text"
+                                        required
+                                        value={this.state.billingState}
+                                        onChange={this.handleChange}
+                                        name="billingState"
+                                    />
+                                </label>
+                                <label className="checkout--payment-forms---header">
+                                    City
+                                    <br />
+                                    <input
+                                        type="text"
+                                        value={this.state.billingCity}
+                                        onChange={this.handleChange}
+                                        name="billingCity"
+                                    />
+                                </label>
+                                <label className="checkout--payment-forms---header">
+                                    Street Address
+                                    <br />
+                                    <input
+                                        type="text"
+                                        required
+                                        value={this.state.billingStreetAddress}
+                                        onChange={this.handleChange}
+                                        name="billingStreetAddress"
+                                    />
+                                </label>
+                                <label className="checkout--payment-forms---header">
+                                    Zipcode
+                                    <br />
+                                    <input
+                                        type="text"
+                                        required
+                                        value={this.state.billingZipcode}
+                                        onChange={this.handleChange}
+                                        name="billingZipcode"
+                                    />
+                                </label>
+                            </div>
                         </div>
                     ) : null}
-                    <h4 className="contact-header">Payment Info</h4>
                     <div className="checkout-form">
-                        <CardElement light />
+                        <h4 className="contact-header">Payment Info</h4>
+                        <CardElement
+                            style={{
+                                base: { fontSize: "16px", color: "black", opacity: "1" }
+                            }}
+                        />
                         <button className="checkout-form--submit" onClick={this.submit}>
-                            Send
+                            Complete
                         </button>
                     </div>
                 </form>

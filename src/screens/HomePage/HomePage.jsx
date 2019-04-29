@@ -15,7 +15,7 @@ class HomePage extends Component {
         return (
             <div className="home-screen-desktop">
                 <MediaQuery query="(max-width: 899px)">
-                    <div style={{ marginTop: "55px" }}>
+                    <div style={{ marginTop: "55px" }} className="home-content">
                         <SlideShowContainer />
                         <div className="Boxes">
                             <div className="Slogan">will art for food</div>

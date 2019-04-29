@@ -11,8 +11,9 @@
         z-index: 1;
         box-shadow: $box-shadow;
         border-radius: 12px;
-        margin: 20px auto;
+        margin: 0 auto 20px auto;
         padding-bottom: 1em;
+        background-color: white;
     }
 
     .gallery-item img {

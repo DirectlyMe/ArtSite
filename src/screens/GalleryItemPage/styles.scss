@@ -2,9 +2,11 @@
 
 @media screen and (max-width: 899px) {
     .gallery-item--image {
-        width: 100%;
+        width: 95%;
         height: 45vh;
         object-fit: cover;
+        border-radius: 12px;
+        box-shadow: $box-shadow;
     }
 
     .gallery-item--content {
@@ -18,10 +20,32 @@
         }
     }
 
+    .gallery-item--content:before {
+        content: "";
+        position: fixed;
+        right: 0;
+        z-index: -1;
+
+        display: block;
+        background-image: url("https://images.unsplash.com/photo-1547959121-f0f22224ffb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80");
+        background-size: cover;
+        opacity: 0.7;
+        width: 100%;
+        height: 100%;
+
+        -webkit-filter: blur(1px);
+        -moz-filter: blur(1px);
+        -o-filter: blur(1px);
+        -ms-filter: blur(1px);
+        filter: blur(1px);
+    }
+
     .gallery-item--description-wrapper {
         font-family: $font-secondary;
         font-size: $font-size--smallest;
         box-shadow: $box-shadow;
+        background-color: white;
+        opacity: .9;
         border-radius: 10px;
         width: 90%;
         
@@ -29,7 +53,7 @@
         .gallery-item--description-wrapper-list {
             list-style-type: none;
             margin: 0;
-            padding: 30px 20px 20px 20px;
+            padding: 20px 20px 20px 20px;
 
             li {
                 list-style-type: none;

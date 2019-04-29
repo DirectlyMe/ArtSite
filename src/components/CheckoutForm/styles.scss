@@ -13,7 +13,6 @@
 }
 
 .checkout--payment-forms---wrapper {
-    margin-top: 25px;
     margin-bottom: 5%;
     padding-bottom: 2%;
     border-radius: 10px;
@@ -49,7 +48,7 @@
             grid-template-rows: 1fr 1fr;
             justify-content: center;
             text-align: center;
-            
+
             input,
             select {
                 font-size: 12px;
@@ -62,18 +61,16 @@
                 max-width: 250px;
             }
         }
-        
+
         .checkout--payment-forms---shipping {
             display: grid;
             grid-gap: 10px;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto;
             text-align: center;
-            margin: 0 20px;
-            // max-width: 500px;
 
             input,
-            select { 
+            select {
                 width: 150px;
             }
         }
@@ -84,9 +81,16 @@
         flex-direction: column;
         margin: auto;
         width: 80%;
+        opacity: 1;
+        background-color: white;
+        color: black;
 
         .checkout-form--submit {
+            font-size: 18px;
+            text-transform: capitalize;
             margin-top: 20px;
+            background-color: $secondary-color;
+            box-shadow: $box-shadow;
         }
     }
 
@@ -100,25 +104,15 @@
 
         .checkout--payment-forms---billing-toggle {
             background: white;
-            border: black solid 1px;
-            box-shadow: none;
-            width: 250px;
             text-transform: capitalize;
             padding: 10px;
+            box-shadow: $box-shadow;
+            width: 200px;
         }
 
         .checkout--payment-forms---billing-toggle-active {
             background: $primary-color;
         }
-
-    
-        @media screen and (max-width: 500px) {
-            .checkout--payment-forms---billing-toggle {
-                font-size: 16px;
-                width: 150px;
-            }
-        }
-
     }
 
     .checkout--payment-forms---billing-info {
@@ -127,10 +121,9 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
         text-align: center;
-        margin: 0 20px;
 
         input,
-        select { 
+        select {
             width: 150px;
         }
     }
@@ -139,6 +132,7 @@
 @media screen and (min-width: 901px) {
     .checkout--payment-forms---wrapper {
         background-color: rgb(255, 255, 255);
+        margin-top: 25px;
         margin-left: 14%;
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
         width: 72%;
@@ -166,7 +160,7 @@
                 select {
                     font-size: 14px;
                     width: 300px;
-                }        
+                }
             }
 
             .checkout--payment-forms---shipping {
@@ -183,7 +177,7 @@
 
         .checkout--payment-forms---billing-info {
             input,
-            select { 
+            select {
                 width: 300px;
             }
         }
@@ -194,6 +188,39 @@
 
             .checkout-form--submit {
                 margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .checkout--payment-forms---wrapper {
+        .contact-header {
+            margin: 0;
+            padding: 20px 0;
+            font-size: 22px;
+        }
+
+        .checkout--payment-forms---segment {
+            background-color: white;
+            box-shadow: $box-shadow;
+            margin: 0 20px 20px 20px;
+            border-radius: 10px;
+            padding: 5px 0 10px 0;
+        }
+
+
+        .checkout-form {
+            padding: 0 20px 20px 20px;
+            border-radius: 10px;
+            background-color: white;
+            margin: 0 20px;
+            box-shadow: $box-shadow;
+        }
+
+        .checkout--payment-forms---billing-toggle {
+            .checkout--payment-forms---billing-toggle {
+                width: 150px;
             }
         }
     }
