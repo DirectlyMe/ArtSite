@@ -14,6 +14,7 @@ import {
 import { ToastContainer } from "react-toastify";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Context from "./Context";
 import HomePage from "./screens/HomePage/HomePage";
 import NavBarContainer from "./containers/NavBarContainer/NavBarContainer";
@@ -23,7 +24,7 @@ import { getCart } from "./api/CartCalls";
 import "react-toastify/dist/ReactToastify.min.css";
 import "./App.scss";
 
-const GalleryPage = lazy(() => import("./screens/GalleryPage/GalleryPage"));
+const GalleryItemsContainer = lazy(() => import("./containers/GalleryItemsContainer"));
 const GalleryItemContainer = lazy(() => import("./containers/GalleryItemContainer"));
 const PaymentFormContainer = lazy(() => import("./containers/PaymentFormContainer"));
 const CartContainer = lazy(() => import("./containers/CartContainer"));
@@ -38,7 +39,8 @@ library.add(
     faSearch,
     faPlus,
     faMinus,
-    faAngleDown
+    faAngleDown,
+    faCartPlus
 );
 
 class App extends Component {
@@ -137,7 +139,7 @@ class App extends Component {
                                     window.innerWidth > 900 ? (
                                         <Redirect to="/" />
                                     ) : (
-                                        <GalleryPage />
+                                        <GalleryItemsContainer />
                                     )
                                 }
                             />

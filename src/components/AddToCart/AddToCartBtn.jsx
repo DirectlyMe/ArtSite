@@ -98,7 +98,7 @@ class AddToCartButton extends Component {
 
         this.calcPrice(basePrice, quantity);
     };
-
+   
     render() {
         const typesList = this.props.item.types.map(type => (
             <li key={type.type} onClick={() => this.changeSelectedType(type)}>
@@ -108,7 +108,7 @@ class AddToCartButton extends Component {
 
         return (
             <div onClick={this.showMenu}>
-                <FontAwesomeIcon icon="plus" size="2x" className="add-to-cart" />
+                <FontAwesomeIcon icon="cart-plus" size="2x" className="add-to-cart" />
                 {this.state.showMenu ? (
                     <div className="add-to-cart--menu" ref={this.optionsMenu}>
                         <span>Quantity</span>
