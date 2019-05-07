@@ -8,7 +8,7 @@
   cursor: pointer;
 
   img {
-    height: 80%;
+    height: auto;
     max-height: 400px;
     width: 80%;
     max-width: 400px;
@@ -16,19 +16,6 @@
     box-shadow: 2px 2px 3px rgba(0,0,0,.5);
     object-fit: cover;
   } 
-
-
-  // @media screen and (max-width: 1400px) {
-  //   img {
-  //         height: 200px;
-  //   }
-  // }
-
-  // @media screen and (max-width: 1199px) {
-  //   img {
-  //     height: 200px;
-  //   }
-  // }
 
   &:hover {
     transition: transform ease-in .1s;

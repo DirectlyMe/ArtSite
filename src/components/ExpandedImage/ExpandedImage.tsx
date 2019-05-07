@@ -1,6 +1,5 @@
 
 import React, { FunctionComponent } from "react";
-import Context from "../../Context";
 import "./styles.scss";
 
 interface IExpandedImage {

@@ -146,7 +146,7 @@ class AddToCartButton extends Component {
                             <button
                                 className="add-to-cart--btn---sold"
                                 onClick={() =>
-                                  toast.error("Sorry, the original canvas has already been purchased, however prints are available!", 
+                                  toast.error("Sorry, this item is currently sold out.", 
                                   {
                                     className: "add-to-cart-toast--error",
                                   })
