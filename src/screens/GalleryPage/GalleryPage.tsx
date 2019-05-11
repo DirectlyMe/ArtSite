@@ -22,7 +22,8 @@ const GalleryPage: FunctionComponent<IGalleryPage> = ({ products }) => {
                         price={item.types[0].price}
                         title={item.title}
                     />
-                );
+				);
+			else return (<div></div>);
         });
         return (
             <div style={{ width: window.innerWidth }} className="gallery-page">
