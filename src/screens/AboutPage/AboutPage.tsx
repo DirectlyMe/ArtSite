@@ -7,7 +7,7 @@ const AboutPage = () => {
             <img
                 src="https://s3-us-west-2.amazonaws.com/kelseylovesart/images/kelsey_drawing.jpg"
                 className="about-page--image"
-                alt="Kelsey Drawing"
+                alt="Kelsey drawing"
             />
             <article className="about-page--description">
                 <h3>Welcome to Olyve Art!</h3>

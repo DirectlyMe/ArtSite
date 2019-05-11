@@ -17,7 +17,7 @@ class PaymentFormContainer extends Component {
             const response = await postTransactionInfo(transactionInfo);
 
             if (response.transactionStatus === true) {
-                toast.success(`Payment Received, we'll be emailing a receipt to ${transactionInfo.email} (Using test api, the card will not be charged)`, {
+                toast.success(`Payment Received, we've emailed a receipt to ${transactionInfo.email}`, {
                     className: "submit-payment-toast--success"
                 });
             } else {
