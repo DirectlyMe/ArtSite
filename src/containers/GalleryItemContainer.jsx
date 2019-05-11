@@ -36,10 +36,9 @@ class GalleryItemContainer extends Component {
 
     const { id } = this.props.match.params;
     const item = galleryItems.filter(item => item.product_id === Number(id));
-    const print = item[0].types.filter(itemType => itemType.type === "Print");
 
-    if (print.length > 0) {
-      this.setState({ galleryItem: item[0], selectedType: print[0].type });
+    if (item.length > 0) {
+      this.setState({ galleryItem: item[0], selectedType: item[0].types[0] });
     } else {
       this.setState({
         galleryItem: item[0],
@@ -66,8 +65,8 @@ class GalleryItemContainer extends Component {
     }
   };
 
-  selectType = type => {
-    this.setState({ selectedType: type });
+  selectType = index => {
+    this.setState({ selectedType: this.state.galleryItem.types[index] });
   };
 
   toggleExpandedScreen = () => {

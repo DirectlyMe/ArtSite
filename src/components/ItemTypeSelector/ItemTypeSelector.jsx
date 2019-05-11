@@ -3,20 +3,20 @@ import classnames from "classnames";
 import "./styles.scss";
 
 const ItemTypeSelector = ({ types, selectedType, selectTypeFunc }) => {
-  const typeNodes = types.map((typeItem, i) => {
-    return typeItem.type === selectedType ? (
+  const typeNodes = types.map((typeItem, index) => {
+    return typeItem === selectedType ? (
       <button
-        key={i}
+        key={index}
         className={classnames("type-selector--node", "type-selector--node---selected")}
-        onClick={() => selectTypeFunc(typeItem.type)}
+        onClick={() => selectTypeFunc(index)}
       >
         {typeItem.type}
       </button>
     ) : (
       <button
-        key={i}
+        key={index}
         className="type-selector--node"
-        onClick={() => selectTypeFunc(typeItem.type)}
+        onClick={() => selectTypeFunc(index)}
       >
         {typeItem.type}
       </button>

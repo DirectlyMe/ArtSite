@@ -21,9 +21,6 @@ class GalleryItemPage extends Component {
         } = this.props;
         const { title, images, types } = galleryItem;
 
-        let type = types.filter(type => type.type === selectedType);
-        type = type[0]; // use this to get selected type's specs
-
         return (
             <div className="gallery-item-screen-desktop">
                 <MediaQuery query="(max-width: 899px)">
@@ -47,16 +44,16 @@ class GalleryItemPage extends Component {
                         </div>
                         <div className="gallery-item--description-wrapper">
                             <ul className="gallery-item--description-wrapper-list">
-                                <li>Price: {type.price}</li>
-                                <li>Materials: {type.materials}</li>
+                                <li>Price: {selectedType.price}</li>
+                                <li>Materials: {selectedType.materials}</li>
                                 <li>
-                                    Dimensions: {type.width} x {type.height} in.
+                                    Dimensions: {selectedType.width} x {selectedType.height} in.
                                 </li>
                             </ul>
                         </div>
                         <AddToCartBtn
                             item={galleryItem}
-                            selectedType={type}
+                            selectedType={selectedType}
                             selectTypeFunc={selectTypeFunc}
                             addToCartFunc={addToCartFunc}
                             />
@@ -96,23 +93,23 @@ class GalleryItemPage extends Component {
                                 <span>
                                     Materials
                                     <br />
-                                    {type.materials}
+                                    {selectedType.materials}
                                 </span>
                                 <span>
                                     Dimensions
                                     <br />
-                                    {type.width} x {type.height} in.
+                                    {selectedType.width} x {selectedType.height} in.
                                 </span>
                                 <span>
                                     Price
-                                    <br />${type.price}
+                                    <br />${selectedType.price}
                                 </span>
                             </div>
                         </div>
                     </div>
                     <AddToCartBtn
                         item={galleryItem}
-                        selectedType={type}
+                        selectedType={selectedType}
                         selectTypeFunc={selectTypeFunc}
                         addToCartFunc={addToCartFunc}
                     />
