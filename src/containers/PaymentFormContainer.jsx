@@ -20,6 +20,8 @@ class PaymentFormContainer extends Component {
                 toast.success(`Payment Received, we've emailed a receipt to ${transactionInfo.email}`, {
                     className: "submit-payment-toast--success"
                 });
+
+                this.context.updateCart();
             } else {
                 toast.error("Sorry something went wrong, try checking the payment information you entered.", {
                     className: "submit-payment-toast--error",
