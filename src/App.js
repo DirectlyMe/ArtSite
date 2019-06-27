@@ -52,6 +52,8 @@ class App extends Component {
             cartItems: [],
             userInfo: {},
             cartTotal: 0,
+            cartTax: 0,
+            cartShipping: 0,
             height: 0,
             width: 0,
             updateCart: this.updateCart,
@@ -93,9 +95,7 @@ class App extends Component {
 
     updateCart = async () => {
         let cart = await getCart();
-        cart.length > 0
-            ? (cart = this.sortAlphabetically(cart))
-            : console.log("cart empty");
+        cart.length > 0 ? (cart = this.sortAlphabetically(cart)) : console.log("cart empty");
 
         this.setState({ cartItems: cart });
     };
@@ -105,8 +105,12 @@ class App extends Component {
         this.setState({ userInfo });
     };
 
-    updateCartTotal = total => {
-        this.setState({ cartTotal: total });
+    updateCartTotal = (total, tax, shipping) => {
+        this.setState({
+            cartTotal: total,
+            cartTax: tax,
+            cartShipping: shipping
+        });
     };
 
     sortAlphabetically = arr => {
@@ -143,10 +147,7 @@ class App extends Component {
                                     )
                                 }
                             />
-                            <Route
-                                path="/gallery-item/:id"
-                                component={GalleryItemContainer}
-                            />
+                            <Route path="/gallery-item/:id" component={GalleryItemContainer} />
                             <Route path="/checkout" component={PaymentFormContainer} />
                             <Route path="/cart" component={CartContainer} />
                             <Route

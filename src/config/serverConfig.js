@@ -1,6 +1,6 @@
 export const serverConfig =
     process.env.NODE_ENV === "development"
-        ? { IP: "http://localhost", PORT: 8001 }
+        ? { IP: "http://192.168.83.103", PORT: 8001 }
         : { IP: "https://olyveart.com", PORT: 3001 };
 
 export const paymentConfig = {

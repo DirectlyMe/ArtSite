@@ -19,7 +19,9 @@ class GalleryItemPage extends Component {
             toggleExpandedScreenFunc,
             expandedSelected
         } = this.props;
-        const { title, images, types } = galleryItem;
+        let { title, images, types } = galleryItem;
+
+        // image = calcImageSize(window.innerWidth * .95, window.innerHeight * .45, )
 
         return (
             <div className="gallery-item-screen-desktop">
@@ -44,7 +46,7 @@ class GalleryItemPage extends Component {
                         </div>
                         <div className="gallery-item--description-wrapper">
                             <ul className="gallery-item--description-wrapper-list">
-                                <li>Price: {selectedType.price}</li>
+                                <li>Price: ${selectedType.price}</li>
                                 <li>Materials: {selectedType.materials}</li>
                                 <li>
                                     Dimensions: {selectedType.width} x {selectedType.height} in.

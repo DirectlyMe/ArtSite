@@ -29,10 +29,17 @@ class CartContainer extends Component {
 
     calcPrice = async () => {
         let total = 0;
-
+        let shipping = 0;
+        let tax = 0;
+        
         await this.context.updateCart();
-        this.context.cartItems.map(item => (total += item.price * item.quantity));
-        this.context.updateCartTotal(total);
+        this.context.cartItems.forEach(item => (total += item.price * item.quantity));
+        
+        this.context.cartItems.forEach(item => shipping += item.quantity * 1.57);
+        shipping = +((shipping).toFixed(2));
+        tax = +((total * .0725).toFixed(2));      // Ogden tax is 7.25%
+
+        this.context.updateCartTotal(total, tax, shipping );
     };
 
     checkoutOrder = () => {

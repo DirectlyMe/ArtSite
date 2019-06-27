@@ -17,6 +17,29 @@
     padding-bottom: 2%;
     border-radius: 10px;
 
+    .checkout--payment-details {
+        display: flex;
+        justify-content: center;
+        text-align: left;
+        margin-bottom: 40px;
+        
+        table {
+            border: 1px solid lightgray;
+            border-radius: 15px;
+
+            padding: 15px 40px 15px 40px;
+            
+            tr {
+                td {
+                    font-size: $font-size--smallest;
+                    padding: 5px;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+
     input,
     select {
         font-size: 12px;
@@ -121,6 +144,8 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
         text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
 
         input,
         select {
@@ -197,7 +222,7 @@
     .checkout--payment-forms---wrapper {
         .contact-header {
             margin: 0;
-            padding: 20px 0;
+            padding: 10px 0 20px 0;
             font-size: 22px;
         }
 

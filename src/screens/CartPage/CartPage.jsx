@@ -9,7 +9,7 @@ import "./styles.scss";
 
 class CartPage extends Component {
     render() {
-        const { width, cartItems, cartTotal } = this.context;
+        const { width, cartItems,  cartTotal } = this.context;
         let cartEntries = [];
 
         if (cartItems.length > 0) {
@@ -33,14 +33,11 @@ class CartPage extends Component {
                                 Total: ${cartTotal}
                             </div>
                             <div className="cart-page--checkout">
-                                {cartEntries.length > 0 ? 
-                                    <Link
-                                        className="cart-page--checkout---btn"
-                                        to="/checkout"
-                                    >
+                                {cartEntries.length > 0 ? (
+                                    <Link className="cart-page--checkout---btn" to="/checkout">
                                         Checkout
                                     </Link>
-                                : null}
+                                ) : null}
                             </div>
                         </div>
                         <Footer width={width * 0.82} />
@@ -50,13 +47,15 @@ class CartPage extends Component {
                     <div className="cart-page">
                         <PageHeading text="Cart" size={34} marginTop={80} />
                         <div>{cartEntries}</div>
-                        <div className="cart-page--total-price">Total: ${cartTotal}</div>
+                        <div className="cart-page--total-price">
+                            Total: ${cartTotal}
+                        </div>
                         <div className="cart-page--checkout">
-                        { cartEntries.length > 0 ? 
-                            <Link className="cart-page--checkout---btn" to="/checkout">
-                                Checkout
-                            </Link>
-                        : null}
+                            {cartEntries.length > 0 ? (
+                                <Link className="cart-page--checkout---btn" to="/checkout">
+                                    Checkout
+                                </Link>
+                            ) : null}
                         </div>
                     </div>
                 </MediaQuery>

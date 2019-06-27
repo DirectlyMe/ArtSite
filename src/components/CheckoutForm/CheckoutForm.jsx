@@ -91,11 +91,12 @@ class CheckoutForm extends Component {
     };
 
     render() {
+        const { cartTotal,  cartTax, cartShipping } = this.context;
         return (
             <div className="checkout--payment-forms---wrapper">
                 <form className="checkout--payment-forms">
                     <div className="checkout--payment-forms---segment">
-                        <h4 className="contact-header">Contact Info</h4>
+                        <h4 className="contact-header">Contact</h4>
                         <div className="checkout--payment-forms---contact">
                             <label className="checkout--payment-forms---header">
                                 Email
@@ -122,7 +123,7 @@ class CheckoutForm extends Component {
                         </div>
                     </div>
                     <div className="checkout--payment-forms---segment">
-                    <h4 className="contact-header">Shipping Info</h4>
+                        <h4 className="contact-header">Shipping</h4>
                         <div className="checkout--payment-forms---shipping">
                             <label className="checkout--payment-forms---header">
                                 First Name
@@ -191,32 +192,24 @@ class CheckoutForm extends Component {
                             </label>
                         </div>
                     </div>
-                    <h4 className="contact-header">Billing Info</h4>
+                    <h4 className="contact-header">Billing Address</h4>
                     <div className="checkout--payment-forms---billing-toggle">
                         <button
-                            className={classnames(
-                                "checkout--payment-forms---billing-toggle",
-                                {
-                                    ["checkout--payment-forms---billing-toggle-active"]: this // eslint-disable-line
-                                        .state.isBillingSame
-                                }
-                            )}
+                            className={classnames("checkout--payment-forms---billing-toggle", {
+                                ["checkout--payment-forms---billing-toggle-active"]: this.state // eslint-disable-line
+                                    .isBillingSame
+                            })}
                             style={{ borderRadius: "10px 0 0 10px" }}
-                            onClick={event => this.changeBillingToggle(event, true)}
-                        >
+                            onClick={event => this.changeBillingToggle(event, true)}>
                             Same as shipping
                         </button>
                         <button
-                            className={classnames(
-                                "checkout--payment-forms---billing-toggle",
-                                {
-                                    ["checkout--payment-forms---billing-toggle-active"]: !this // eslint-disable-line
-                                        .state.isBillingSame
-                                }
-                            )}
+                            className={classnames("checkout--payment-forms---billing-toggle", {
+                                ["checkout--payment-forms---billing-toggle-active"]: !this // eslint-disable-line
+                                    .state.isBillingSame
+                            })}
                             style={{ borderRadius: "0 10px 10px 0" }}
-                            onClick={event => this.changeBillingToggle(event, false)}
-                        >
+                            onClick={event => this.changeBillingToggle(event, false)}>
                             Different than shipping
                         </button>
                     </div>
@@ -292,7 +285,29 @@ class CheckoutForm extends Component {
                         </div>
                     ) : null}
                     <div className="checkout-form">
-                        <h4 className="contact-header">Payment Info</h4>
+                        <h4 className="contact-header">Payment Information</h4>
+                        <div className="checkout--payment-details">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Sub Total</td>
+                                        <td>${(cartTotal).toFixed(2)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>${(cartShipping).toFixed(2)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tax</td>
+                                        <td>${(cartTax).toFixed(2)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="checkout--payment-details-total">Total</td>
+                                        <td className="checkout--payment-details-total">${(cartTotal + cartShipping + cartTax).toFixed(2)}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <CardElement
                             style={{
                                 base: { fontSize: "16px", color: "black", opacity: "1" }

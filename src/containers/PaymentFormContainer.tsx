@@ -3,14 +3,19 @@ import Context from "../Context";
 import { postTransactionInfo } from "../api/TransactionCalls";
 import PaymentFormPage from "../screens/PaymentFormPage/PaymentFormPage";
 import { toast } from "react-toastify";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
-class PaymentFormContainer extends Component {
-    postTransaction = async userInfo => {
+interface IProps extends RouteComponentProps<any> {}
+
+class PaymentFormContainer extends Component<IProps, {}> {
+    postTransaction = async (userInfo: IUserInfo) => {
         const isValid = this.checkUserInfo(userInfo);
         if (isValid) {
             const transactionInfo = {
                 ...userInfo,
-                amount: this.context.cartTotal,
+                amount: this.context.cartTotal + this.context.cartTax + this.context.cartShipping,
+                tax: this.context.cartTax,
+                shipping: this.context.cartShipping,
                 cartItems: this.context.cartItems
             };
 
@@ -22,6 +27,7 @@ class PaymentFormContainer extends Component {
                 });
 
                 this.context.updateCart();
+                this.props.history.push("/");
             } else {
                 toast.error("Sorry something went wrong, try checking the payment information you entered.", {
                     className: "submit-payment-toast--error",
@@ -30,7 +36,7 @@ class PaymentFormContainer extends Component {
         }
     };
 
-    checkUserInfo = userInfo => {
+    checkUserInfo = (userInfo: IUserInfo) => {
         const nameRegex = new RegExp(/([a-z])\w+/);
         const phoneRegex = new RegExp(
             /^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$/
@@ -110,4 +116,4 @@ class PaymentFormContainer extends Component {
 }
 PaymentFormContainer.contextType = Context;
 
-export default PaymentFormContainer;
+export default withRouter(PaymentFormContainer);
